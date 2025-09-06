@@ -524,71 +524,67 @@ export default function Onboarding() {
 
                 {/* Demographics */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-blue-400/12 to-blue-600/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-blue-300/40 rounded-xl p-5 hover:border-blue-400/60 transition-all duration-300" >
+                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="p-3 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-lg">
+                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
                         <Users className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Demographics</h4>
-                      <Eye className="w-4 h-4 text-blue-400" />
+                      <h4 className="text-lg font-semibold text-white">Demographics</h4>
+                      <Eye className="w-4 h-4 text-orange-400/60" />
                     </div>
-                    <div className="rounded-lg p-4">
-                      <p className="text-white leading-relaxed drop-shadow-md">{marketingReport.userPersona.demographics}</p>
+                    <div className="p-4">
+                      <p className="text-white/90 leading-relaxed">{marketingReport.userPersona.demographics}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Platform Presence */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-purple-400/12 to-purple-600/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-purple-300/40 rounded-xl p-5 hover:border-purple-400/60 transition-all duration-300" >
+                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="p-3 rounded-lg bg-gradient-to-br from-purple-400 to-purple-600 text-white shadow-lg">
+                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
                         <Smartphone className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Platform Presence</h4>
-                      <Heart className="w-4 h-4 text-purple-400" />
+                      <h4 className="text-lg font-semibold text-white">Platform Presence</h4>
+                      <Heart className="w-4 h-4 text-orange-400/60" />
                     </div>
-                    <div className="rounded-lg p-4">
-                      <p className="text-white leading-relaxed drop-shadow-md">{marketingReport.userPersona.whereTheyHangOut}</p>
+                    <div className="p-4">
+                      <p className="text-white/90 leading-relaxed">{marketingReport.userPersona.whereTheyHangOut}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Mindset & Psychology */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 via-green-400/12 to-green-600/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-green-300/40 rounded-xl p-5 hover:border-green-400/60 transition-all duration-300" >
+                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="p-3 rounded-lg bg-gradient-to-br from-green-400 to-green-600 text-white shadow-lg">
+                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
                         <Brain className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Mindset & Psychology</h4>
-                      <Sparkles className="w-4 h-4 text-green-400 animate-pulse" />
+                      <h4 className="text-lg font-semibold text-white">Mindset & Psychology</h4>
+                      <Sparkles className="w-4 h-4 text-orange-400/60 animate-pulse" />
                     </div>
-                    <div className="rounded-lg p-4">
-                      <p className="text-white leading-relaxed drop-shadow-md">{marketingReport.userPersona.mindset}</p>
+                    <div className="p-4">
+                      <p className="text-white/90 leading-relaxed">{marketingReport.userPersona.mindset}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Pain Points */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 via-red-400/12 to-red-600/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-red-300/40 rounded-xl p-5 hover:border-red-400/60 transition-all duration-300" >
+                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="p-3 rounded-lg bg-gradient-to-br from-red-400 to-red-600 text-white shadow-lg">
+                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
                         <AlertTriangle className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Pain Points</h4>
-                      <Zap className="w-4 h-4 text-red-400" />
+                      <h4 className="text-lg font-semibold text-white">Pain Points</h4>
+                      <Zap className="w-4 h-4 text-orange-400/60" />
                     </div>
-                    <div className="rounded-lg p-4">
+                    <div className="p-4">
                       <ul className="space-y-2">
                         {marketingReport.painPoints.map((point, index) => (
-                          <li key={index} className="text-white flex items-start gap-3 drop-shadow-md">
-                            <div className="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 flex-shrink-0"></div>
+                          <li key={index} className="text-white/90 flex items-start gap-3">
+                            <div className="w-1.5 h-1.5 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
                             <span className="leading-relaxed">{point}</span>
                           </li>
                         ))}
@@ -599,21 +595,20 @@ export default function Onboarding() {
 
                 {/* Content Pillars */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-cyan-400/12 to-cyan-600/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-cyan-300/40 rounded-xl p-5 hover:border-cyan-400/60 transition-all duration-300" >
+                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 text-white shadow-lg">
+                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
                         <Palette className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Content Pillars</h4>
-                      <PenTool className="w-4 h-4 text-cyan-400" />
+                      <h4 className="text-lg font-semibold text-white">Content Pillars</h4>
+                      <PenTool className="w-4 h-4 text-orange-400/60" />
                     </div>
-                    <div className="rounded-lg p-4">
+                    <div className="p-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {marketingReport.contentPillars.map((pillar, index) => (
-                          <div key={index} className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
-                            <h5 className="font-semibold text-cyan-200 mb-2 drop-shadow-md">{pillar.pillar}</h5>
-                            <p className="text-white text-sm leading-relaxed drop-shadow-md">{pillar.description}</p>
+                          <div key={index} className="rounded-lg p-3 transition-colors border border-white/10 bg-white/5">
+                            <h5 className="font-semibold text-orange-300 mb-2">{pillar.pillar}</h5>
+                            <p className="text-white/90 text-sm leading-relaxed">{pillar.description}</p>
                           </div>
                         ))}
                       </div>
@@ -623,22 +618,21 @@ export default function Onboarding() {
 
                 {/* Content Types */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 via-pink-400/12 to-pink-600/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-pink-300/40 rounded-xl p-5 hover:border-pink-400/60 transition-all duration-300" >
+                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-gradient-to-br from-pink-400 to-pink-600 text-white shadow-lg">
+                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
                         <Video className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Content Types</h4>
-                      <Sparkles className="w-4 h-4 text-pink-400 animate-pulse" />
+                      <h4 className="text-lg font-semibold text-white">Content Types</h4>
+                      <Sparkles className="w-4 h-4 text-orange-400/60 animate-pulse" />
                     </div>
-                    <div className="rounded-lg p-4">
+                    <div className="p-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {marketingReport.postTypes.map((type, index) => (
                           
-                          <div key={index} className="flex items-center gap-3 p-2 px-3 rounded-sm transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
-                            <div className="w-1.5 h-1.5 bg-pink-400 rounded-full flex-shrink-0"></div>
-                            <span className="text-white text-sm drop-shadow-md">{type}</span>
+                          <div key={index} className="flex items-center gap-3 p-2 px-3 rounded-sm transition-colors border border-white/10 bg-white/5">
+                            <div className="w-1.5 h-1.5 bg-orange-400 rounded-full flex-shrink-0"></div>
+                            <span className="text-white/90 text-sm">{type}</span>
                           </div>
                         ))}
                       </div>
@@ -648,47 +642,46 @@ export default function Onboarding() {
 
                 {/* Publishing Schedule */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 via-yellow-400/12 to-orange-500/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-yellow-300/40 rounded-xl p-5 hover:border-orange-400/60 transition-all duration-300" >
+                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 text-white shadow-lg">
+                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
                         <Calendar className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Publishing Schedule</h4>
-                      <Rocket className="w-4 h-4 text-yellow-400" />
+                      <h4 className="text-lg font-semibold text-white">Publishing Schedule</h4>
+                      <Rocket className="w-4 h-4 text-orange-400/60" />
                     </div>
-                    <div className="rounded-lg p-4">
+                    <div className="p-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
-                          <div className="flex items-center gap-2 mb-2">
-                            <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                            <span className="font-semibold text-orange-200 drop-shadow-md">Monday</span>
-                          </div>
-                          <p className="text-white text-sm leading-relaxed drop-shadow-md">{marketingReport.weeklyCalendar.monday}</p>
-                        </div>
-                        
-                        <div className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
-                          <div className="flex items-center gap-2 mb-2">
-                            <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                            <span className="font-semibold text-orange-200 drop-shadow-md">Wednesday</span>
-                          </div>
-                          <p className="text-white text-sm leading-relaxed drop-shadow-md">{marketingReport.weeklyCalendar.wednesday}</p>
-                        </div>
-                        
-                        <div className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
-                          <div className="flex items-center gap-2 mb-2">
-                            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                            <span className="font-semibold text-orange-200 drop-shadow-md">Friday</span>
-                          </div>
-                          <p className="text-white text-sm leading-relaxed drop-shadow-md">{marketingReport.weeklyCalendar.friday}</p>
-                        </div>
-                        
-                        <div className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
+                        <div className="rounded-lg p-3 transition-colors border border-white/10 bg-white/5">
                           <div className="flex items-center gap-2 mb-2">
                             <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-                            <span className="font-semibold text-orange-200 drop-shadow-md">Sunday</span>
+                            <span className="font-semibold text-orange-300">Monday</span>
                           </div>
-                          <p className="text-white text-sm leading-relaxed drop-shadow-md">{marketingReport.weeklyCalendar.sunday}</p>
+                          <p className="text-white/90 text-sm leading-relaxed">{marketingReport.weeklyCalendar.monday}</p>
+                        </div>
+                        
+                        <div className="rounded-lg p-3 transition-colors border border-white/10 bg-white/5">
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                            <span className="font-semibold text-orange-300">Wednesday</span>
+                          </div>
+                          <p className="text-white/90 text-sm leading-relaxed">{marketingReport.weeklyCalendar.wednesday}</p>
+                        </div>
+                        
+                        <div className="rounded-lg p-3 transition-colors border border-white/10 bg-white/5">
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                            <span className="font-semibold text-orange-300">Friday</span>
+                          </div>
+                          <p className="text-white/90 text-sm leading-relaxed">{marketingReport.weeklyCalendar.friday}</p>
+                        </div>
+                        
+                        <div className="rounded-lg p-3 transition-colors border border-white/10 bg-white/5">
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                            <span className="font-semibold text-orange-300">Sunday</span>
+                          </div>
+                          <p className="text-white/90 text-sm leading-relaxed">{marketingReport.weeklyCalendar.sunday}</p>
                         </div>
                       </div>
                     </div>
@@ -697,19 +690,18 @@ export default function Onboarding() {
 
                 {/* Hashtag Strategy */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-indigo-400/12 to-purple-500/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-indigo-300/40 rounded-xl p-5 hover:border-indigo-400/60 transition-all duration-300" >
+                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-gradient-to-br from-indigo-400 to-purple-600 text-white shadow-lg">
+                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
                         <Hash className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Hashtag Strategy</h4>
-                      <span className="text-sm px-2 py-1 bg-indigo-500/30 text-indigo-200 rounded-full">{marketingReport.hashtagStyle.tone}</span>
+                      <h4 className="text-lg font-semibold text-white">Hashtag Strategy</h4>
+                      <span className="text-sm px-2 py-1 bg-orange-500/30 text-orange-200 rounded-full border border-orange-400/30">{marketingReport.hashtagStyle.tone}</span>
                     </div>
-                    <div className="rounded-lg p-4">
+                    <div className="p-4">
                       <div className="flex flex-wrap gap-2">
                         {marketingReport.hashtagStyle.exampleHashtags.map((tag, index) => (
-                          <span key={index} className="px-3 py-1.5 rounded-full text-indigo-200 text-sm font-medium transition-colors drop-shadow-md backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
+                          <span key={index} className="px-3 py-1.5 rounded-full text-orange-200 text-sm font-medium transition-colors border border-white/10 bg-white/5">
                             {tag}
                           </span>
                         ))}
@@ -720,21 +712,20 @@ export default function Onboarding() {
 
                 {/* Engagement Tactics */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-emerald-400/12 to-teal-500/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-emerald-300/40 rounded-xl p-5 hover:border-emerald-400/60 transition-all duration-300" >
+                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-600 text-white shadow-lg">
+                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
                         <TrendingUp className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Engagement Tactics</h4>
-                      <Heart className="w-4 h-4 text-emerald-400 animate-pulse" />
+                      <h4 className="text-lg font-semibold text-white">Engagement Tactics</h4>
+                      <Heart className="w-4 h-4 text-orange-400/60 animate-pulse" />
                     </div>
-                    <div className="rounded-lg p-4">
+                    <div className="p-4">
                       <div className="space-y-2">
                         {marketingReport.engagementStrategy.map((strategy, index) => (
-                          <div key={index} className="flex items-start gap-3 p-2 rounded-lg transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
-                            <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="text-white text-sm leading-relaxed drop-shadow-md">{strategy}</span>
+                          <div key={index} className="flex items-start gap-3 p-2 rounded-lg transition-colors border border-white/10 bg-white/5">
+                            <div className="w-1.5 h-1.5 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="text-white/90 text-sm leading-relaxed">{strategy}</span>
                           </div>
                         ))}
                       </div>
@@ -744,21 +735,20 @@ export default function Onboarding() {
 
                 {/* Success Metrics */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-violet-500/20 via-violet-400/12 to-fuchsia-500/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-violet-300/40 rounded-xl p-5 hover:border-violet-400/60 transition-all duration-300" >
+                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-gradient-to-br from-violet-400 to-fuchsia-600 text-white shadow-lg">
+                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
                         <BarChart3 className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Success Metrics</h4>
-                      <Target className="w-4 h-4 text-violet-400" />
+                      <h4 className="text-lg font-semibold text-white">Success Metrics</h4>
+                      <Target className="w-4 h-4 text-orange-400/60" />
                     </div>
-                    <div className="rounded-lg p-4">
+                    <div className="p-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {marketingReport.metricsToTrack.map((metric, index) => (
-                          <div key={index} className="flex items-center gap-3 p-2 rounded-lg transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
-                            <div className="w-1.5 h-1.5 bg-violet-400 rounded-full flex-shrink-0"></div>
-                            <span className="text-white text-sm drop-shadow-md">{metric}</span>
+                          <div key={index} className="flex items-center gap-3 p-2 rounded-lg transition-colors border border-white/10 bg-white/5">
+                            <div className="w-1.5 h-1.5 bg-orange-400 rounded-full flex-shrink-0"></div>
+                            <span className="text-white/90 text-sm">{metric}</span>
                           </div>
                         ))}
                       </div>

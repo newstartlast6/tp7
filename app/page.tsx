@@ -436,342 +436,287 @@ export default function Onboarding() {
       {/* Marketing Report Display */}
       {marketingReport && scrapedData && (
         <div 
-          className="fixed inset-0 z-50 overflow-y-auto"
-          style={{
-            background: "radial-gradient(ellipse at center, #0f0f23 0%, #1a1a2e 30%, #16213e 70%, #0f172a 100%)"
-          }}
+          className="fixed inset-0 z-50 overflow-y-auto bg-gray-50"
         >
-          {/* Enhanced Background Effects with Scroll */}
+          {/* Subtle Background Effects */}
           <div className="absolute inset-0 overflow-hidden">
             <div 
-              className="fixed w-96 h-96 bg-orange-500/30 rounded-full blur-3xl animate-pulse"
+              className="fixed w-96 h-96 bg-orange-100/40 rounded-full blur-3xl"
               style={{
-                top: '10%',
-                left: '15%'
+                top: '5%',
+                left: '10%'
               }}
             ></div>
             <div 
-              className="fixed w-80 h-80 bg-orange-600/25 rounded-full blur-3xl animate-pulse delay-700"
-              style={{
-                top: '40%',
-                right: '10%'
-              }}
-            ></div>
-            <div 
-              className="fixed w-72 h-72 bg-orange-400/20 rounded-full blur-3xl animate-pulse delay-1000"
-              style={{
-                bottom: '20%',
-                left: '20%'
-              }}
-            ></div>
-            <div 
-              className="fixed w-64 h-64 bg-orange-500/18 rounded-full blur-3xl animate-pulse delay-1500"
+              className="fixed w-80 h-80 bg-orange-50/60 rounded-full blur-3xl"
               style={{
                 bottom: '10%',
-                right: '25%'
+                right: '15%'
               }}
             ></div>
           </div>
 
-          <div className="min-h-screen py-8 px-4 relative z-10 overflow-y-auto">
-            <div className="w-full max-w-4xl mx-auto border-2 border-orange-400/40 rounded-2xl backdrop-blur-xl p-8 shadow-2xl shadow-orange-500/30"
-              style={{
-                background: "linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(15,15,35,0.8) 30%, rgba(0,0,0,0.5) 70%, rgba(10,10,25,0.7) 100%)"
-              }}
+          <div className="min-h-screen py-12 px-4 relative z-10 overflow-y-auto">
+            <div className="w-full max-w-4xl mx-auto bg-white rounded-3xl border border-orange-100 shadow-lg shadow-orange-500/5 p-8"
             >
               {/* Clean Header */}
               <div className="text-center mb-12">
                 <div className="flex items-center justify-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-2xl shadow-orange-500/25">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-500/20">
                     <span className="text-2xl">📊</span>
                   </div>
                   <div className="text-left">
-                    <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
+                    <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                       Marketing Report
                     </h1>
-                    <p className="text-white/60 text-sm">AI-Generated Strategy</p>
+                    <p className="text-gray-500 text-sm">AI-Generated Strategy</p>
                   </div>
                 </div>
                 
-                <div className="space-y-2">
-                  <h2 className="text-2xl font-bold text-white">{marketingReport.productName}</h2>
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full">
-                    <span className="w-2 h-2 bg-orange-400 rounded-full"></span>
-                    <span className="text-white/80 text-sm font-medium">{marketingReport.category}</span>
+                <div className="space-y-3">
+                  <h2 className="text-2xl font-bold text-gray-900">{marketingReport.productName}</h2>
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 border border-orange-200 rounded-full">
+                    <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+                    <span className="text-orange-700 text-sm font-medium">{marketingReport.category}</span>
                   </div>
                 </div>
               </div>
 
               <div className="space-y-6">
                 {/* Executive Summary */}
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/25 via-orange-400/15 to-orange-600/25 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-orange-300/40 rounded-xl p-6 hover:border-orange-400/60 transition-all duration-300" >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg">
-                        <Lightbulb className="w-5 h-5" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-white drop-shadow-lg">Executive Summary</h3>
-                      <Sparkles className="w-4 h-4 text-orange-400 animate-pulse" />
+                <div className="bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-2xl border border-orange-200 p-6 hover:shadow-md hover:shadow-orange-500/10 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 text-white shadow-sm">
+                      <Lightbulb className="w-5 h-5" />
                     </div>
-                    <div className="rounded-lg p-4">
-                      <p className="text-white leading-relaxed italic text-lg font-medium drop-shadow-md">
-                        "{marketingReport.valueProposition}"
-                      </p>
-                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900">Executive Summary</h3>
+                    <Sparkles className="w-4 h-4 text-orange-500" />
+                  </div>
+                  <div className="bg-white/70 rounded-xl p-4 border border-orange-100">
+                    <p className="text-gray-700 leading-relaxed italic text-lg font-medium">
+                      "{marketingReport.valueProposition}"
+                    </p>
                   </div>
                 </div>
 
                 {/* Demographics */}
-                <div className="relative group">
-                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
-                        <Users className="w-4 h-4" />
-                      </div>
-                      <h4 className="text-lg font-semibold text-white">Demographics</h4>
-                      <Eye className="w-4 h-4 text-orange-400/60" />
+                <div className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-md hover:shadow-orange-500/5 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-orange-100 text-orange-600">
+                      <Users className="w-4 h-4" />
                     </div>
-                    <div className="p-4">
-                      <p className="text-white/90 leading-relaxed">{marketingReport.userPersona.demographics}</p>
-                    </div>
+                    <h4 className="text-lg font-semibold text-gray-900">Demographics</h4>
+                    <Eye className="w-4 h-4 text-orange-400" />
+                  </div>
+                  <div className="bg-gray-50 rounded-xl p-4">
+                    <p className="text-gray-700 leading-relaxed">{marketingReport.userPersona.demographics}</p>
                   </div>
                 </div>
 
                 {/* Platform Presence */}
-                <div className="relative group">
-                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
-                        <Smartphone className="w-4 h-4" />
-                      </div>
-                      <h4 className="text-lg font-semibold text-white">Platform Presence</h4>
-                      <Heart className="w-4 h-4 text-orange-400/60" />
+                <div className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-md hover:shadow-orange-500/5 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-orange-100 text-orange-600">
+                      <Smartphone className="w-4 h-4" />
                     </div>
-                    <div className="p-4">
-                      <p className="text-white/90 leading-relaxed">{marketingReport.userPersona.whereTheyHangOut}</p>
-                    </div>
+                    <h4 className="text-lg font-semibold text-gray-900">Platform Presence</h4>
+                    <Heart className="w-4 h-4 text-orange-400" />
+                  </div>
+                  <div className="bg-gray-50 rounded-xl p-4">
+                    <p className="text-gray-700 leading-relaxed">{marketingReport.userPersona.whereTheyHangOut}</p>
                   </div>
                 </div>
 
                 {/* Mindset & Psychology */}
-                <div className="relative group">
-                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
-                        <Brain className="w-4 h-4" />
-                      </div>
-                      <h4 className="text-lg font-semibold text-white">Mindset & Psychology</h4>
-                      <Sparkles className="w-4 h-4 text-orange-400/60 animate-pulse" />
+                <div className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-md hover:shadow-orange-500/5 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-orange-100 text-orange-600">
+                      <Brain className="w-4 h-4" />
                     </div>
-                    <div className="p-4">
-                      <p className="text-white/90 leading-relaxed">{marketingReport.userPersona.mindset}</p>
-                    </div>
+                    <h4 className="text-lg font-semibold text-gray-900">Mindset & Psychology</h4>
+                    <Sparkles className="w-4 h-4 text-orange-400" />
+                  </div>
+                  <div className="bg-gray-50 rounded-xl p-4">
+                    <p className="text-gray-700 leading-relaxed">{marketingReport.userPersona.mindset}</p>
                   </div>
                 </div>
 
                 {/* Pain Points */}
-                <div className="relative group">
-                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
-                        <AlertTriangle className="w-4 h-4" />
-                      </div>
-                      <h4 className="text-lg font-semibold text-white">Pain Points</h4>
-                      <Zap className="w-4 h-4 text-orange-400/60" />
+                <div className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-md hover:shadow-orange-500/5 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-orange-100 text-orange-600">
+                      <AlertTriangle className="w-4 h-4" />
                     </div>
-                    <div className="p-4">
-                      <ul className="space-y-2">
-                        {marketingReport.painPoints.map((point, index) => (
-                          <li key={index} className="text-white/90 flex items-start gap-3">
-                            <div className="w-1.5 h-1.5 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="leading-relaxed">{point}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <h4 className="text-lg font-semibold text-gray-900">Pain Points</h4>
+                    <Zap className="w-4 h-4 text-orange-400" />
+                  </div>
+                  <div className="bg-gray-50 rounded-xl p-4">
+                    <ul className="space-y-3">
+                      {marketingReport.painPoints.map((point, index) => (
+                        <li key={index} className="text-gray-700 flex items-start gap-3">
+                          <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <span className="leading-relaxed">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
 
                 {/* Content Pillars */}
-                <div className="relative group">
-                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
-                        <Palette className="w-4 h-4" />
-                      </div>
-                      <h4 className="text-lg font-semibold text-white">Content Pillars</h4>
-                      <PenTool className="w-4 h-4 text-orange-400/60" />
+                <div className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-md hover:shadow-orange-500/5 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-orange-100 text-orange-600">
+                      <Palette className="w-4 h-4" />
                     </div>
-                    <div className="p-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {marketingReport.contentPillars.map((pillar, index) => (
-                          <div key={index} className="rounded-lg p-3 transition-colors border border-white/10 bg-white/5">
-                            <h5 className="font-semibold text-orange-300 mb-2">{pillar.pillar}</h5>
-                            <p className="text-white/90 text-sm leading-relaxed">{pillar.description}</p>
-                          </div>
-                        ))}
+                    <h4 className="text-lg font-semibold text-gray-900">Content Pillars</h4>
+                    <PenTool className="w-4 h-4 text-orange-400" />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {marketingReport.contentPillars.map((pillar, index) => (
+                      <div key={index} className="bg-gray-50 rounded-xl p-4 border border-gray-100 hover:bg-orange-50/50 transition-colors">
+                        <h5 className="font-semibold text-orange-600 mb-2">{pillar.pillar}</h5>
+                        <p className="text-gray-700 text-sm leading-relaxed">{pillar.description}</p>
                       </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
 
                 {/* Content Types */}
-                <div className="relative group">
-                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
-                        <Video className="w-4 h-4" />
-                      </div>
-                      <h4 className="text-lg font-semibold text-white">Content Types</h4>
-                      <Sparkles className="w-4 h-4 text-orange-400/60 animate-pulse" />
+                <div className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-md hover:shadow-orange-500/5 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-orange-100 text-orange-600">
+                      <Video className="w-4 h-4" />
                     </div>
-                    <div className="p-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        {marketingReport.postTypes.map((type, index) => (
-                          
-                          <div key={index} className="flex items-center gap-3 p-2 px-3 rounded-sm transition-colors border border-white/10 bg-white/5">
-                            <div className="w-1.5 h-1.5 bg-orange-400 rounded-full flex-shrink-0"></div>
-                            <span className="text-white/90 text-sm">{type}</span>
-                          </div>
-                        ))}
+                    <h4 className="text-lg font-semibold text-gray-900">Content Types</h4>
+                    <Sparkles className="w-4 h-4 text-orange-400" />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {marketingReport.postTypes.map((type, index) => (
+                      <div key={index} className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-100 hover:bg-orange-50/50 transition-colors">
+                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full flex-shrink-0"></div>
+                        <span className="text-gray-700 text-sm">{type}</span>
                       </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
 
                 {/* Publishing Schedule */}
-                <div className="relative group">
-                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
-                        <Calendar className="w-4 h-4" />
-                      </div>
-                      <h4 className="text-lg font-semibold text-white">Publishing Schedule</h4>
-                      <Rocket className="w-4 h-4 text-orange-400/60" />
+                <div className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-md hover:shadow-orange-500/5 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-orange-100 text-orange-600">
+                      <Calendar className="w-4 h-4" />
                     </div>
-                    <div className="p-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div className="rounded-lg p-3 transition-colors border border-white/10 bg-white/5">
-                          <div className="flex items-center gap-2 mb-2">
-                            <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-                            <span className="font-semibold text-orange-300">Monday</span>
-                          </div>
-                          <p className="text-white/90 text-sm leading-relaxed">{marketingReport.weeklyCalendar.monday}</p>
-                        </div>
-                        
-                        <div className="rounded-lg p-3 transition-colors border border-white/10 bg-white/5">
-                          <div className="flex items-center gap-2 mb-2">
-                            <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-                            <span className="font-semibold text-orange-300">Wednesday</span>
-                          </div>
-                          <p className="text-white/90 text-sm leading-relaxed">{marketingReport.weeklyCalendar.wednesday}</p>
-                        </div>
-                        
-                        <div className="rounded-lg p-3 transition-colors border border-white/10 bg-white/5">
-                          <div className="flex items-center gap-2 mb-2">
-                            <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-                            <span className="font-semibold text-orange-300">Friday</span>
-                          </div>
-                          <p className="text-white/90 text-sm leading-relaxed">{marketingReport.weeklyCalendar.friday}</p>
-                        </div>
-                        
-                        <div className="rounded-lg p-3 transition-colors border border-white/10 bg-white/5">
-                          <div className="flex items-center gap-2 mb-2">
-                            <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-                            <span className="font-semibold text-orange-300">Sunday</span>
-                          </div>
-                          <p className="text-white/90 text-sm leading-relaxed">{marketingReport.weeklyCalendar.sunday}</p>
-                        </div>
+                    <h4 className="text-lg font-semibold text-gray-900">Publishing Schedule</h4>
+                    <Rocket className="w-4 h-4 text-orange-400" />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-gray-50 rounded-xl p-4 border border-gray-100 hover:bg-orange-50/50 transition-colors">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                        <span className="font-semibold text-orange-600">Monday</span>
                       </div>
+                      <p className="text-gray-700 text-sm leading-relaxed">{marketingReport.weeklyCalendar.monday}</p>
+                    </div>
+                    
+                    <div className="bg-gray-50 rounded-xl p-4 border border-gray-100 hover:bg-orange-50/50 transition-colors">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                        <span className="font-semibold text-orange-600">Wednesday</span>
+                      </div>
+                      <p className="text-gray-700 text-sm leading-relaxed">{marketingReport.weeklyCalendar.wednesday}</p>
+                    </div>
+                    
+                    <div className="bg-gray-50 rounded-xl p-4 border border-gray-100 hover:bg-orange-50/50 transition-colors">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                        <span className="font-semibold text-orange-600">Friday</span>
+                      </div>
+                      <p className="text-gray-700 text-sm leading-relaxed">{marketingReport.weeklyCalendar.friday}</p>
+                    </div>
+                    
+                    <div className="bg-gray-50 rounded-xl p-4 border border-gray-100 hover:bg-orange-50/50 transition-colors">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                        <span className="font-semibold text-orange-600">Sunday</span>
+                      </div>
+                      <p className="text-gray-700 text-sm leading-relaxed">{marketingReport.weeklyCalendar.sunday}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Hashtag Strategy */}
-                <div className="relative group">
-                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
-                        <Hash className="w-4 h-4" />
-                      </div>
-                      <h4 className="text-lg font-semibold text-white">Hashtag Strategy</h4>
-                      <span className="text-sm px-2 py-1 bg-orange-500/30 text-orange-200 rounded-full border border-orange-400/30">{marketingReport.hashtagStyle.tone}</span>
+                <div className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-md hover:shadow-orange-500/5 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-orange-100 text-orange-600">
+                      <Hash className="w-4 h-4" />
                     </div>
-                    <div className="p-4">
-                      <div className="flex flex-wrap gap-2">
-                        {marketingReport.hashtagStyle.exampleHashtags.map((tag, index) => (
-                          <span key={index} className="px-3 py-1.5 rounded-full text-orange-200 text-sm font-medium transition-colors border border-white/10 bg-white/5">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                    <h4 className="text-lg font-semibold text-gray-900">Hashtag Strategy</h4>
+                    <span className="text-sm px-3 py-1 bg-orange-100 text-orange-700 rounded-full border border-orange-200">{marketingReport.hashtagStyle.tone}</span>
+                  </div>
+                  <div className="bg-gray-50 rounded-xl p-4">
+                    <div className="flex flex-wrap gap-2">
+                      {marketingReport.hashtagStyle.exampleHashtags.map((tag, index) => (
+                        <span key={index} className="px-3 py-1.5 rounded-full bg-orange-100 text-orange-700 text-sm font-medium hover:bg-orange-200 transition-colors border border-orange-200">
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
 
                 {/* Engagement Tactics */}
-                <div className="relative group">
-                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
-                        <TrendingUp className="w-4 h-4" />
-                      </div>
-                      <h4 className="text-lg font-semibold text-white">Engagement Tactics</h4>
-                      <Heart className="w-4 h-4 text-orange-400/60 animate-pulse" />
+                <div className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-md hover:shadow-orange-500/5 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-orange-100 text-orange-600">
+                      <TrendingUp className="w-4 h-4" />
                     </div>
-                    <div className="p-4">
-                      <div className="space-y-2">
-                        {marketingReport.engagementStrategy.map((strategy, index) => (
-                          <div key={index} className="flex items-start gap-3 p-2 rounded-lg transition-colors border border-white/10 bg-white/5">
-                            <div className="w-1.5 h-1.5 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="text-white/90 text-sm leading-relaxed">{strategy}</span>
-                          </div>
-                        ))}
-                      </div>
+                    <h4 className="text-lg font-semibold text-gray-900">Engagement Tactics</h4>
+                    <Heart className="w-4 h-4 text-orange-400" />
+                  </div>
+                  <div className="bg-gray-50 rounded-xl p-4">
+                    <div className="space-y-3">
+                      {marketingReport.engagementStrategy.map((strategy, index) => (
+                        <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-white border border-gray-100 hover:bg-orange-50/50 transition-colors">
+                          <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                          <span className="text-gray-700 text-sm leading-relaxed">{strategy}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
 
                 {/* Success Metrics */}
-                <div className="relative group">
-                  <div className="relative border border-white/10 rounded-xl p-5 hover:border-orange-400/30 transition-all duration-300 bg-white/5" >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-400/30 text-orange-400">
-                        <BarChart3 className="w-4 h-4" />
-                      </div>
-                      <h4 className="text-lg font-semibold text-white">Success Metrics</h4>
-                      <Target className="w-4 h-4 text-orange-400/60" />
+                <div className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-md hover:shadow-orange-500/5 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-orange-100 text-orange-600">
+                      <BarChart3 className="w-4 h-4" />
                     </div>
-                    <div className="p-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        {marketingReport.metricsToTrack.map((metric, index) => (
-                          <div key={index} className="flex items-center gap-3 p-2 rounded-lg transition-colors border border-white/10 bg-white/5">
-                            <div className="w-1.5 h-1.5 bg-orange-400 rounded-full flex-shrink-0"></div>
-                            <span className="text-white/90 text-sm">{metric}</span>
-                          </div>
-                        ))}
+                    <h4 className="text-lg font-semibold text-gray-900">Success Metrics</h4>
+                    <Target className="w-4 h-4 text-orange-400" />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {marketingReport.metricsToTrack.map((metric, index) => (
+                      <div key={index} className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-100 hover:bg-orange-50/50 transition-colors">
+                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full flex-shrink-0"></div>
+                        <span className="text-gray-700 text-sm">{metric}</span>
                       </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
 
                 {/* Key Takeaway */}
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/30 via-orange-400/20 to-red-500/25 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-orange-300/50 rounded-xl p-6 hover:border-orange-400/70 transition-all duration-300" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(15,15,35,0.7) 50%, rgba(0,0,0,0.6) 100%)"}}>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-gradient-to-br from-orange-400 to-red-600 text-white shadow-lg">
-                        <Zap className="w-5 h-5" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-white drop-shadow-lg">Key Takeaway</h3>
-                      <Rocket className="w-5 h-5 text-orange-400 animate-bounce" />
+                <div className="bg-gradient-to-br from-orange-100 to-orange-200/60 rounded-2xl border-2 border-orange-300 p-6 hover:shadow-lg hover:shadow-orange-500/15 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 text-white shadow-lg">
+                      <Zap className="w-5 h-5" />
                     </div>
-                    <div className="bg-black/60 rounded-lg p-5 backdrop-blur-sm">
-                      <p className="text-white leading-relaxed font-medium italic text-lg drop-shadow-md">
-                        {marketingReport.keyTakeaway}
-                      </p>
-                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900">Key Takeaway</h3>
+                    <Rocket className="w-5 h-5 text-orange-500" />
+                  </div>
+                  <div className="bg-white/80 rounded-xl p-5 border border-orange-200">
+                    <p className="text-gray-800 leading-relaxed font-medium italic text-lg">
+                      {marketingReport.keyTakeaway}
+                    </p>
                   </div>
                 </div>
 

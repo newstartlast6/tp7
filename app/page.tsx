@@ -260,8 +260,9 @@ export default function Onboarding() {
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-gray-50">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-100/60 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-50/80 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-300/40 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-200/60 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-orange-400/30 rounded-full blur-2xl animate-pulse delay-500"></div>
       </div>
 
       <div className="w-full max-w-md mx-auto relative z-10">
@@ -424,20 +425,34 @@ export default function Onboarding() {
         <div 
           className="fixed inset-0 z-50 overflow-y-auto bg-gray-50"
         >
-          {/* Subtle Background Effects */}
+          {/* Bright Glowing Background Effects */}
           <div className="absolute inset-0 overflow-hidden">
             <div 
-              className="fixed w-96 h-96 bg-orange-100/40 rounded-full blur-3xl"
+              className="fixed w-96 h-96 bg-orange-300/50 rounded-full blur-3xl animate-pulse"
               style={{
                 top: '5%',
                 left: '10%'
               }}
             ></div>
             <div 
-              className="fixed w-80 h-80 bg-orange-50/60 rounded-full blur-3xl"
+              className="fixed w-80 h-80 bg-orange-200/70 rounded-full blur-3xl animate-pulse delay-700"
               style={{
                 bottom: '10%',
                 right: '15%'
+              }}
+            ></div>
+            <div 
+              className="fixed w-72 h-72 bg-orange-400/40 rounded-full blur-2xl animate-pulse delay-1000"
+              style={{
+                top: '30%',
+                right: '5%'
+              }}
+            ></div>
+            <div 
+              className="fixed w-64 h-64 bg-orange-100/80 rounded-full blur-3xl animate-pulse delay-1500"
+              style={{
+                bottom: '25%',
+                left: '5%'
               }}
             ></div>
           </div>

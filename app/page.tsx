@@ -265,8 +265,8 @@ export default function Onboarding() {
     >
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/40 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-600/40 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="w-full max-w-md mx-auto relative z-10">
@@ -444,28 +444,28 @@ export default function Onboarding() {
           {/* Enhanced Background Effects with Scroll */}
           <div className="absolute inset-0 overflow-hidden">
             <div 
-              className="fixed w-96 h-96 bg-orange-500/30 rounded-full blur-3xl animate-pulse"
+              className="fixed w-96 h-96 bg-orange-500/60 rounded-full blur-3xl animate-pulse"
               style={{
                 top: '10%',
                 left: '15%'
               }}
             ></div>
             <div 
-              className="fixed w-80 h-80 bg-orange-600/25 rounded-full blur-3xl animate-pulse delay-700"
+              className="fixed w-80 h-80 bg-orange-600/55 rounded-full blur-3xl animate-pulse delay-700"
               style={{
                 top: '40%',
                 right: '10%'
               }}
             ></div>
             <div 
-              className="fixed w-72 h-72 bg-orange-400/20 rounded-full blur-3xl animate-pulse delay-1000"
+              className="fixed w-72 h-72 bg-orange-400/50 rounded-full blur-3xl animate-pulse delay-1000"
               style={{
                 bottom: '20%',
                 left: '20%'
               }}
             ></div>
             <div 
-              className="fixed w-64 h-64 bg-orange-500/18 rounded-full blur-3xl animate-pulse delay-1500"
+              className="fixed w-64 h-64 bg-orange-500/45 rounded-full blur-3xl animate-pulse delay-1500"
               style={{
                 bottom: '10%',
                 right: '25%'
@@ -506,7 +506,7 @@ export default function Onboarding() {
                 {/* Executive Summary */}
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-orange-500/25 via-orange-400/15 to-orange-600/25 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-orange-300/40 rounded-xl p-6 hover:border-orange-400/60 transition-all duration-300" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(15,15,35,0.6) 50%, rgba(0,0,0,0.5) 100%)"}}>
+                  <div className="relative backdrop-blur-lg border-2 border-orange-300/40 rounded-xl p-6 hover:border-orange-400/60 transition-all duration-300" >
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-3 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg">
                         <Lightbulb className="w-5 h-5" />
@@ -514,7 +514,7 @@ export default function Onboarding() {
                       <h3 className="text-xl font-semibold text-white drop-shadow-lg">Executive Summary</h3>
                       <Sparkles className="w-4 h-4 text-orange-400 animate-pulse" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-lg" style={{background: "rgba(255,255,255,0.02)"}}>
+                    <div className="rounded-lg p-4">
                       <p className="text-white leading-relaxed italic text-lg font-medium drop-shadow-md">
                         "{marketingReport.valueProposition}"
                       </p>
@@ -525,7 +525,7 @@ export default function Onboarding() {
                 {/* Demographics */}
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-blue-400/12 to-blue-600/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-blue-300/40 rounded-xl p-5 hover:border-blue-400/60 transition-all duration-300" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(15,15,35,0.6) 50%, rgba(0,0,0,0.5) 100%)"}}>
+                  <div className="relative backdrop-blur-lg border-2 border-blue-300/40 rounded-xl p-5 hover:border-blue-400/60 transition-all duration-300" >
                     <div className="flex items-center gap-3 mb-3">
                       <div className="p-3 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-lg">
                         <Users className="w-4 h-4" />
@@ -533,7 +533,7 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Demographics</h4>
                       <Eye className="w-4 h-4 text-blue-400" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-lg" style={{background: "rgba(255,255,255,0.02)"}}>
+                    <div className="rounded-lg p-4">
                       <p className="text-white leading-relaxed drop-shadow-md">{marketingReport.userPersona.demographics}</p>
                     </div>
                   </div>
@@ -542,7 +542,7 @@ export default function Onboarding() {
                 {/* Platform Presence */}
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-purple-400/12 to-purple-600/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-purple-300/40 rounded-xl p-5 hover:border-purple-400/60 transition-all duration-300" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(15,15,35,0.6) 50%, rgba(0,0,0,0.5) 100%)"}}>
+                  <div className="relative backdrop-blur-lg border-2 border-purple-300/40 rounded-xl p-5 hover:border-purple-400/60 transition-all duration-300" >
                     <div className="flex items-center gap-3 mb-3">
                       <div className="p-3 rounded-lg bg-gradient-to-br from-purple-400 to-purple-600 text-white shadow-lg">
                         <Smartphone className="w-4 h-4" />
@@ -550,7 +550,7 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Platform Presence</h4>
                       <Heart className="w-4 h-4 text-purple-400" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-lg" style={{background: "rgba(255,255,255,0.02)"}}>
+                    <div className="rounded-lg p-4">
                       <p className="text-white leading-relaxed drop-shadow-md">{marketingReport.userPersona.whereTheyHangOut}</p>
                     </div>
                   </div>
@@ -559,7 +559,7 @@ export default function Onboarding() {
                 {/* Mindset & Psychology */}
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 via-green-400/12 to-green-600/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-green-300/40 rounded-xl p-5 hover:border-green-400/60 transition-all duration-300" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(15,15,35,0.6) 50%, rgba(0,0,0,0.5) 100%)"}}>
+                  <div className="relative backdrop-blur-lg border-2 border-green-300/40 rounded-xl p-5 hover:border-green-400/60 transition-all duration-300" >
                     <div className="flex items-center gap-3 mb-3">
                       <div className="p-3 rounded-lg bg-gradient-to-br from-green-400 to-green-600 text-white shadow-lg">
                         <Brain className="w-4 h-4" />
@@ -567,7 +567,7 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Mindset & Psychology</h4>
                       <Sparkles className="w-4 h-4 text-green-400 animate-pulse" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-lg" style={{background: "rgba(255,255,255,0.02)"}}>
+                    <div className="rounded-lg p-4">
                       <p className="text-white leading-relaxed drop-shadow-md">{marketingReport.userPersona.mindset}</p>
                     </div>
                   </div>
@@ -576,7 +576,7 @@ export default function Onboarding() {
                 {/* Pain Points */}
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 via-red-400/12 to-red-600/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-red-300/40 rounded-xl p-5 hover:border-red-400/60 transition-all duration-300" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(15,15,35,0.6) 50%, rgba(0,0,0,0.5) 100%)"}}>
+                  <div className="relative backdrop-blur-lg border-2 border-red-300/40 rounded-xl p-5 hover:border-red-400/60 transition-all duration-300" >
                     <div className="flex items-center gap-3 mb-3">
                       <div className="p-3 rounded-lg bg-gradient-to-br from-red-400 to-red-600 text-white shadow-lg">
                         <AlertTriangle className="w-4 h-4" />
@@ -584,7 +584,7 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Pain Points</h4>
                       <Zap className="w-4 h-4 text-red-400" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-lg" style={{background: "rgba(255,255,255,0.02)"}}>
+                    <div className="rounded-lg p-4">
                       <ul className="space-y-2">
                         {marketingReport.painPoints.map((point, index) => (
                           <li key={index} className="text-white flex items-start gap-3 drop-shadow-md">
@@ -600,7 +600,7 @@ export default function Onboarding() {
                 {/* Content Pillars */}
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-cyan-400/12 to-cyan-600/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-cyan-300/40 rounded-xl p-5 hover:border-cyan-400/60 transition-all duration-300" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(15,15,35,0.6) 50%, rgba(0,0,0,0.5) 100%)"}}>
+                  <div className="relative backdrop-blur-lg border-2 border-cyan-300/40 rounded-xl p-5 hover:border-cyan-400/60 transition-all duration-300" >
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-3 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 text-white shadow-lg">
                         <Palette className="w-4 h-4" />
@@ -608,10 +608,10 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Content Pillars</h4>
                       <PenTool className="w-4 h-4 text-cyan-400" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-lg" style={{background: "rgba(255,255,255,0.02)"}}>
+                    <div className="rounded-lg p-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {marketingReport.contentPillars.map((pillar, index) => (
-                          <div key={index} className="rounded-lg p-3 transition-colors backdrop-blur-sm" style={{background: "rgba(255,255,255,0.01)"}}>
+                          <div key={index} className="rounded-lg p-3 transition-colors">
                             <h5 className="font-semibold text-cyan-200 mb-2 drop-shadow-md">{pillar.pillar}</h5>
                             <p className="text-white text-sm leading-relaxed drop-shadow-md">{pillar.description}</p>
                           </div>
@@ -624,7 +624,7 @@ export default function Onboarding() {
                 {/* Content Types */}
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 via-pink-400/12 to-pink-600/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-pink-300/40 rounded-xl p-5 hover:border-pink-400/60 transition-all duration-300" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(15,15,35,0.6) 50%, rgba(0,0,0,0.5) 100%)"}}>
+                  <div className="relative backdrop-blur-lg border-2 border-pink-300/40 rounded-xl p-5 hover:border-pink-400/60 transition-all duration-300" >
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-3 rounded-lg bg-gradient-to-br from-pink-400 to-pink-600 text-white shadow-lg">
                         <Video className="w-4 h-4" />
@@ -632,7 +632,7 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Content Types</h4>
                       <Sparkles className="w-4 h-4 text-pink-400 animate-pulse" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-lg" style={{background: "rgba(255,255,255,0.02)"}}>
+                    <div className="rounded-lg p-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {marketingReport.postTypes.map((type, index) => (
                           
@@ -649,7 +649,7 @@ export default function Onboarding() {
                 {/* Publishing Schedule */}
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 via-yellow-400/12 to-orange-500/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-yellow-300/40 rounded-xl p-5 hover:border-orange-400/60 transition-all duration-300" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(15,15,35,0.6) 50%, rgba(0,0,0,0.5) 100%)"}}>
+                  <div className="relative backdrop-blur-lg border-2 border-yellow-300/40 rounded-xl p-5 hover:border-orange-400/60 transition-all duration-300" >
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-3 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 text-white shadow-lg">
                         <Calendar className="w-4 h-4" />
@@ -657,7 +657,7 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Publishing Schedule</h4>
                       <Rocket className="w-4 h-4 text-yellow-400" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-lg" style={{background: "rgba(255,255,255,0.02)"}}>
+                    <div className="rounded-lg p-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="rounded-lg p-3 transition-colors backdrop-blur-sm" style={{background: "rgba(255,255,255,0.01)"}}>
                           <div className="flex items-center gap-2 mb-2">
@@ -698,7 +698,7 @@ export default function Onboarding() {
                 {/* Hashtag Strategy */}
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-indigo-400/12 to-purple-500/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-indigo-300/40 rounded-xl p-5 hover:border-indigo-400/60 transition-all duration-300" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(15,15,35,0.6) 50%, rgba(0,0,0,0.5) 100%)"}}>
+                  <div className="relative backdrop-blur-lg border-2 border-indigo-300/40 rounded-xl p-5 hover:border-indigo-400/60 transition-all duration-300" >
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-3 rounded-lg bg-gradient-to-br from-indigo-400 to-purple-600 text-white shadow-lg">
                         <Hash className="w-4 h-4" />
@@ -706,7 +706,7 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Hashtag Strategy</h4>
                       <span className="text-sm px-2 py-1 bg-indigo-500/30 text-indigo-200 rounded-full">{marketingReport.hashtagStyle.tone}</span>
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-lg" style={{background: "rgba(255,255,255,0.02)"}}>
+                    <div className="rounded-lg p-4">
                       <div className="flex flex-wrap gap-2">
                         {marketingReport.hashtagStyle.exampleHashtags.map((tag, index) => (
                           <span key={index} className="px-3 py-1.5 rounded-full text-indigo-200 text-sm font-medium transition-colors drop-shadow-md backdrop-blur-sm" style={{background: "rgba(255,255,255,0.02)"}}>
@@ -721,7 +721,7 @@ export default function Onboarding() {
                 {/* Engagement Tactics */}
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-emerald-400/12 to-teal-500/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-emerald-300/40 rounded-xl p-5 hover:border-emerald-400/60 transition-all duration-300" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(15,15,35,0.6) 50%, rgba(0,0,0,0.5) 100%)"}}>
+                  <div className="relative backdrop-blur-lg border-2 border-emerald-300/40 rounded-xl p-5 hover:border-emerald-400/60 transition-all duration-300" >
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-3 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-600 text-white shadow-lg">
                         <TrendingUp className="w-4 h-4" />
@@ -729,7 +729,7 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Engagement Tactics</h4>
                       <Heart className="w-4 h-4 text-emerald-400 animate-pulse" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-lg" style={{background: "rgba(255,255,255,0.02)"}}>
+                    <div className="rounded-lg p-4">
                       <div className="space-y-2">
                         {marketingReport.engagementStrategy.map((strategy, index) => (
                           <div key={index} className="flex items-start gap-3 p-2 rounded-lg transition-colors backdrop-blur-sm" style={{background: "rgba(255,255,255,0.01)"}}>
@@ -745,7 +745,7 @@ export default function Onboarding() {
                 {/* Success Metrics */}
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-violet-500/20 via-violet-400/12 to-fuchsia-500/20 rounded-xl blur-lg"></div>
-                  <div className="relative backdrop-blur-lg border-2 border-violet-300/40 rounded-xl p-5 hover:border-violet-400/60 transition-all duration-300" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(15,15,35,0.6) 50%, rgba(0,0,0,0.5) 100%)"}}>
+                  <div className="relative backdrop-blur-lg border-2 border-violet-300/40 rounded-xl p-5 hover:border-violet-400/60 transition-all duration-300" >
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-3 rounded-lg bg-gradient-to-br from-violet-400 to-fuchsia-600 text-white shadow-lg">
                         <BarChart3 className="w-4 h-4" />
@@ -753,7 +753,7 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Success Metrics</h4>
                       <Target className="w-4 h-4 text-violet-400" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-lg" style={{background: "rgba(255,255,255,0.02)"}}>
+                    <div className="rounded-lg p-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {marketingReport.metricsToTrack.map((metric, index) => (
                           <div key={index} className="flex items-center gap-3 p-2 rounded-lg transition-colors backdrop-blur-sm" style={{background: "rgba(255,255,255,0.01)"}}>

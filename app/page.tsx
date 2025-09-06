@@ -611,7 +611,7 @@ export default function Onboarding() {
                     <div className="rounded-lg p-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {marketingReport.contentPillars.map((pillar, index) => (
-                          <div key={index} className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/10" style={{background: "rgba(255,255,255,0.1)"}}>
+                          <div key={index} className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
                             <h5 className="font-semibold text-cyan-200 mb-2 drop-shadow-md">{pillar.pillar}</h5>
                             <p className="text-white text-sm leading-relaxed drop-shadow-md">{pillar.description}</p>
                           </div>
@@ -636,7 +636,7 @@ export default function Onboarding() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {marketingReport.postTypes.map((type, index) => (
                           
-                          <div key={index} className="flex items-center gap-3 p-2 px-3 rounded-sm transition-colors backdrop-blur-md border border-white/10" style={{background: "rgba(255,255,255,0.1)"}}>
+                          <div key={index} className="flex items-center gap-3 p-2 px-3 rounded-sm transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
                             <div className="w-1.5 h-1.5 bg-pink-400 rounded-full flex-shrink-0"></div>
                             <span className="text-white text-sm drop-shadow-md">{type}</span>
                           </div>
@@ -659,7 +659,7 @@ export default function Onboarding() {
                     </div>
                     <div className="rounded-lg p-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/10" style={{background: "rgba(255,255,255,0.1)"}}>
+                        <div className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
                           <div className="flex items-center gap-2 mb-2">
                             <div className="w-2 h-2 bg-red-400 rounded-full"></div>
                             <span className="font-semibold text-orange-200 drop-shadow-md">Monday</span>
@@ -667,7 +667,7 @@ export default function Onboarding() {
                           <p className="text-white text-sm leading-relaxed drop-shadow-md">{marketingReport.weeklyCalendar.monday}</p>
                         </div>
                         
-                        <div className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/10" style={{background: "rgba(255,255,255,0.1)"}}>
+                        <div className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
                           <div className="flex items-center gap-2 mb-2">
                             <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
                             <span className="font-semibold text-orange-200 drop-shadow-md">Wednesday</span>
@@ -675,7 +675,7 @@ export default function Onboarding() {
                           <p className="text-white text-sm leading-relaxed drop-shadow-md">{marketingReport.weeklyCalendar.wednesday}</p>
                         </div>
                         
-                        <div className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/10" style={{background: "rgba(255,255,255,0.1)"}}>
+                        <div className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
                           <div className="flex items-center gap-2 mb-2">
                             <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                             <span className="font-semibold text-orange-200 drop-shadow-md">Friday</span>
@@ -683,7 +683,7 @@ export default function Onboarding() {
                           <p className="text-white text-sm leading-relaxed drop-shadow-md">{marketingReport.weeklyCalendar.friday}</p>
                         </div>
                         
-                        <div className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/10" style={{background: "rgba(255,255,255,0.1)"}}>
+                        <div className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
                           <div className="flex items-center gap-2 mb-2">
                             <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
                             <span className="font-semibold text-orange-200 drop-shadow-md">Sunday</span>
@@ -709,7 +709,7 @@ export default function Onboarding() {
                     <div className="rounded-lg p-4">
                       <div className="flex flex-wrap gap-2">
                         {marketingReport.hashtagStyle.exampleHashtags.map((tag, index) => (
-                          <span key={index} className="px-3 py-1.5 rounded-full text-indigo-200 text-sm font-medium transition-colors drop-shadow-md backdrop-blur-md border border-white/10" style={{background: "rgba(255,255,255,0.1)"}}>
+                          <span key={index} className="px-3 py-1.5 rounded-full text-indigo-200 text-sm font-medium transition-colors drop-shadow-md backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
                             {tag}
                           </span>
                         ))}
@@ -732,7 +732,7 @@ export default function Onboarding() {
                     <div className="rounded-lg p-4">
                       <div className="space-y-2">
                         {marketingReport.engagementStrategy.map((strategy, index) => (
-                          <div key={index} className="flex items-start gap-3 p-2 rounded-lg transition-colors backdrop-blur-md border border-white/10" style={{background: "rgba(255,255,255,0.1)"}}>
+                          <div key={index} className="flex items-start gap-3 p-2 rounded-lg transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
                             <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></div>
                             <span className="text-white text-sm leading-relaxed drop-shadow-md">{strategy}</span>
                           </div>
@@ -756,7 +756,7 @@ export default function Onboarding() {
                     <div className="rounded-lg p-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {marketingReport.metricsToTrack.map((metric, index) => (
-                          <div key={index} className="flex items-center gap-3 p-2 rounded-lg transition-colors backdrop-blur-md border border-white/10" style={{background: "rgba(255,255,255,0.1)"}}>
+                          <div key={index} className="flex items-center gap-3 p-2 rounded-lg transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(0,0,0,0.6)"}}>
                             <div className="w-1.5 h-1.5 bg-violet-400 rounded-full flex-shrink-0"></div>
                             <span className="text-white text-sm drop-shadow-md">{metric}</span>
                           </div>

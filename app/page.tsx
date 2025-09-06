@@ -265,8 +265,8 @@ export default function Onboarding() {
     >
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/40 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-600/40 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="w-full max-w-md mx-auto relative z-10">
@@ -444,28 +444,28 @@ export default function Onboarding() {
           {/* Enhanced Background Effects with Scroll */}
           <div className="absolute inset-0 overflow-hidden">
             <div 
-              className="fixed w-96 h-96 bg-orange-500/60 rounded-full blur-3xl animate-pulse"
+              className="fixed w-96 h-96 bg-orange-500/30 rounded-full blur-3xl animate-pulse"
               style={{
                 top: '10%',
                 left: '15%'
               }}
             ></div>
             <div 
-              className="fixed w-80 h-80 bg-orange-600/55 rounded-full blur-3xl animate-pulse delay-700"
+              className="fixed w-80 h-80 bg-orange-600/25 rounded-full blur-3xl animate-pulse delay-700"
               style={{
                 top: '40%',
                 right: '10%'
               }}
             ></div>
             <div 
-              className="fixed w-72 h-72 bg-orange-400/50 rounded-full blur-3xl animate-pulse delay-1000"
+              className="fixed w-72 h-72 bg-orange-400/20 rounded-full blur-3xl animate-pulse delay-1000"
               style={{
                 bottom: '20%',
                 left: '20%'
               }}
             ></div>
             <div 
-              className="fixed w-64 h-64 bg-orange-500/45 rounded-full blur-3xl animate-pulse delay-1500"
+              className="fixed w-64 h-64 bg-orange-500/18 rounded-full blur-3xl animate-pulse delay-1500"
               style={{
                 bottom: '10%',
                 right: '25%'

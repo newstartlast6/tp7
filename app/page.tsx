@@ -444,46 +444,36 @@ export default function Onboarding() {
           {/* Enhanced Background Effects with Scroll */}
           <div className="absolute inset-0 overflow-hidden">
             <div 
-              className="absolute w-96 h-96 bg-orange-500/15 rounded-full blur-3xl animate-pulse"
+              className="fixed w-96 h-96 bg-orange-500/15 rounded-full blur-3xl animate-pulse"
               style={{
                 top: '10%',
-                left: '15%',
-                transform: 'translateY(calc(var(--scroll-y, 0) * 0.3px))'
+                left: '15%'
               }}
             ></div>
             <div 
-              className="absolute w-80 h-80 bg-orange-600/12 rounded-full blur-3xl animate-pulse delay-700"
+              className="fixed w-80 h-80 bg-orange-600/12 rounded-full blur-3xl animate-pulse delay-700"
               style={{
                 top: '40%',
-                right: '10%',
-                transform: 'translateY(calc(var(--scroll-y, 0) * 0.4px))'
+                right: '10%'
               }}
             ></div>
             <div 
-              className="absolute w-72 h-72 bg-orange-400/10 rounded-full blur-3xl animate-pulse delay-1000"
+              className="fixed w-72 h-72 bg-orange-400/10 rounded-full blur-3xl animate-pulse delay-1000"
               style={{
                 bottom: '20%',
-                left: '20%',
-                transform: 'translateY(calc(var(--scroll-y, 0) * 0.2px))'
+                left: '20%'
               }}
             ></div>
             <div 
-              className="absolute w-64 h-64 bg-orange-500/8 rounded-full blur-3xl animate-pulse delay-1500"
+              className="fixed w-64 h-64 bg-orange-500/8 rounded-full blur-3xl animate-pulse delay-1500"
               style={{
                 bottom: '10%',
-                right: '25%',
-                transform: 'translateY(calc(var(--scroll-y, 0) * 0.5px))'
+                right: '25%'
               }}
             ></div>
           </div>
 
-          <div 
-            className="min-h-screen py-8 px-4 relative z-10 overflow-y-auto"
-            onScroll={(e) => {
-              const scrollY = e.currentTarget.scrollTop;
-              document.documentElement.style.setProperty('--scroll-y', scrollY.toString());
-            }}
-          >
+          <div className="min-h-screen py-8 px-4 relative z-10 overflow-y-auto">
             <div className="w-full max-w-4xl mx-auto border-2 border-orange-400/40 rounded-2xl bg-black/30 backdrop-blur-md p-8 shadow-2xl shadow-orange-500/20"
               style={{
                 background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(15,15,35,0.6) 50%, rgba(0,0,0,0.4) 100%)"
@@ -524,7 +514,7 @@ export default function Onboarding() {
                       <h3 className="text-xl font-semibold text-white drop-shadow-lg">Executive Summary</h3>
                       <Sparkles className="w-4 h-4 text-orange-400 animate-pulse" />
                     </div>
-                    <div className="bg-black/60 border-2 border-orange-400/30 rounded-lg p-4 backdrop-blur-sm">
+                    <div className="bg-black/60 rounded-lg p-4 backdrop-blur-sm">
                       <p className="text-white leading-relaxed italic text-lg font-medium drop-shadow-md">
                         "{marketingReport.valueProposition}"
                       </p>
@@ -543,7 +533,7 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Demographics</h4>
                       <Eye className="w-4 h-4 text-blue-400" />
                     </div>
-                    <div className="bg-black/60 border-2 border-blue-400/30 rounded-lg p-4 backdrop-blur-sm">
+                    <div className="bg-black/60 rounded-lg p-4 backdrop-blur-sm">
                       <p className="text-white leading-relaxed drop-shadow-md">{marketingReport.userPersona.demographics}</p>
                     </div>
                   </div>
@@ -560,7 +550,7 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Platform Presence</h4>
                       <Heart className="w-4 h-4 text-purple-400" />
                     </div>
-                    <div className="bg-black/60 border-2 border-purple-400/30 rounded-lg p-4 backdrop-blur-sm">
+                    <div className="bg-black/60 rounded-lg p-4 backdrop-blur-sm">
                       <p className="text-white leading-relaxed drop-shadow-md">{marketingReport.userPersona.whereTheyHangOut}</p>
                     </div>
                   </div>
@@ -568,36 +558,36 @@ export default function Onboarding() {
 
                 {/* Mindset & Psychology */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/15 via-green-400/8 to-green-600/15 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-green-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-green-400/50">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 via-green-400/12 to-green-600/20 rounded-xl blur-lg"></div>
+                  <div className="relative bg-black/40 backdrop-blur-sm border-2 border-green-300/40 rounded-xl p-5 hover:bg-black/50 transition-all duration-300 hover:border-green-400/60">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2 rounded-lg bg-gradient-to-br from-green-400 to-green-600 text-white">
+                      <div className="p-3 rounded-lg bg-gradient-to-br from-green-400 to-green-600 text-white shadow-lg">
                         <Brain className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Mindset & Psychology</h4>
+                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Mindset & Psychology</h4>
                       <Sparkles className="w-4 h-4 text-green-400 animate-pulse" />
                     </div>
-                    <div className="bg-gradient-to-r from-green-500/10 to-green-400/5 border border-green-400/20 rounded-lg p-4">
-                      <p className="text-white/85 leading-relaxed">{marketingReport.userPersona.mindset}</p>
+                    <div className="bg-black/60 rounded-lg p-4 backdrop-blur-sm">
+                      <p className="text-white leading-relaxed drop-shadow-md">{marketingReport.userPersona.mindset}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Pain Points */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-500/15 via-red-400/8 to-red-600/15 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-red-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-red-400/50">
+                  <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 via-red-400/12 to-red-600/20 rounded-xl blur-lg"></div>
+                  <div className="relative bg-black/40 backdrop-blur-sm border-2 border-red-300/40 rounded-xl p-5 hover:bg-black/50 transition-all duration-300 hover:border-red-400/60">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2 rounded-lg bg-gradient-to-br from-red-400 to-red-600 text-white">
+                      <div className="p-3 rounded-lg bg-gradient-to-br from-red-400 to-red-600 text-white shadow-lg">
                         <AlertTriangle className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Pain Points</h4>
+                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Pain Points</h4>
                       <Zap className="w-4 h-4 text-red-400" />
                     </div>
-                    <div className="rounded-lg p-4">
+                    <div className="bg-black/60 rounded-lg p-4 backdrop-blur-sm">
                       <ul className="space-y-2">
                         {marketingReport.painPoints.map((point, index) => (
-                          <li key={index} className="text-white/85 flex items-start gap-3">
+                          <li key={index} className="text-white flex items-start gap-3 drop-shadow-md">
                             <div className="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 flex-shrink-0"></div>
                             <span className="leading-relaxed">{point}</span>
                           </li>
@@ -609,21 +599,21 @@ export default function Onboarding() {
 
                 {/* Content Pillars */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/15 via-cyan-400/8 to-cyan-600/15 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-cyan-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-cyan-400/50">
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-cyan-400/12 to-cyan-600/20 rounded-xl blur-lg"></div>
+                  <div className="relative bg-black/40 backdrop-blur-sm border-2 border-cyan-300/40 rounded-xl p-5 hover:bg-black/50 transition-all duration-300 hover:border-cyan-400/60">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 text-white">
+                      <div className="p-3 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 text-white shadow-lg">
                         <Palette className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Content Pillars</h4>
+                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Content Pillars</h4>
                       <PenTool className="w-4 h-4 text-cyan-400" />
                     </div>
-                    <div className="rounded-lg p-4">
+                    <div className="bg-black/60 rounded-lg p-4 backdrop-blur-sm">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {marketingReport.contentPillars.map((pillar, index) => (
-                          <div key={index} className="bg-gradient-to-r from-cyan-500/10 to-cyan-400/5 border border-cyan-400/20 rounded-lg p-3 hover:bg-white/10 transition-colors">
-                            <h5 className="font-semibold text-cyan-200 mb-2">{pillar.pillar}</h5>
-                            <p className="text-white/75 text-sm leading-relaxed">{pillar.description}</p>
+                          <div key={index} className="bg-black/40 rounded-lg p-3 hover:bg-black/50 transition-colors">
+                            <h5 className="font-semibold text-cyan-200 mb-2 drop-shadow-md">{pillar.pillar}</h5>
+                            <p className="text-white text-sm leading-relaxed drop-shadow-md">{pillar.description}</p>
                           </div>
                         ))}
                       </div>
@@ -633,22 +623,22 @@ export default function Onboarding() {
 
                 {/* Content Types */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-pink-500/15 via-pink-400/8 to-pink-600/15 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-pink-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-pink-400/50">
+                  <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 via-pink-400/12 to-pink-600/20 rounded-xl blur-lg"></div>
+                  <div className="relative bg-black/40 backdrop-blur-sm border-2 border-pink-300/40 rounded-xl p-5 hover:bg-black/50 transition-all duration-300 hover:border-pink-400/60">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 rounded-lg bg-gradient-to-br from-pink-400 to-pink-600 text-white">
+                      <div className="p-3 rounded-lg bg-gradient-to-br from-pink-400 to-pink-600 text-white shadow-lg">
                         <Video className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Content Types</h4>
+                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Content Types</h4>
                       <Sparkles className="w-4 h-4 text-pink-400 animate-pulse" />
                     </div>
-                    <div className="rounded-lg p-4">
+                    <div className="bg-black/60 rounded-lg p-4 backdrop-blur-sm">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {marketingReport.postTypes.map((type, index) => (
                           
-                          <div key={index} className="flex items-center gap-3 p-2 px-3 bg-gradient-to-r from-pink-500/10 to-pink-400/5 border border-pink-400/20 rounded-sm bg-white/5 hover:bg-white/10 transition-colors">
+                          <div key={index} className="flex items-center gap-3 p-2 px-3 bg-black/40 rounded-sm hover:bg-black/50 transition-colors">
                             <div className="w-1.5 h-1.5 bg-pink-400 rounded-full flex-shrink-0"></div>
-                            <span className="text-white/85 text-sm">{type}</span>
+                            <span className="text-white text-sm drop-shadow-md">{type}</span>
                           </div>
                         ))}
                       </div>
@@ -658,47 +648,47 @@ export default function Onboarding() {
 
                 {/* Publishing Schedule */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/15 via-yellow-400/8 to-orange-500/15 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-yellow-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-orange-400/50">
+                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 via-yellow-400/12 to-orange-500/20 rounded-xl blur-lg"></div>
+                  <div className="relative bg-black/40 backdrop-blur-sm border-2 border-yellow-300/40 rounded-xl p-5 hover:bg-black/50 transition-all duration-300 hover:border-orange-400/60">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 text-white">
+                      <div className="p-3 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 text-white shadow-lg">
                         <Calendar className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Publishing Schedule</h4>
+                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Publishing Schedule</h4>
                       <Rocket className="w-4 h-4 text-yellow-400" />
                     </div>
-                    <div className="rounded-lg p-4">
+                    <div className="bg-black/60 rounded-lg p-4 backdrop-blur-sm">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div className="bg-gradient-to-r from-yellow-300/10 to-orange-200/5 border border-orange-400/20 border border-orange-400/20 rounded-lg p-3 hover:bg-white/10 transition-colors">
+                        <div className="bg-black/40 rounded-lg p-3 hover:bg-black/50 transition-colors">
                           <div className="flex items-center gap-2 mb-2">
                             <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                            <span className="font-semibold text-orange-200">Monday</span>
+                            <span className="font-semibold text-orange-200 drop-shadow-md">Monday</span>
                           </div>
-                          <p className="text-white/80 text-sm leading-relaxed">{marketingReport.weeklyCalendar.monday}</p>
+                          <p className="text-white text-sm leading-relaxed drop-shadow-md">{marketingReport.weeklyCalendar.monday}</p>
                         </div>
                         
-                        <div className="bg-gradient-to-r from-yellow-300/10 to-orange-200/5 border border-orange-400/20 border border-orange-400/20 rounded-lg p-3 hover:bg-white/10 transition-colors">
+                        <div className="bg-black/40 rounded-lg p-3 hover:bg-black/50 transition-colors">
                           <div className="flex items-center gap-2 mb-2">
                             <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                            <span className="font-semibold text-orange-200">Wednesday</span>
+                            <span className="font-semibold text-orange-200 drop-shadow-md">Wednesday</span>
                           </div>
-                          <p className="text-white/80 text-sm leading-relaxed">{marketingReport.weeklyCalendar.wednesday}</p>
+                          <p className="text-white text-sm leading-relaxed drop-shadow-md">{marketingReport.weeklyCalendar.wednesday}</p>
                         </div>
                         
-                        <div className="bg-gradient-to-r from-yellow-300/10 to-orange-200/5 border border-orange-400/20 border border-orange-400/20 rounded-lg p-3 hover:bg-white/10 transition-colors">
+                        <div className="bg-black/40 rounded-lg p-3 hover:bg-black/50 transition-colors">
                           <div className="flex items-center gap-2 mb-2">
                             <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                            <span className="font-semibold text-orange-200">Friday</span>
+                            <span className="font-semibold text-orange-200 drop-shadow-md">Friday</span>
                           </div>
-                          <p className="text-white/80 text-sm leading-relaxed">{marketingReport.weeklyCalendar.friday}</p>
+                          <p className="text-white text-sm leading-relaxed drop-shadow-md">{marketingReport.weeklyCalendar.friday}</p>
                         </div>
                         
-                        <div className="bg-gradient-to-r from-yellow-300/10 to-orange-200/5 border border-orange-400/20 border border-orange-400/20 rounded-lg p-3 hover:bg-white/10 transition-colors">
+                        <div className="bg-black/40 rounded-lg p-3 hover:bg-black/50 transition-colors">
                           <div className="flex items-center gap-2 mb-2">
                             <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-                            <span className="font-semibold text-orange-200">Sunday</span>
+                            <span className="font-semibold text-orange-200 drop-shadow-md">Sunday</span>
                           </div>
-                          <p className="text-white/80 text-sm leading-relaxed">{marketingReport.weeklyCalendar.sunday}</p>
+                          <p className="text-white text-sm leading-relaxed drop-shadow-md">{marketingReport.weeklyCalendar.sunday}</p>
                         </div>
                       </div>
                     </div>
@@ -707,19 +697,19 @@ export default function Onboarding() {
 
                 {/* Hashtag Strategy */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/15 via-indigo-400/8 to-purple-500/15 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-indigo-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-indigo-400/50">
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-indigo-400/12 to-purple-500/20 rounded-xl blur-lg"></div>
+                  <div className="relative bg-black/40 backdrop-blur-sm border-2 border-indigo-300/40 rounded-xl p-5 hover:bg-black/50 transition-all duration-300 hover:border-indigo-400/60">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 rounded-lg bg-gradient-to-br from-indigo-400 to-purple-600 text-white">
+                      <div className="p-3 rounded-lg bg-gradient-to-br from-indigo-400 to-purple-600 text-white shadow-lg">
                         <Hash className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Hashtag Strategy</h4>
-                      <span className="text-sm px-2 py-1 bg-indigo-500/20 text-indigo-300 rounded-full border border-indigo-400/30">{marketingReport.hashtagStyle.tone}</span>
+                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Hashtag Strategy</h4>
+                      <span className="text-sm px-2 py-1 bg-indigo-500/30 text-indigo-200 rounded-full">{marketingReport.hashtagStyle.tone}</span>
                     </div>
-                    <div className="bg-gradient-to-r from-indigo-500/10 to-purple-400/5 border border-indigo-400/20 rounded-lg p-4">
+                    <div className="bg-black/60 rounded-lg p-4 backdrop-blur-sm">
                       <div className="flex flex-wrap gap-2">
                         {marketingReport.hashtagStyle.exampleHashtags.map((tag, index) => (
-                          <span key={index} className="px-3 py-1.5 rounded-full bg-gradient-to-r from-indigo-500/20 to-purple-500/20 text-indigo-200 text-sm font-medium border border-indigo-400/30 hover:border-indigo-300/50 transition-colors">
+                          <span key={index} className="px-3 py-1.5 rounded-full bg-black/40 text-indigo-200 text-sm font-medium hover:bg-black/50 transition-colors drop-shadow-md">
                             {tag}
                           </span>
                         ))}
@@ -730,21 +720,21 @@ export default function Onboarding() {
 
                 {/* Engagement Tactics */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/15 via-emerald-400/8 to-teal-500/15 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-emerald-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-emerald-400/50">
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-emerald-400/12 to-teal-500/20 rounded-xl blur-lg"></div>
+                  <div className="relative bg-black/40 backdrop-blur-sm border-2 border-emerald-300/40 rounded-xl p-5 hover:bg-black/50 transition-all duration-300 hover:border-emerald-400/60">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-600 text-white">
+                      <div className="p-3 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-600 text-white shadow-lg">
                         <TrendingUp className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Engagement Tactics</h4>
+                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Engagement Tactics</h4>
                       <Heart className="w-4 h-4 text-emerald-400 animate-pulse" />
                     </div>
-                    <div className="rounded-lg p-4">
+                    <div className="bg-black/60 rounded-lg p-4 backdrop-blur-sm">
                       <div className="space-y-2">
                         {marketingReport.engagementStrategy.map((strategy, index) => (
-                          <div key={index} className="flex items-start gap-3 p-2 rounded-lg bg-gradient-to-r from-emerald-500/10 to-teal-400/5 border border-emerald-400/20 hover:bg-white/10 transition-colors">
+                          <div key={index} className="flex items-start gap-3 p-2 rounded-lg bg-black/40 hover:bg-black/50 transition-colors">
                             <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="text-white/85 text-sm leading-relaxed">{strategy}</span>
+                            <span className="text-white text-sm leading-relaxed drop-shadow-md">{strategy}</span>
                           </div>
                         ))}
                       </div>
@@ -754,21 +744,21 @@ export default function Onboarding() {
 
                 {/* Success Metrics */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-violet-500/15 via-violet-400/8 to-fuchsia-500/15 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-violet-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-violet-400/50">
+                  <div className="absolute inset-0 bg-gradient-to-br from-violet-500/20 via-violet-400/12 to-fuchsia-500/20 rounded-xl blur-lg"></div>
+                  <div className="relative bg-black/40 backdrop-blur-sm border-2 border-violet-300/40 rounded-xl p-5 hover:bg-black/50 transition-all duration-300 hover:border-violet-400/60">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 rounded-lg bg-gradient-to-br from-violet-400 to-fuchsia-600 text-white">
+                      <div className="p-3 rounded-lg bg-gradient-to-br from-violet-400 to-fuchsia-600 text-white shadow-lg">
                         <BarChart3 className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Success Metrics</h4>
+                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Success Metrics</h4>
                       <Target className="w-4 h-4 text-violet-400" />
                     </div>
-                    <div className="rounded-lg p-4">
+                    <div className="bg-black/60 rounded-lg p-4 backdrop-blur-sm">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {marketingReport.metricsToTrack.map((metric, index) => (
-                          <div key={index} className="flex items-center gap-3 p-2 rounded-lg bg-gradient-to-r from-violet-500/10 to-fuchsia-400/5 border border-violet-400/20 hover:bg-white/10 transition-colors">
+                          <div key={index} className="flex items-center gap-3 p-2 rounded-lg bg-black/40 hover:bg-black/50 transition-colors">
                             <div className="w-1.5 h-1.5 bg-violet-400 rounded-full flex-shrink-0"></div>
-                            <span className="text-white/85 text-sm">{metric}</span>
+                            <span className="text-white text-sm drop-shadow-md">{metric}</span>
                           </div>
                         ))}
                       </div>
@@ -778,17 +768,17 @@ export default function Onboarding() {
 
                 {/* Key Takeaway */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/25 via-orange-400/15 to-red-500/20 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-orange-300/40 rounded-xl p-6 hover:bg-white/[0.15] transition-all duration-300 hover:border-orange-400/60">
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/30 via-orange-400/20 to-red-500/25 rounded-xl blur-lg"></div>
+                  <div className="relative bg-black/40 backdrop-blur-sm border-2 border-orange-300/50 rounded-xl p-6 hover:bg-black/50 transition-all duration-300 hover:border-orange-400/70">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-gradient-to-br from-orange-400 to-red-600 text-white">
+                      <div className="p-3 rounded-lg bg-gradient-to-br from-orange-400 to-red-600 text-white shadow-lg">
                         <Zap className="w-5 h-5" />
                       </div>
-                      <h3 className="text-xl font-semibold text-white">Key Takeaway</h3>
+                      <h3 className="text-xl font-semibold text-white drop-shadow-lg">Key Takeaway</h3>
                       <Rocket className="w-5 h-5 text-orange-400 animate-bounce" />
                     </div>
-                    <div className="bg-gradient-to-r from-orange-500/15 to-red-400/10 border border-orange-400/30 rounded-lg p-5">
-                      <p className="text-white/90 leading-relaxed font-medium italic text-lg">
+                    <div className="bg-black/60 rounded-lg p-5 backdrop-blur-sm">
+                      <p className="text-white leading-relaxed font-medium italic text-lg drop-shadow-md">
                         {marketingReport.keyTakeaway}
                       </p>
                     </div>

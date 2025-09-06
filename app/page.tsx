@@ -514,7 +514,7 @@ export default function Onboarding() {
                       <h3 className="text-xl font-semibold text-white drop-shadow-lg">Executive Summary</h3>
                       <Sparkles className="w-4 h-4 text-orange-400 animate-pulse" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-md" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(15,15,35,0.3) 100%)"}}>
+                    <div className="rounded-lg p-4 backdrop-blur-lg border border-white/10" style={{background: "rgba(255,255,255,0.05)"}}>
                       <p className="text-white leading-relaxed italic text-lg font-medium drop-shadow-md">
                         "{marketingReport.valueProposition}"
                       </p>
@@ -533,7 +533,7 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Demographics</h4>
                       <Eye className="w-4 h-4 text-blue-400" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-md" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(15,15,35,0.3) 100%)"}}>
+                    <div className="rounded-lg p-4 backdrop-blur-lg border border-white/10" style={{background: "rgba(255,255,255,0.05)"}}>
                       <p className="text-white leading-relaxed drop-shadow-md">{marketingReport.userPersona.demographics}</p>
                     </div>
                   </div>
@@ -550,7 +550,7 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Platform Presence</h4>
                       <Heart className="w-4 h-4 text-purple-400" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-md" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(15,15,35,0.3) 100%)"}}>
+                    <div className="rounded-lg p-4 backdrop-blur-lg border border-white/10" style={{background: "rgba(255,255,255,0.05)"}}>
                       <p className="text-white leading-relaxed drop-shadow-md">{marketingReport.userPersona.whereTheyHangOut}</p>
                     </div>
                   </div>
@@ -567,7 +567,7 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Mindset & Psychology</h4>
                       <Sparkles className="w-4 h-4 text-green-400 animate-pulse" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-md" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(15,15,35,0.3) 100%)"}}>
+                    <div className="rounded-lg p-4 backdrop-blur-lg border border-white/10" style={{background: "rgba(255,255,255,0.05)"}}>
                       <p className="text-white leading-relaxed drop-shadow-md">{marketingReport.userPersona.mindset}</p>
                     </div>
                   </div>
@@ -584,7 +584,7 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Pain Points</h4>
                       <Zap className="w-4 h-4 text-red-400" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-md" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(15,15,35,0.3) 100%)"}}>
+                    <div className="rounded-lg p-4 backdrop-blur-lg border border-white/10" style={{background: "rgba(255,255,255,0.05)"}}>
                       <ul className="space-y-2">
                         {marketingReport.painPoints.map((point, index) => (
                           <li key={index} className="text-white flex items-start gap-3 drop-shadow-md">
@@ -608,10 +608,10 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Content Pillars</h4>
                       <PenTool className="w-4 h-4 text-cyan-400" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-md" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(15,15,35,0.3) 100%)"}}>
+                    <div className="rounded-lg p-4 backdrop-blur-lg border border-white/10" style={{background: "rgba(255,255,255,0.05)"}}>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {marketingReport.contentPillars.map((pillar, index) => (
-                          <div key={index} className="rounded-lg p-3 transition-colors" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.15) 0%, rgba(15,15,35,0.25) 100%)"}}>
+                          <div key={index} className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(255,255,255,0.03)"}}>
                             <h5 className="font-semibold text-cyan-200 mb-2 drop-shadow-md">{pillar.pillar}</h5>
                             <p className="text-white text-sm leading-relaxed drop-shadow-md">{pillar.description}</p>
                           </div>
@@ -632,11 +632,11 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Content Types</h4>
                       <Sparkles className="w-4 h-4 text-pink-400 animate-pulse" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-md" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(15,15,35,0.3) 100%)"}}>
+                    <div className="rounded-lg p-4 backdrop-blur-lg border border-white/10" style={{background: "rgba(255,255,255,0.05)"}}>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {marketingReport.postTypes.map((type, index) => (
                           
-                          <div key={index} className="flex items-center gap-3 p-2 px-3 rounded-sm transition-colors" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.15) 0%, rgba(15,15,35,0.25) 100%)"}}>
+                          <div key={index} className="flex items-center gap-3 p-2 px-3 rounded-sm transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(255,255,255,0.03)"}}>
                             <div className="w-1.5 h-1.5 bg-pink-400 rounded-full flex-shrink-0"></div>
                             <span className="text-white text-sm drop-shadow-md">{type}</span>
                           </div>
@@ -657,9 +657,9 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Publishing Schedule</h4>
                       <Rocket className="w-4 h-4 text-yellow-400" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-md" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(15,15,35,0.3) 100%)"}}>
+                    <div className="rounded-lg p-4 backdrop-blur-lg border border-white/10" style={{background: "rgba(255,255,255,0.05)"}}>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div className="rounded-lg p-3 transition-colors" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.15) 0%, rgba(15,15,35,0.25) 100%)"}}>
+                        <div className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(255,255,255,0.03)"}}>
                           <div className="flex items-center gap-2 mb-2">
                             <div className="w-2 h-2 bg-red-400 rounded-full"></div>
                             <span className="font-semibold text-orange-200 drop-shadow-md">Monday</span>
@@ -667,7 +667,7 @@ export default function Onboarding() {
                           <p className="text-white text-sm leading-relaxed drop-shadow-md">{marketingReport.weeklyCalendar.monday}</p>
                         </div>
                         
-                        <div className="rounded-lg p-3 transition-colors" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.15) 0%, rgba(15,15,35,0.25) 100%)"}}>
+                        <div className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(255,255,255,0.03)"}}>
                           <div className="flex items-center gap-2 mb-2">
                             <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
                             <span className="font-semibold text-orange-200 drop-shadow-md">Wednesday</span>
@@ -675,7 +675,7 @@ export default function Onboarding() {
                           <p className="text-white text-sm leading-relaxed drop-shadow-md">{marketingReport.weeklyCalendar.wednesday}</p>
                         </div>
                         
-                        <div className="rounded-lg p-3 transition-colors" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.15) 0%, rgba(15,15,35,0.25) 100%)"}}>
+                        <div className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(255,255,255,0.03)"}}>
                           <div className="flex items-center gap-2 mb-2">
                             <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                             <span className="font-semibold text-orange-200 drop-shadow-md">Friday</span>
@@ -683,7 +683,7 @@ export default function Onboarding() {
                           <p className="text-white text-sm leading-relaxed drop-shadow-md">{marketingReport.weeklyCalendar.friday}</p>
                         </div>
                         
-                        <div className="rounded-lg p-3 transition-colors" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.15) 0%, rgba(15,15,35,0.25) 100%)"}}>
+                        <div className="rounded-lg p-3 transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(255,255,255,0.03)"}}>
                           <div className="flex items-center gap-2 mb-2">
                             <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
                             <span className="font-semibold text-orange-200 drop-shadow-md">Sunday</span>
@@ -706,10 +706,10 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Hashtag Strategy</h4>
                       <span className="text-sm px-2 py-1 bg-indigo-500/30 text-indigo-200 rounded-full">{marketingReport.hashtagStyle.tone}</span>
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-md" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(15,15,35,0.3) 100%)"}}>
+                    <div className="rounded-lg p-4 backdrop-blur-lg border border-white/10" style={{background: "rgba(255,255,255,0.05)"}}>
                       <div className="flex flex-wrap gap-2">
                         {marketingReport.hashtagStyle.exampleHashtags.map((tag, index) => (
-                          <span key={index} className="px-3 py-1.5 rounded-full text-indigo-200 text-sm font-medium transition-colors drop-shadow-md" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(15,15,35,0.3) 100%)"}}>
+                          <span key={index} className="px-3 py-1.5 rounded-full text-indigo-200 text-sm font-medium transition-colors drop-shadow-md backdrop-blur-md border border-white/10" style={{background: "rgba(255,255,255,0.05)"}}>
                             {tag}
                           </span>
                         ))}
@@ -729,10 +729,10 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Engagement Tactics</h4>
                       <Heart className="w-4 h-4 text-emerald-400 animate-pulse" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-md" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(15,15,35,0.3) 100%)"}}>
+                    <div className="rounded-lg p-4 backdrop-blur-lg border border-white/10" style={{background: "rgba(255,255,255,0.05)"}}>
                       <div className="space-y-2">
                         {marketingReport.engagementStrategy.map((strategy, index) => (
-                          <div key={index} className="flex items-start gap-3 p-2 rounded-lg transition-colors" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.15) 0%, rgba(15,15,35,0.25) 100%)"}}>
+                          <div key={index} className="flex items-start gap-3 p-2 rounded-lg transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(255,255,255,0.03)"}}>
                             <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></div>
                             <span className="text-white text-sm leading-relaxed drop-shadow-md">{strategy}</span>
                           </div>
@@ -753,10 +753,10 @@ export default function Onboarding() {
                       <h4 className="text-lg font-semibold text-white drop-shadow-lg">Success Metrics</h4>
                       <Target className="w-4 h-4 text-violet-400" />
                     </div>
-                    <div className="rounded-lg p-4 backdrop-blur-md" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(15,15,35,0.3) 100%)"}}>
+                    <div className="rounded-lg p-4 backdrop-blur-lg border border-white/10" style={{background: "rgba(255,255,255,0.05)"}}>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {marketingReport.metricsToTrack.map((metric, index) => (
-                          <div key={index} className="flex items-center gap-3 p-2 rounded-lg transition-colors" style={{background: "linear-gradient(135deg, rgba(0,0,0,0.15) 0%, rgba(15,15,35,0.25) 100%)"}}>
+                          <div key={index} className="flex items-center gap-3 p-2 rounded-lg transition-colors backdrop-blur-md border border-white/5" style={{background: "rgba(255,255,255,0.03)"}}>
                             <div className="w-1.5 h-1.5 bg-violet-400 rounded-full flex-shrink-0"></div>
                             <span className="text-white text-sm drop-shadow-md">{metric}</span>
                           </div>

@@ -438,17 +438,57 @@ export default function Onboarding() {
         <div 
           className="fixed inset-0 z-50 overflow-y-auto"
           style={{
-            background: "radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f172a 100%)"
+            background: "radial-gradient(ellipse at center, #0f0f23 0%, #1a1a2e 30%, #16213e 70%, #0f172a 100%)"
           }}
         >
-          {/* Background Effects */}
+          {/* Enhanced Background Effects with Scroll */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div 
+              className="absolute w-96 h-96 bg-orange-500/15 rounded-full blur-3xl animate-pulse"
+              style={{
+                top: '10%',
+                left: '15%',
+                transform: 'translateY(calc(var(--scroll-y, 0) * 0.3px))'
+              }}
+            ></div>
+            <div 
+              className="absolute w-80 h-80 bg-orange-600/12 rounded-full blur-3xl animate-pulse delay-700"
+              style={{
+                top: '40%',
+                right: '10%',
+                transform: 'translateY(calc(var(--scroll-y, 0) * 0.4px))'
+              }}
+            ></div>
+            <div 
+              className="absolute w-72 h-72 bg-orange-400/10 rounded-full blur-3xl animate-pulse delay-1000"
+              style={{
+                bottom: '20%',
+                left: '20%',
+                transform: 'translateY(calc(var(--scroll-y, 0) * 0.2px))'
+              }}
+            ></div>
+            <div 
+              className="absolute w-64 h-64 bg-orange-500/8 rounded-full blur-3xl animate-pulse delay-1500"
+              style={{
+                bottom: '10%',
+                right: '25%',
+                transform: 'translateY(calc(var(--scroll-y, 0) * 0.5px))'
+              }}
+            ></div>
           </div>
 
-          <div className="min-h-screen py-8 px-4 relative z-10">
-            <div className="w-full max-w-4xl mx-auto border-2 border-orange-400/30 rounded-2xl bg-white/10 backdrop-blur-sm p-8 shadow-2xl shadow-orange-500/10">
+          <div 
+            className="min-h-screen py-8 px-4 relative z-10 overflow-y-auto"
+            onScroll={(e) => {
+              const scrollY = e.currentTarget.scrollTop;
+              document.documentElement.style.setProperty('--scroll-y', scrollY.toString());
+            }}
+          >
+            <div className="w-full max-w-4xl mx-auto border-2 border-orange-400/40 rounded-2xl bg-black/30 backdrop-blur-md p-8 shadow-2xl shadow-orange-500/20"
+              style={{
+                background: "linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(15,15,35,0.6) 50%, rgba(0,0,0,0.4) 100%)"
+              }}
+            >
               {/* Clean Header */}
               <div className="text-center mb-12">
                 <div className="flex items-center justify-center gap-3 mb-6">
@@ -475,17 +515,17 @@ export default function Onboarding() {
               <div className="space-y-6">
                 {/* Executive Summary */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-orange-400/10 to-orange-600/20 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-orange-300/30 rounded-xl p-6 hover:bg-white/[0.15] transition-all duration-300 hover:border-orange-400/50">
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/25 via-orange-400/15 to-orange-600/25 rounded-xl blur-lg"></div>
+                  <div className="relative bg-black/40 backdrop-blur-sm border-2 border-orange-300/40 rounded-xl p-6 hover:bg-black/50 transition-all duration-300 hover:border-orange-400/60">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 text-white">
+                      <div className="p-3 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg">
                         <Lightbulb className="w-5 h-5" />
                       </div>
-                      <h3 className="text-xl font-semibold text-white">Executive Summary</h3>
+                      <h3 className="text-xl font-semibold text-white drop-shadow-lg">Executive Summary</h3>
                       <Sparkles className="w-4 h-4 text-orange-400 animate-pulse" />
                     </div>
-                    <div className="bg-gradient-to-r from-orange-500/10 to-orange-400/5 border border-orange-400/20 rounded-lg p-4">
-                      <p className="text-white/90 leading-relaxed italic text-lg font-medium">
+                    <div className="bg-black/60 border-2 border-orange-400/30 rounded-lg p-4 backdrop-blur-sm">
+                      <p className="text-white leading-relaxed italic text-lg font-medium drop-shadow-md">
                         "{marketingReport.valueProposition}"
                       </p>
                     </div>
@@ -494,34 +534,34 @@ export default function Onboarding() {
 
                 {/* Demographics */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 via-blue-400/8 to-blue-600/15 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-blue-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-blue-400/50">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-blue-400/12 to-blue-600/20 rounded-xl blur-lg"></div>
+                  <div className="relative bg-black/40 backdrop-blur-sm border-2 border-blue-300/40 rounded-xl p-5 hover:bg-black/50 transition-all duration-300 hover:border-blue-400/60">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 text-white">
+                      <div className="p-3 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-lg">
                         <Users className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Demographics</h4>
+                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Demographics</h4>
                       <Eye className="w-4 h-4 text-blue-400" />
                     </div>
-                    <div className="bg-gradient-to-r from-blue-500/10 to-blue-400/5 border border-blue-400/20 rounded-lg p-4">
-                      <p className="text-white/85 leading-relaxed">{marketingReport.userPersona.demographics}</p>
+                    <div className="bg-black/60 border-2 border-blue-400/30 rounded-lg p-4 backdrop-blur-sm">
+                      <p className="text-white leading-relaxed drop-shadow-md">{marketingReport.userPersona.demographics}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Platform Presence */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/15 via-purple-400/8 to-purple-600/15 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-purple-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-purple-400/50">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-purple-400/12 to-purple-600/20 rounded-xl blur-lg"></div>
+                  <div className="relative bg-black/40 backdrop-blur-sm border-2 border-purple-300/40 rounded-xl p-5 hover:bg-black/50 transition-all duration-300 hover:border-purple-400/60">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2 rounded-lg bg-gradient-to-br from-purple-400 to-purple-600 text-white">
+                      <div className="p-3 rounded-lg bg-gradient-to-br from-purple-400 to-purple-600 text-white shadow-lg">
                         <Smartphone className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Platform Presence</h4>
+                      <h4 className="text-lg font-semibold text-white drop-shadow-lg">Platform Presence</h4>
                       <Heart className="w-4 h-4 text-purple-400" />
                     </div>
-                    <div className="bg-gradient-to-r from-purple-500/10 to-purple-400/5 border border-purple-400/20 rounded-lg p-4">
-                      <p className="text-white/85 leading-relaxed">{marketingReport.userPersona.whereTheyHangOut}</p>
+                    <div className="bg-black/60 border-2 border-purple-400/30 rounded-lg p-4 backdrop-blur-sm">
+                      <p className="text-white leading-relaxed drop-shadow-md">{marketingReport.userPersona.whereTheyHangOut}</p>
                     </div>
                   </div>
                 </div>

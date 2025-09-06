@@ -636,26 +636,26 @@ export default function Onboarding() {
 
                 {/* Content Types */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 via-pink-400/12 to-pink-600/20 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/15 border border-pink-300/40 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 hover:border-pink-400/60 backdrop-blur-md">
-                    <div className="flex items-center gap-3 mb-5">
-                      <div className="p-3 rounded-xl bg-gradient-to-br from-pink-400 to-pink-600 text-white shadow-lg">
-                        <Video className="w-5 h-5" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-pink-500/15 via-pink-400/8 to-pink-600/15 rounded-xl blur-lg"></div>
+                  <div className="relative bg-white/10 border border-pink-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-pink-400/50">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 rounded-lg bg-gradient-to-br from-pink-400 to-pink-600 text-white">
+                        <Video className="w-4 h-4" />
                       </div>
-                      <h4 className="text-xl font-bold text-white">
+                      <h4 className="text-lg font-semibold text-white">
                         Content Types
                       </h4>
-                      <Sparkles className="w-4 h-4 text-pink-300 animate-pulse" />
+                      <Sparkles className="w-4 h-4 text-pink-400 animate-pulse" />
                     </div>
-                    <div className="rounded-xl p-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div className="rounded-lg p-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {marketingReport.postTypes.map((type, index) => (
                           <div
                             key={index}
-                            className="flex items-center gap-3 p-3 px-4 bg-gradient-to-r from-pink-500/25 to-pink-400/15 border border-pink-400/30 rounded-lg bg-slate-900/40 hover:bg-slate-800/50 transition-all duration-200 shadow-sm"
+                            className="flex items-center gap-3 p-2 px-3 bg-gradient-to-r from-pink-500/20 to-pink-400/10 border border-pink-400/20 rounded-sm bg-black/30 hover:bg-black/40 transition-colors"
                           >
-                            <div className="w-2 h-2 bg-pink-300 rounded-full flex-shrink-0 shadow-sm"></div>
-                            <span className="text-white/95 text-sm font-medium">
+                            <div className="w-1.5 h-1.5 bg-pink-400 rounded-full flex-shrink-0"></div>
+                            <span className="text-white text-sm">
                               {type}
                             </span>
                           </div>
@@ -667,63 +667,63 @@ export default function Onboarding() {
 
                 {/* Publishing Schedule */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 via-yellow-400/12 to-orange-500/20 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/15 border border-yellow-300/40 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 hover:border-orange-400/60 backdrop-blur-md">
-                    <div className="flex items-center gap-3 mb-5">
-                      <div className="p-3 rounded-xl bg-gradient-to-br from-yellow-400 to-orange-500 text-white shadow-lg">
-                        <Calendar className="w-5 h-5" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/15 via-yellow-400/8 to-orange-500/15 rounded-xl blur-lg"></div>
+                  <div className="relative bg-white/10 border border-yellow-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-orange-400/50">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 text-white">
+                        <Calendar className="w-4 h-4" />
                       </div>
-                      <h4 className="text-xl font-bold text-white">
+                      <h4 className="text-lg font-semibold text-white">
                         Publishing Schedule
                       </h4>
-                      <Rocket className="w-4 h-4 text-yellow-300" />
+                      <Rocket className="w-4 h-4 text-yellow-400" />
                     </div>
-                    <div className="rounded-xl p-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="bg-gradient-to-r from-yellow-400/25 to-orange-300/15 border border-orange-400/30 rounded-xl p-4 hover:bg-slate-800/40 transition-all duration-200 shadow-lg backdrop-blur-sm">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-3 h-3 bg-red-400 rounded-full shadow-sm"></div>
-                            <span className="font-bold text-white text-base">
+                    <div className="rounded-lg p-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div className="bg-gradient-to-r from-yellow-300/15 to-orange-200/10 border border-orange-400/20 rounded-lg p-3 bg-black/30 hover:bg-black/40 transition-colors">
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+                            <span className="font-semibold text-white">
                               Monday
                             </span>
                           </div>
-                          <p className="text-white/95 text-sm leading-relaxed font-medium">
+                          <p className="text-white text-sm leading-relaxed">
                             {marketingReport.weeklyCalendar.monday}
                           </p>
                         </div>
 
-                        <div className="bg-gradient-to-r from-yellow-400/25 to-orange-300/15 border border-orange-400/30 rounded-xl p-4 hover:bg-slate-800/40 transition-all duration-200 shadow-lg backdrop-blur-sm">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-3 h-3 bg-yellow-400 rounded-full shadow-sm"></div>
-                            <span className="font-bold text-white text-base">
+                        <div className="bg-gradient-to-r from-yellow-300/15 to-orange-200/10 border border-orange-400/20 rounded-lg p-3 bg-black/30 hover:bg-black/40 transition-colors">
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                            <span className="font-semibold text-white">
                               Wednesday
                             </span>
                           </div>
-                          <p className="text-white/95 text-sm leading-relaxed font-medium">
+                          <p className="text-white text-sm leading-relaxed">
                             {marketingReport.weeklyCalendar.wednesday}
                           </p>
                         </div>
 
-                        <div className="bg-gradient-to-r from-yellow-400/25 to-orange-300/15 border border-orange-400/30 rounded-xl p-4 hover:bg-slate-800/40 transition-all duration-200 shadow-lg backdrop-blur-sm">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-3 h-3 bg-green-400 rounded-full shadow-sm"></div>
-                            <span className="font-bold text-white text-base">
+                        <div className="bg-gradient-to-r from-yellow-300/15 to-orange-200/10 border border-orange-400/20 rounded-lg p-3 bg-black/30 hover:bg-black/40 transition-colors">
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                            <span className="font-semibold text-white">
                               Friday
                             </span>
                           </div>
-                          <p className="text-white/95 text-sm leading-relaxed font-medium">
+                          <p className="text-white text-sm leading-relaxed">
                             {marketingReport.weeklyCalendar.friday}
                           </p>
                         </div>
 
-                        <div className="bg-gradient-to-r from-yellow-400/25 to-orange-300/15 border border-orange-400/30 rounded-xl p-4 hover:bg-slate-800/40 transition-all duration-200 shadow-lg backdrop-blur-sm">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-3 h-3 bg-orange-400 rounded-full shadow-sm"></div>
-                            <span className="font-bold text-white text-base">
+                        <div className="bg-gradient-to-r from-yellow-300/15 to-orange-200/10 border border-orange-400/20 rounded-lg p-3 bg-black/30 hover:bg-black/40 transition-colors">
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                            <span className="font-semibold text-white">
                               Sunday
                             </span>
                           </div>
-                          <p className="text-white/95 text-sm leading-relaxed font-medium">
+                          <p className="text-white text-sm leading-relaxed">
                             {marketingReport.weeklyCalendar.sunday}
                           </p>
                         </div>
@@ -734,26 +734,26 @@ export default function Onboarding() {
 
                 {/* Hashtag Strategy */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-indigo-400/12 to-purple-500/20 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/15 border border-indigo-300/40 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 hover:border-indigo-400/60 backdrop-blur-md">
-                    <div className="flex items-center gap-3 mb-5">
-                      <div className="p-3 rounded-xl bg-gradient-to-br from-indigo-400 to-purple-600 text-white shadow-lg">
-                        <Hash className="w-5 h-5" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/15 via-indigo-400/8 to-purple-500/15 rounded-xl blur-lg"></div>
+                  <div className="relative bg-white/10 border border-indigo-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-indigo-400/50">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 rounded-lg bg-gradient-to-br from-indigo-400 to-purple-600 text-white">
+                        <Hash className="w-4 h-4" />
                       </div>
-                      <h4 className="text-xl font-bold text-white">
+                      <h4 className="text-lg font-semibold text-white">
                         Hashtag Strategy
                       </h4>
-                      <span className="text-sm px-3 py-1.5 bg-indigo-500/30 text-indigo-100 rounded-full border border-indigo-400/40 font-medium backdrop-blur-sm">
+                      <span className="text-sm px-2 py-1 bg-indigo-500/20 text-indigo-300 rounded-full border border-indigo-400/30">
                         {marketingReport.hashtagStyle.tone}
                       </span>
                     </div>
-                    <div className="bg-gradient-to-r from-indigo-500/25 to-purple-400/15 border border-indigo-400/30 rounded-xl p-5 shadow-lg backdrop-blur-sm">
-                      <div className="flex flex-wrap gap-3">
+                    <div className="bg-gradient-to-r from-indigo-500/15 to-purple-400/10 border border-indigo-400/20 rounded-lg p-4 bg-black/30">
+                      <div className="flex flex-wrap gap-2">
                         {marketingReport.hashtagStyle.exampleHashtags.map(
                           (tag, index) => (
                             <span
                               key={index}
-                              className="px-4 py-2 rounded-full bg-gradient-to-r from-indigo-500/30 to-purple-500/25 text-indigo-100 text-sm font-semibold border border-indigo-400/40 hover:border-indigo-300/60 transition-all duration-200 shadow-sm backdrop-blur-sm hover:scale-105"
+                              className="px-3 py-1.5 rounded-full bg-gradient-to-r from-indigo-500/25 to-purple-500/20 text-white text-sm font-medium border border-indigo-400/30 hover:border-indigo-300/50 transition-colors"
                             >
                               {tag}
                             </span>
@@ -766,27 +766,27 @@ export default function Onboarding() {
 
                 {/* Engagement Tactics */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-emerald-400/12 to-teal-500/20 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/15 border border-emerald-300/40 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 hover:border-emerald-400/60 backdrop-blur-md">
-                    <div className="flex items-center gap-3 mb-5">
-                      <div className="p-3 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 text-white shadow-lg">
-                        <TrendingUp className="w-5 h-5" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/15 via-emerald-400/8 to-teal-500/15 rounded-xl blur-lg"></div>
+                  <div className="relative bg-white/10 border border-emerald-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-emerald-400/50">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-600 text-white">
+                        <TrendingUp className="w-4 h-4" />
                       </div>
-                      <h4 className="text-xl font-bold text-white">
+                      <h4 className="text-lg font-semibold text-white">
                         Engagement Tactics
                       </h4>
-                      <Heart className="w-4 h-4 text-emerald-300 animate-pulse" />
+                      <Heart className="w-4 h-4 text-emerald-400 animate-pulse" />
                     </div>
-                    <div className="rounded-xl p-4">
-                      <div className="space-y-3">
+                    <div className="rounded-lg p-4">
+                      <div className="space-y-2">
                         {marketingReport.engagementStrategy.map(
                           (strategy, index) => (
                             <div
                               key={index}
-                              className="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-emerald-500/25 to-teal-400/15 border border-emerald-400/30 hover:bg-slate-800/40 transition-all duration-200 shadow-sm backdrop-blur-sm"
+                              className="flex items-start gap-3 p-2 rounded-lg bg-gradient-to-r from-emerald-500/15 to-teal-400/10 border border-emerald-400/20 bg-black/30 hover:bg-black/40 transition-colors"
                             >
-                              <div className="w-2 h-2 bg-emerald-300 rounded-full mt-2 flex-shrink-0 shadow-sm"></div>
-                              <span className="text-white/95 text-sm leading-relaxed font-medium">
+                              <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></div>
+                              <span className="text-white text-sm leading-relaxed">
                                 {strategy}
                               </span>
                             </div>
@@ -799,26 +799,26 @@ export default function Onboarding() {
 
                 {/* Success Metrics */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-violet-500/20 via-violet-400/12 to-fuchsia-500/20 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/15 border border-violet-300/40 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 hover:border-violet-400/60 backdrop-blur-md">
-                    <div className="flex items-center gap-3 mb-5">
-                      <div className="p-3 rounded-xl bg-gradient-to-br from-violet-400 to-fuchsia-600 text-white shadow-lg">
-                        <BarChart3 className="w-5 h-5" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-violet-500/15 via-violet-400/8 to-fuchsia-500/15 rounded-xl blur-lg"></div>
+                  <div className="relative bg-white/10 border border-violet-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-violet-400/50">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 rounded-lg bg-gradient-to-br from-violet-400 to-fuchsia-600 text-white">
+                        <BarChart3 className="w-4 h-4" />
                       </div>
-                      <h4 className="text-xl font-bold text-white">
+                      <h4 className="text-lg font-semibold text-white">
                         Success Metrics
                       </h4>
-                      <Target className="w-4 h-4 text-violet-300" />
+                      <Target className="w-4 h-4 text-violet-400" />
                     </div>
-                    <div className="rounded-xl p-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div className="rounded-lg p-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {marketingReport.metricsToTrack.map((metric, index) => (
                           <div
                             key={index}
-                            className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-r from-violet-500/25 to-fuchsia-400/15 border border-violet-400/30 hover:bg-slate-800/40 transition-all duration-200 shadow-sm backdrop-blur-sm"
+                            className="flex items-center gap-3 p-2 rounded-lg bg-gradient-to-r from-violet-500/15 to-fuchsia-400/10 border border-violet-400/20 bg-black/30 hover:bg-black/40 transition-colors"
                           >
-                            <div className="w-2 h-2 bg-violet-300 rounded-full flex-shrink-0 shadow-sm"></div>
-                            <span className="text-white/95 text-sm font-medium">
+                            <div className="w-1.5 h-1.5 bg-violet-400 rounded-full flex-shrink-0"></div>
+                            <span className="text-white text-sm">
                               {metric}
                             </span>
                           </div>

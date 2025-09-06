@@ -21,6 +21,7 @@ import {
   AlertTriangle,
   Sparkles
 } from "lucide-react";
+import Layout from '../components/Layout';
 
 interface ScrapedData {
   url: string;
@@ -257,7 +258,8 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-gray-50">
+    <Layout>
+      <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-gray-50">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-300/40 rounded-full blur-3xl animate-pulse"></div>
@@ -754,6 +756,7 @@ export default function Onboarding() {
           </div>
         </div>
       )}
-    </div>
+      </div>
+    </Layout>
   );
 }

@@ -16,6 +16,7 @@ import {
   Coffee,
   Star
 } from "lucide-react";
+import Layout from '../../components/Layout';
 
 interface ContentPost {
   id: string;
@@ -193,7 +194,8 @@ export default function ContentPlannerPage() {
   const groupedPosts = groupPostsByTimeOfDay(currentDayData.posts);
 
   return (
-    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
+    <Layout>
+      <div className="min-h-screen bg-gray-50 relative overflow-hidden">
       {/* Background Effects - matching the orange theme */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-300/40 rounded-full blur-3xl animate-pulse"></div>
@@ -384,10 +386,11 @@ export default function ContentPlannerPage() {
             </button>
           </div>
         </div>
-      </main>
+        </main>
 
-      {/* Font Awesome for social icons */}
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    </div>
+        {/* Font Awesome for social icons */}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+      </div>
+    </Layout>
   );
 }

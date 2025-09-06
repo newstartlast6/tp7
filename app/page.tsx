@@ -257,43 +257,38 @@ export default function Onboarding() {
   };
 
   return (
-    <div 
-      className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden"
-      style={{
-        background: "radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f172a 100%)"
-      }}
-    >
+    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-gray-50">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-100/60 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-50/80 rounded-full blur-3xl"></div>
       </div>
 
       <div className="w-full max-w-md mx-auto relative z-10">
         {/* Loading State */}
         {loading && (
-          <div className="text-center space-y-6">
+          <div className="bg-white rounded-3xl border border-orange-100 shadow-lg shadow-orange-500/10 p-8 text-center space-y-6">
             <div className="flex items-center justify-center gap-3 mb-8">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center animate-bounce">
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center animate-bounce shadow-lg">
                 <span className="text-xl">🚀</span>
               </div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 TractionPilot
               </h1>
             </div>
 
             <div className="space-y-4">
-              <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+              <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
                 <div 
-                  className="h-full bg-gradient-to-r from-orange-400 to-orange-600 transition-all duration-500 ease-out"
+                  className="h-full bg-gradient-to-r from-orange-400 to-orange-600 transition-all duration-500 ease-out rounded-full"
                   style={{ width: `${progress}%` }}
                 />
               </div>
               
               <div className="min-h-[60px] flex items-center justify-center">
-                <div className="text-lg text-white/90 font-medium">
+                <div className="text-lg text-gray-700 font-medium">
                   {displayText}
-                  {isTyping && <span className="animate-pulse">|</span>}
+                  {isTyping && <span className="animate-pulse text-orange-500">|</span>}
                 </div>
               </div>
             </div>
@@ -302,25 +297,25 @@ export default function Onboarding() {
 
         {/* Main Form - Only show when not loading and no report */}
         {!loading && !marketingReport && !showManualForm && (
-          <div className="text-center space-y-8">
+          <div className="bg-white rounded-3xl border border-orange-100 shadow-lg shadow-orange-500/10 p-8 text-center space-y-8">
             <div className="flex items-center justify-center gap-3 mb-8">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-2xl shadow-orange-500/25">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-500/20">
                 <span className="text-2xl font-bold">🚀</span>
               </div>
               <div className="text-left">
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
+                <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                   TractionPilot
                 </h1>
-                <p className="text-white/60 text-sm">AI Marketing Intelligence</p>
+                <p className="text-gray-500 text-sm">AI Marketing Intelligence</p>
               </div>
             </div>
 
             <div className="space-y-6">
               <div className="text-left">
-                <h2 className="text-2xl font-semibold text-white mb-2">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-2">
                   Get Your Marketing Strategy
                 </h2>
-                <p className="text-white/70">
+                <p className="text-gray-600">
                   Enter your website URL and get a comprehensive AI-powered marketing report in seconds.
                 </p>
               </div>
@@ -332,7 +327,7 @@ export default function Onboarding() {
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
                     placeholder="https://your-website.com"
-                    className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
                     required
                   />
                 </div>
@@ -340,17 +335,14 @@ export default function Onboarding() {
                 <button
                   type="submit"
                   disabled={!url.trim()}
-                  className="w-full py-3 px-6 rounded-lg text-white font-medium transition-all duration-200 hover:-translate-y-[1px] hover:shadow-[0_8px_25px_rgba(255,107,53,0.3)] active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none"
-                  style={{
-                    background: "linear-gradient(45deg, #ff6b35, #f7931e)"
-                  }}
+                  className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 text-white font-medium transition-all duration-200 hover:-translate-y-[1px] hover:shadow-lg hover:shadow-orange-500/25 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none"
                 >
                   Analyze Website →
                 </button>
               </form>
 
               {error && (
-                <div className="text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-lg p-3">
+                <div className="text-red-600 text-sm bg-red-50 border border-red-200 rounded-xl p-3">
                   {error}
                 </div>
               )}
@@ -360,15 +352,15 @@ export default function Onboarding() {
 
         {/* Manual Form - Show when automatic scraping fails */}
         {showManualForm && !loading && !marketingReport && (
-          <div className="text-center space-y-6">
+          <div className="bg-white rounded-3xl border border-orange-100 shadow-lg shadow-orange-500/10 p-8 text-center space-y-6">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg">
                 <span className="text-xl">✏️</span>
               </div>
-              <h2 className="text-2xl font-bold text-white">Manual Entry Required</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Manual Entry Required</h2>
             </div>
 
-            <p className="text-white/70 mb-6">
+            <p className="text-gray-600 mb-6">
               We couldn't automatically analyze this website. Please provide some basic information:
             </p>
 
@@ -379,7 +371,7 @@ export default function Onboarding() {
                   value={productName}
                   onChange={(e) => setProductName(e.target.value)}
                   placeholder="Product/Company Name"
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors"
+                  className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
                   required
                 />
               </div>
@@ -390,7 +382,7 @@ export default function Onboarding() {
                   onChange={(e) => setProductDescription(e.target.value)}
                   placeholder="Brief description of what your product/service does..."
                   rows={3}
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors resize-none"
                   required
                 />
               </div>
@@ -398,10 +390,7 @@ export default function Onboarding() {
               <button
                 type="submit"
                 disabled={!productName.trim() || !productDescription.trim()}
-                className="w-full py-3 px-6 rounded-lg text-white font-medium transition-all duration-200 hover:-translate-y-[1px] hover:shadow-[0_8px_25px_rgba(255,107,53,0.3)] active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none"
-                style={{
-                  background: "linear-gradient(45deg, #ff6b35, #f7931e)"
-                }}
+                className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 text-white font-medium transition-all duration-200 hover:-translate-y-[1px] hover:shadow-lg hover:shadow-orange-500/25 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none"
               >
                 Continue with Manual Entry →
               </button>
@@ -415,10 +404,7 @@ export default function Onboarding() {
                   setProductName("");
                   setProductDescription("");
                 }}
-                className="w-full py-2 px-4 rounded-lg border border-white/20 text-white/80 hover:text-white hover:border-white/40 transition-colors"
-                style={{
-                  background: "rgba(255, 255, 255, 0.1)"
-                }}
+                className="w-full py-2 px-4 rounded-xl border border-gray-200 text-gray-600 hover:text-gray-800 hover:border-gray-300 hover:bg-gray-50 transition-colors"
               >
                 Try Another URL
               </button>
@@ -427,7 +413,7 @@ export default function Onboarding() {
         )}
 
         {error && !showManualForm && (
-          <div className="text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-lg p-3 mt-4">
+          <div className="text-red-600 text-sm bg-red-50 border border-red-200 rounded-xl p-3 mt-4">
             {error}
           </div>
         )}

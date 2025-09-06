@@ -1,25 +1,25 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { 
-  Lightbulb, 
-  Target, 
-  Users, 
-  Smartphone, 
-  Brain, 
-  Zap, 
-  PenTool, 
-  Palette, 
-  Video, 
-  Calendar, 
-  Hash, 
-  TrendingUp, 
-  BarChart3, 
+import {
+  Lightbulb,
+  Target,
+  Users,
+  Smartphone,
+  Brain,
+  Zap,
+  PenTool,
+  Palette,
+  Video,
+  Calendar,
+  Hash,
+  TrendingUp,
+  BarChart3,
   Rocket,
   Eye,
   Heart,
   AlertTriangle,
-  Sparkles
+  Sparkles,
 } from "lucide-react";
 
 interface ScrapedData {
@@ -64,7 +64,8 @@ export default function Onboarding() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [scrapedData, setScrapedData] = useState<ScrapedData | null>(null);
-  const [marketingReport, setMarketingReport] = useState<MarketingReport | null>(null);
+  const [marketingReport, setMarketingReport] =
+    useState<MarketingReport | null>(null);
   const [showManualForm, setShowManualForm] = useState(false);
   const [productName, setProductName] = useState("");
   const [productDescription, setProductDescription] = useState("");
@@ -82,17 +83,17 @@ export default function Onboarding() {
     "Identifying target audience...",
     "Generating marketing strategy...",
     "Creating social media plan...",
-    "Finalizing AI report..."
+    "Finalizing AI report...",
   ];
 
   // Typing animation for messages
   useEffect(() => {
     if (!loading) return;
-    
+
     let timeoutId: NodeJS.Timeout;
     setDisplayText("");
     setIsTyping(true);
-    
+
     const typeMessage = (message: string, index: number = 0) => {
       if (index <= message.length) {
         setDisplayText(message.slice(0, index));
@@ -101,14 +102,14 @@ export default function Onboarding() {
         setIsTyping(false);
       }
     };
-    
+
     typeMessage(thinkingText);
-    
+
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
     };
   }, [thinkingText, loading]);
-  
+
   // Progress and message management
   useEffect(() => {
     if (!loading) {
@@ -116,11 +117,11 @@ export default function Onboarding() {
       setThinkingStep(0);
       return;
     }
-    
+
     setThinkingStep(0);
     setThinkingText(thinkingMessages[0]);
     setProgress(0);
-    
+
     const messageInterval = setInterval(() => {
       setThinkingStep((prev) => {
         const next = prev < thinkingMessages.length - 1 ? prev + 1 : prev;
@@ -130,7 +131,7 @@ export default function Onboarding() {
         return next;
       });
     }, 3000);
-    
+
     // Smooth progress increment
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
@@ -165,15 +166,17 @@ export default function Onboarding() {
 
       if (!scrapeResponse.ok) {
         const errorData = await scrapeResponse.text();
-        
+
         if (scrapeResponse.status === 403) {
           setShowManualForm(true);
-          setError("This website requires manual information. Please fill out the form below:");
+          setError(
+            "This website requires manual information. Please fill out the form below:",
+          );
           setLoading(false);
           setProgress(100);
           return;
         }
-        
+
         throw new Error(errorData || "Failed to analyze website");
       }
 
@@ -188,7 +191,7 @@ export default function Onboarding() {
         body: JSON.stringify({
           scrapedData: scraped,
           productName: scraped.title,
-          productDescription: scraped.description
+          productDescription: scraped.description,
         }),
       });
 
@@ -199,7 +202,6 @@ export default function Onboarding() {
       const response = await reportResponse.json();
       setMarketingReport(response.report || response);
       setProgress(100);
-
     } catch (err) {
       console.error("Error:", err);
       setError(err instanceof Error ? err.message : "An error occurred");
@@ -222,7 +224,7 @@ export default function Onboarding() {
         url: url,
         title: productName,
         description: productDescription,
-        content: `${productName}: ${productDescription}`
+        content: `${productName}: ${productDescription}`,
       };
 
       setScrapedData(mockScrapedData);
@@ -235,7 +237,7 @@ export default function Onboarding() {
         body: JSON.stringify({
           scrapedData: mockScrapedData,
           productName,
-          productDescription
+          productDescription,
         }),
       });
 
@@ -247,7 +249,6 @@ export default function Onboarding() {
       setMarketingReport(response.report || response);
       setProgress(100);
       setShowManualForm(false);
-
     } catch (err) {
       console.error("Error:", err);
       setError(err instanceof Error ? err.message : "An error occurred");
@@ -257,10 +258,11 @@ export default function Onboarding() {
   };
 
   return (
-    <div 
+    <div
       className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden"
       style={{
-        background: "radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f172a 100%)"
+        background:
+          "radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f172a 100%)",
       }}
     >
       {/* Background Effects */}
@@ -284,12 +286,12 @@ export default function Onboarding() {
 
             <div className="space-y-4">
               <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                <div 
+                <div
                   className="h-full bg-gradient-to-r from-orange-400 to-orange-600 transition-all duration-500 ease-out"
                   style={{ width: `${progress}%` }}
                 />
               </div>
-              
+
               <div className="min-h-[60px] flex items-center justify-center">
                 <div className="text-lg text-white/90 font-medium">
                   {displayText}
@@ -311,7 +313,9 @@ export default function Onboarding() {
                 <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
                   TractionPilot
                 </h1>
-                <p className="text-white/60 text-sm">AI Marketing Intelligence</p>
+                <p className="text-white/60 text-sm">
+                  AI Marketing Intelligence
+                </p>
               </div>
             </div>
 
@@ -321,7 +325,8 @@ export default function Onboarding() {
                   Get Your Marketing Strategy
                 </h2>
                 <p className="text-white/70">
-                  Enter your website URL and get a comprehensive AI-powered marketing report in seconds.
+                  Enter your website URL and get a comprehensive AI-powered
+                  marketing report in seconds.
                 </p>
               </div>
 
@@ -342,7 +347,7 @@ export default function Onboarding() {
                   disabled={!url.trim()}
                   className="w-full py-3 px-6 rounded-lg text-white font-medium transition-all duration-200 hover:-translate-y-[1px] hover:shadow-[0_8px_25px_rgba(255,107,53,0.3)] active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none"
                   style={{
-                    background: "linear-gradient(45deg, #ff6b35, #f7931e)"
+                    background: "linear-gradient(45deg, #ff6b35, #f7931e)",
                   }}
                 >
                   Analyze Website →
@@ -365,11 +370,14 @@ export default function Onboarding() {
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
                 <span className="text-xl">✏️</span>
               </div>
-              <h2 className="text-2xl font-bold text-white">Manual Entry Required</h2>
+              <h2 className="text-2xl font-bold text-white">
+                Manual Entry Required
+              </h2>
             </div>
 
             <p className="text-white/70 mb-6">
-              We couldn't automatically analyze this website. Please provide some basic information:
+              We couldn't automatically analyze this website. Please provide
+              some basic information:
             </p>
 
             <form onSubmit={handleManualSubmit} className="space-y-4">
@@ -400,12 +408,12 @@ export default function Onboarding() {
                 disabled={!productName.trim() || !productDescription.trim()}
                 className="w-full py-3 px-6 rounded-lg text-white font-medium transition-all duration-200 hover:-translate-y-[1px] hover:shadow-[0_8px_25px_rgba(255,107,53,0.3)] active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none"
                 style={{
-                  background: "linear-gradient(45deg, #ff6b35, #f7931e)"
+                  background: "linear-gradient(45deg, #ff6b35, #f7931e)",
                 }}
               >
                 Continue with Manual Entry →
               </button>
-              
+
               <button
                 type="button"
                 onClick={() => {
@@ -417,7 +425,7 @@ export default function Onboarding() {
                 }}
                 className="w-full py-2 px-4 rounded-lg border border-white/20 text-white/80 hover:text-white hover:border-white/40 transition-colors"
                 style={{
-                  background: "rgba(255, 255, 255, 0.1)"
+                  background: "rgba(255, 255, 255, 0.1)",
                 }}
               >
                 Try Another URL
@@ -435,10 +443,11 @@ export default function Onboarding() {
 
       {/* Marketing Report Display */}
       {marketingReport && scrapedData && (
-        <div 
+        <div
           className="fixed inset-0 z-50 overflow-y-auto"
           style={{
-            background: "radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f172a 100%)"
+            background:
+              "radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f172a 100%)",
           }}
         >
           {/* Background Effects */}
@@ -459,15 +468,21 @@ export default function Onboarding() {
                     <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
                       Marketing Report
                     </h1>
-                    <p className="text-white/60 text-sm">AI-Generated Strategy</p>
+                    <p className="text-white/60 text-sm">
+                      AI-Generated Strategy
+                    </p>
                   </div>
                 </div>
-                
+
                 <div className="space-y-2">
-                  <h2 className="text-2xl font-bold text-white">{marketingReport.productName}</h2>
+                  <h2 className="text-2xl font-bold text-white">
+                    {marketingReport.productName}
+                  </h2>
                   <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full">
                     <span className="w-2 h-2 bg-orange-400 rounded-full"></span>
-                    <span className="text-white/80 text-sm font-medium">{marketingReport.category}</span>
+                    <span className="text-white/80 text-sm font-medium">
+                      {marketingReport.category}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -481,7 +496,9 @@ export default function Onboarding() {
                       <div className="p-2 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 text-white">
                         <Lightbulb className="w-5 h-5" />
                       </div>
-                      <h3 className="text-xl font-semibold text-white">Executive Summary</h3>
+                      <h3 className="text-xl font-semibold text-white">
+                        Executive Summary
+                      </h3>
                       <Sparkles className="w-4 h-4 text-orange-400 animate-pulse" />
                     </div>
                     <div className="bg-gradient-to-r from-orange-500/10 to-orange-400/5 border border-orange-400/20 rounded-lg p-4">
@@ -500,11 +517,15 @@ export default function Onboarding() {
                       <div className="p-2 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 text-white">
                         <Users className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Demographics</h4>
+                      <h4 className="text-lg font-semibold text-white">
+                        Demographics
+                      </h4>
                       <Eye className="w-4 h-4 text-blue-400" />
                     </div>
                     <div className="bg-gradient-to-r from-blue-500/10 to-blue-400/5 border border-blue-400/20 rounded-lg p-4">
-                      <p className="text-white/85 leading-relaxed">{marketingReport.userPersona.demographics}</p>
+                      <p className="text-white/85 leading-relaxed">
+                        {marketingReport.userPersona.demographics}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -517,11 +538,15 @@ export default function Onboarding() {
                       <div className="p-2 rounded-lg bg-gradient-to-br from-purple-400 to-purple-600 text-white">
                         <Smartphone className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Platform Presence</h4>
+                      <h4 className="text-lg font-semibold text-white">
+                        Platform Presence
+                      </h4>
                       <Heart className="w-4 h-4 text-purple-400" />
                     </div>
                     <div className="bg-gradient-to-r from-purple-500/10 to-purple-400/5 border border-purple-400/20 rounded-lg p-4">
-                      <p className="text-white/85 leading-relaxed">{marketingReport.userPersona.whereTheyHangOut}</p>
+                      <p className="text-white/85 leading-relaxed">
+                        {marketingReport.userPersona.whereTheyHangOut}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -534,11 +559,15 @@ export default function Onboarding() {
                       <div className="p-2 rounded-lg bg-gradient-to-br from-green-400 to-green-600 text-white">
                         <Brain className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Mindset & Psychology</h4>
+                      <h4 className="text-lg font-semibold text-white">
+                        Mindset & Psychology
+                      </h4>
                       <Sparkles className="w-4 h-4 text-green-400 animate-pulse" />
                     </div>
                     <div className="bg-gradient-to-r from-green-500/10 to-green-400/5 border border-green-400/20 rounded-lg p-4">
-                      <p className="text-white/85 leading-relaxed">{marketingReport.userPersona.mindset}</p>
+                      <p className="text-white/85 leading-relaxed">
+                        {marketingReport.userPersona.mindset}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -551,13 +580,18 @@ export default function Onboarding() {
                       <div className="p-2 rounded-lg bg-gradient-to-br from-red-400 to-red-600 text-white">
                         <AlertTriangle className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Pain Points</h4>
+                      <h4 className="text-lg font-semibold text-white">
+                        Pain Points
+                      </h4>
                       <Zap className="w-4 h-4 text-red-400" />
                     </div>
                     <div className="rounded-lg p-4">
                       <ul className="space-y-2">
                         {marketingReport.painPoints.map((point, index) => (
-                          <li key={index} className="text-white/85 flex items-start gap-3">
+                          <li
+                            key={index}
+                            className="text-white/85 flex items-start gap-3"
+                          >
                             <div className="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 flex-shrink-0"></div>
                             <span className="leading-relaxed">{point}</span>
                           </li>
@@ -575,15 +609,24 @@ export default function Onboarding() {
                       <div className="p-2 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 text-white">
                         <Palette className="w-4 h-4" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Content Pillars</h4>
+                      <h4 className="text-lg font-semibold text-white">
+                        Content Pillars
+                      </h4>
                       <PenTool className="w-4 h-4 text-cyan-400" />
                     </div>
                     <div className="rounded-lg p-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {marketingReport.contentPillars.map((pillar, index) => (
-                          <div key={index} className="bg-gradient-to-r from-cyan-500/10 to-cyan-400/5 border border-cyan-400/20 rounded-lg p-3 hover:bg-white/10 transition-colors">
-                            <h5 className="font-semibold text-cyan-200 mb-2">{pillar.pillar}</h5>
-                            <p className="text-white/75 text-sm leading-relaxed">{pillar.description}</p>
+                          <div
+                            key={index}
+                            className="bg-gradient-to-r from-cyan-500/10 to-cyan-400/5 border border-cyan-400/20 rounded-lg p-3 hover:bg-white/10 transition-colors"
+                          >
+                            <h5 className="font-semibold text-cyan-200 mb-2">
+                              {pillar.pillar}
+                            </h5>
+                            <p className="text-white/75 text-sm leading-relaxed">
+                              {pillar.description}
+                            </p>
                           </div>
                         ))}
                       </div>
@@ -593,22 +636,28 @@ export default function Onboarding() {
 
                 {/* Content Types */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-pink-500/15 via-pink-400/8 to-pink-600/15 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-pink-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-pink-400/50">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 rounded-lg bg-gradient-to-br from-pink-400 to-pink-600 text-white">
-                        <Video className="w-4 h-4" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 via-pink-400/12 to-pink-600/20 rounded-xl blur-lg"></div>
+                  <div className="relative bg-white/15 border border-pink-300/40 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 hover:border-pink-400/60 backdrop-blur-md">
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className="p-3 rounded-xl bg-gradient-to-br from-pink-400 to-pink-600 text-white shadow-lg">
+                        <Video className="w-5 h-5" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Content Types</h4>
-                      <Sparkles className="w-4 h-4 text-pink-400 animate-pulse" />
+                      <h4 className="text-xl font-bold text-white">
+                        Content Types
+                      </h4>
+                      <Sparkles className="w-4 h-4 text-pink-300 animate-pulse" />
                     </div>
-                    <div className="rounded-lg p-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div className="rounded-xl p-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {marketingReport.postTypes.map((type, index) => (
-                          
-                          <div key={index} className="flex items-center gap-3 p-2 px-3 bg-gradient-to-r from-pink-500/10 to-pink-400/5 border border-pink-400/20 rounded-sm bg-white/5 hover:bg-white/10 transition-colors">
-                            <div className="w-1.5 h-1.5 bg-pink-400 rounded-full flex-shrink-0"></div>
-                            <span className="text-white/85 text-sm">{type}</span>
+                          <div
+                            key={index}
+                            className="flex items-center gap-3 p-3 px-4 bg-gradient-to-r from-pink-500/25 to-pink-400/15 border border-pink-400/30 rounded-lg bg-slate-900/40 hover:bg-slate-800/50 transition-all duration-200 shadow-sm"
+                          >
+                            <div className="w-2 h-2 bg-pink-300 rounded-full flex-shrink-0 shadow-sm"></div>
+                            <span className="text-white/95 text-sm font-medium">
+                              {type}
+                            </span>
                           </div>
                         ))}
                       </div>
@@ -618,47 +667,65 @@ export default function Onboarding() {
 
                 {/* Publishing Schedule */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/15 via-yellow-400/8 to-orange-500/15 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-yellow-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-orange-400/50">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 text-white">
-                        <Calendar className="w-4 h-4" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 via-yellow-400/12 to-orange-500/20 rounded-xl blur-lg"></div>
+                  <div className="relative bg-white/15 border border-yellow-300/40 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 hover:border-orange-400/60 backdrop-blur-md">
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className="p-3 rounded-xl bg-gradient-to-br from-yellow-400 to-orange-500 text-white shadow-lg">
+                        <Calendar className="w-5 h-5" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Publishing Schedule</h4>
-                      <Rocket className="w-4 h-4 text-yellow-400" />
+                      <h4 className="text-xl font-bold text-white">
+                        Publishing Schedule
+                      </h4>
+                      <Rocket className="w-4 h-4 text-yellow-300" />
                     </div>
-                    <div className="rounded-lg p-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div className="bg-gradient-to-r from-yellow-300/10 to-orange-200/5 border border-orange-400/20 border border-orange-400/20 rounded-lg p-3 hover:bg-white/10 transition-colors">
-                          <div className="flex items-center gap-2 mb-2">
-                            <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                            <span className="font-semibold text-orange-200">Monday</span>
+                    <div className="rounded-xl p-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-gradient-to-r from-yellow-400/25 to-orange-300/15 border border-orange-400/30 rounded-xl p-4 hover:bg-slate-800/40 transition-all duration-200 shadow-lg backdrop-blur-sm">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-3 h-3 bg-red-400 rounded-full shadow-sm"></div>
+                            <span className="font-bold text-white text-base">
+                              Monday
+                            </span>
                           </div>
-                          <p className="text-white/80 text-sm leading-relaxed">{marketingReport.weeklyCalendar.monday}</p>
+                          <p className="text-white/95 text-sm leading-relaxed font-medium">
+                            {marketingReport.weeklyCalendar.monday}
+                          </p>
                         </div>
-                        
-                        <div className="bg-gradient-to-r from-yellow-300/10 to-orange-200/5 border border-orange-400/20 border border-orange-400/20 rounded-lg p-3 hover:bg-white/10 transition-colors">
-                          <div className="flex items-center gap-2 mb-2">
-                            <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                            <span className="font-semibold text-orange-200">Wednesday</span>
+
+                        <div className="bg-gradient-to-r from-yellow-400/25 to-orange-300/15 border border-orange-400/30 rounded-xl p-4 hover:bg-slate-800/40 transition-all duration-200 shadow-lg backdrop-blur-sm">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-3 h-3 bg-yellow-400 rounded-full shadow-sm"></div>
+                            <span className="font-bold text-white text-base">
+                              Wednesday
+                            </span>
                           </div>
-                          <p className="text-white/80 text-sm leading-relaxed">{marketingReport.weeklyCalendar.wednesday}</p>
+                          <p className="text-white/95 text-sm leading-relaxed font-medium">
+                            {marketingReport.weeklyCalendar.wednesday}
+                          </p>
                         </div>
-                        
-                        <div className="bg-gradient-to-r from-yellow-300/10 to-orange-200/5 border border-orange-400/20 border border-orange-400/20 rounded-lg p-3 hover:bg-white/10 transition-colors">
-                          <div className="flex items-center gap-2 mb-2">
-                            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                            <span className="font-semibold text-orange-200">Friday</span>
+
+                        <div className="bg-gradient-to-r from-yellow-400/25 to-orange-300/15 border border-orange-400/30 rounded-xl p-4 hover:bg-slate-800/40 transition-all duration-200 shadow-lg backdrop-blur-sm">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-3 h-3 bg-green-400 rounded-full shadow-sm"></div>
+                            <span className="font-bold text-white text-base">
+                              Friday
+                            </span>
                           </div>
-                          <p className="text-white/80 text-sm leading-relaxed">{marketingReport.weeklyCalendar.friday}</p>
+                          <p className="text-white/95 text-sm leading-relaxed font-medium">
+                            {marketingReport.weeklyCalendar.friday}
+                          </p>
                         </div>
-                        
-                        <div className="bg-gradient-to-r from-yellow-300/10 to-orange-200/5 border border-orange-400/20 border border-orange-400/20 rounded-lg p-3 hover:bg-white/10 transition-colors">
-                          <div className="flex items-center gap-2 mb-2">
-                            <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-                            <span className="font-semibold text-orange-200">Sunday</span>
+
+                        <div className="bg-gradient-to-r from-yellow-400/25 to-orange-300/15 border border-orange-400/30 rounded-xl p-4 hover:bg-slate-800/40 transition-all duration-200 shadow-lg backdrop-blur-sm">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-3 h-3 bg-orange-400 rounded-full shadow-sm"></div>
+                            <span className="font-bold text-white text-base">
+                              Sunday
+                            </span>
                           </div>
-                          <p className="text-white/80 text-sm leading-relaxed">{marketingReport.weeklyCalendar.sunday}</p>
+                          <p className="text-white/95 text-sm leading-relaxed font-medium">
+                            {marketingReport.weeklyCalendar.sunday}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -667,22 +734,31 @@ export default function Onboarding() {
 
                 {/* Hashtag Strategy */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/15 via-indigo-400/8 to-purple-500/15 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-indigo-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-indigo-400/50">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 rounded-lg bg-gradient-to-br from-indigo-400 to-purple-600 text-white">
-                        <Hash className="w-4 h-4" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-indigo-400/12 to-purple-500/20 rounded-xl blur-lg"></div>
+                  <div className="relative bg-white/15 border border-indigo-300/40 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 hover:border-indigo-400/60 backdrop-blur-md">
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className="p-3 rounded-xl bg-gradient-to-br from-indigo-400 to-purple-600 text-white shadow-lg">
+                        <Hash className="w-5 h-5" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Hashtag Strategy</h4>
-                      <span className="text-sm px-2 py-1 bg-indigo-500/20 text-indigo-300 rounded-full border border-indigo-400/30">{marketingReport.hashtagStyle.tone}</span>
+                      <h4 className="text-xl font-bold text-white">
+                        Hashtag Strategy
+                      </h4>
+                      <span className="text-sm px-3 py-1.5 bg-indigo-500/30 text-indigo-100 rounded-full border border-indigo-400/40 font-medium backdrop-blur-sm">
+                        {marketingReport.hashtagStyle.tone}
+                      </span>
                     </div>
-                    <div className="bg-gradient-to-r from-indigo-500/10 to-purple-400/5 border border-indigo-400/20 rounded-lg p-4">
-                      <div className="flex flex-wrap gap-2">
-                        {marketingReport.hashtagStyle.exampleHashtags.map((tag, index) => (
-                          <span key={index} className="px-3 py-1.5 rounded-full bg-gradient-to-r from-indigo-500/20 to-purple-500/20 text-indigo-200 text-sm font-medium border border-indigo-400/30 hover:border-indigo-300/50 transition-colors">
-                            {tag}
-                          </span>
-                        ))}
+                    <div className="bg-gradient-to-r from-indigo-500/25 to-purple-400/15 border border-indigo-400/30 rounded-xl p-5 shadow-lg backdrop-blur-sm">
+                      <div className="flex flex-wrap gap-3">
+                        {marketingReport.hashtagStyle.exampleHashtags.map(
+                          (tag, index) => (
+                            <span
+                              key={index}
+                              className="px-4 py-2 rounded-full bg-gradient-to-r from-indigo-500/30 to-purple-500/25 text-indigo-100 text-sm font-semibold border border-indigo-400/40 hover:border-indigo-300/60 transition-all duration-200 shadow-sm backdrop-blur-sm hover:scale-105"
+                            >
+                              {tag}
+                            </span>
+                          ),
+                        )}
                       </div>
                     </div>
                   </div>
@@ -690,23 +766,32 @@ export default function Onboarding() {
 
                 {/* Engagement Tactics */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/15 via-emerald-400/8 to-teal-500/15 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-emerald-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-emerald-400/50">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-600 text-white">
-                        <TrendingUp className="w-4 h-4" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-emerald-400/12 to-teal-500/20 rounded-xl blur-lg"></div>
+                  <div className="relative bg-white/15 border border-emerald-300/40 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 hover:border-emerald-400/60 backdrop-blur-md">
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className="p-3 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 text-white shadow-lg">
+                        <TrendingUp className="w-5 h-5" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Engagement Tactics</h4>
-                      <Heart className="w-4 h-4 text-emerald-400 animate-pulse" />
+                      <h4 className="text-xl font-bold text-white">
+                        Engagement Tactics
+                      </h4>
+                      <Heart className="w-4 h-4 text-emerald-300 animate-pulse" />
                     </div>
-                    <div className="rounded-lg p-4">
-                      <div className="space-y-2">
-                        {marketingReport.engagementStrategy.map((strategy, index) => (
-                          <div key={index} className="flex items-start gap-3 p-2 rounded-lg bg-gradient-to-r from-emerald-500/10 to-teal-400/5 border border-emerald-400/20 hover:bg-white/10 transition-colors">
-                            <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="text-white/85 text-sm leading-relaxed">{strategy}</span>
-                          </div>
-                        ))}
+                    <div className="rounded-xl p-4">
+                      <div className="space-y-3">
+                        {marketingReport.engagementStrategy.map(
+                          (strategy, index) => (
+                            <div
+                              key={index}
+                              className="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-emerald-500/25 to-teal-400/15 border border-emerald-400/30 hover:bg-slate-800/40 transition-all duration-200 shadow-sm backdrop-blur-sm"
+                            >
+                              <div className="w-2 h-2 bg-emerald-300 rounded-full mt-2 flex-shrink-0 shadow-sm"></div>
+                              <span className="text-white/95 text-sm leading-relaxed font-medium">
+                                {strategy}
+                              </span>
+                            </div>
+                          ),
+                        )}
                       </div>
                     </div>
                   </div>
@@ -714,21 +799,28 @@ export default function Onboarding() {
 
                 {/* Success Metrics */}
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-violet-500/15 via-violet-400/8 to-fuchsia-500/15 rounded-xl blur-lg"></div>
-                  <div className="relative bg-white/10 border border-violet-300/30 rounded-xl p-5 hover:bg-white/[0.15] transition-all duration-300 hover:border-violet-400/50">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 rounded-lg bg-gradient-to-br from-violet-400 to-fuchsia-600 text-white">
-                        <BarChart3 className="w-4 h-4" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-violet-500/20 via-violet-400/12 to-fuchsia-500/20 rounded-xl blur-lg"></div>
+                  <div className="relative bg-white/15 border border-violet-300/40 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 hover:border-violet-400/60 backdrop-blur-md">
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className="p-3 rounded-xl bg-gradient-to-br from-violet-400 to-fuchsia-600 text-white shadow-lg">
+                        <BarChart3 className="w-5 h-5" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white">Success Metrics</h4>
-                      <Target className="w-4 h-4 text-violet-400" />
+                      <h4 className="text-xl font-bold text-white">
+                        Success Metrics
+                      </h4>
+                      <Target className="w-4 h-4 text-violet-300" />
                     </div>
-                    <div className="rounded-lg p-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div className="rounded-xl p-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {marketingReport.metricsToTrack.map((metric, index) => (
-                          <div key={index} className="flex items-center gap-3 p-2 rounded-lg bg-gradient-to-r from-violet-500/10 to-fuchsia-400/5 border border-violet-400/20 hover:bg-white/10 transition-colors">
-                            <div className="w-1.5 h-1.5 bg-violet-400 rounded-full flex-shrink-0"></div>
-                            <span className="text-white/85 text-sm">{metric}</span>
+                          <div
+                            key={index}
+                            className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-r from-violet-500/25 to-fuchsia-400/15 border border-violet-400/30 hover:bg-slate-800/40 transition-all duration-200 shadow-sm backdrop-blur-sm"
+                          >
+                            <div className="w-2 h-2 bg-violet-300 rounded-full flex-shrink-0 shadow-sm"></div>
+                            <span className="text-white/95 text-sm font-medium">
+                              {metric}
+                            </span>
                           </div>
                         ))}
                       </div>
@@ -744,7 +836,9 @@ export default function Onboarding() {
                       <div className="p-3 rounded-lg bg-gradient-to-br from-orange-400 to-red-600 text-white">
                         <Zap className="w-5 h-5" />
                       </div>
-                      <h3 className="text-xl font-semibold text-white">Key Takeaway</h3>
+                      <h3 className="text-xl font-semibold text-white">
+                        Key Takeaway
+                      </h3>
                       <Rocket className="w-5 h-5 text-orange-400 animate-bounce" />
                     </div>
                     <div className="bg-gradient-to-r from-orange-500/15 to-red-400/10 border border-orange-400/30 rounded-lg p-5">
@@ -757,7 +851,7 @@ export default function Onboarding() {
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 justify-center pt-6">
-                  <button 
+                  <button
                     onClick={() => {
                       setMarketingReport(null);
                       setScrapedData(null);
@@ -771,13 +865,13 @@ export default function Onboarding() {
                   >
                     Analyze Another Website
                   </button>
-                  <a 
-                    href={scrapedData.url} 
-                    target="_blank" 
+                  <a
+                    href={scrapedData.url}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="px-6 py-3 rounded-lg text-white font-medium transition-all duration-200 hover:-translate-y-[1px] hover:shadow-[0_8px_25px_rgba(255,107,53,0.3)] active:translate-y-0"
                     style={{
-                      background: "linear-gradient(45deg, #ff6b35, #f7931e)"
+                      background: "linear-gradient(45deg, #ff6b35, #f7931e)",
                     }}
                   >
                     Visit Website →

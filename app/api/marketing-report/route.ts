@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenAI } from '@google/genai';
+import { NextRequest, NextResponse } from "next/server";
+import { GoogleGenAI } from "@google/genai";
 
 interface ScrapedData {
   url: string;
@@ -11,58 +11,72 @@ interface ScrapedData {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    console.log('Received request body:', body);
+    console.log("Received request body:", body);
 
     // Handle both data structures for compatibility
-    const data = body.data || (body.scrapedData && body.scrapedData.data) || body.scrapedData;
+    const data =
+      body.data ||
+      (body.scrapedData && body.scrapedData.data) ||
+      body.scrapedData;
 
     if (!data || !data.title || !data.content) {
-      console.log('Validation failed - data:', data);
-      console.log('Available keys in body:', Object.keys(body));
+      console.log("Validation failed - data:", data);
+      console.log("Available keys in body:", Object.keys(body));
       if (body.scrapedData) {
-        console.log('scrapedData keys:', Object.keys(body.scrapedData));
+        console.log("scrapedData keys:", Object.keys(body.scrapedData));
       }
-      return NextResponse.json({ error: 'Invalid data provided' }, { status: 400 });
+      return NextResponse.json(
+        { error: "Invalid data provided" },
+        { status: 400 },
+      );
     }
 
     // Test mode - return dummy response without hitting Gemini API
-    const testMode = process.env.TEST_MODE === 'true';
+    const testMode = true; // process.env.TEST_MODE === 'true';
 
     if (testMode) {
-      console.log('TEST MODE: Returning dummy marketing report');
+      console.log("TEST MODE: Returning dummy marketing report");
       const dummyReport = {
         productName: data.title || "Sample Product",
         category: "SaaS - AI-powered Solution",
         userPersona: {
-          demographics: "Small business owners, marketers, content creators, and entrepreneurs. Age range: 25-45, primarily tech-savvy professionals.",
-          whereTheyHangOut: "LinkedIn, Twitter, Instagram, YouTube, and industry-specific communities and forums.",
-          mindset: "Growth-oriented, efficiency-focused, and always looking for innovative solutions to scale their business and improve productivity."
+          demographics:
+            "Small business owners, marketers, content creators, and entrepreneurs. Age range: 25-45, primarily tech-savvy professionals.",
+          whereTheyHangOut:
+            "LinkedIn, Twitter, Instagram, YouTube, and industry-specific communities and forums.",
+          mindset:
+            "Growth-oriented, efficiency-focused, and always looking for innovative solutions to scale their business and improve productivity.",
         },
         painPoints: [
           "Struggling with time-consuming manual processes",
           "Difficulty creating engaging content consistently",
           "Limited budget for marketing and advertising",
           "Keeping up with rapidly changing digital trends",
-          "Measuring ROI and tracking performance effectively"
+          "Measuring ROI and tracking performance effectively",
         ],
-        valueProposition: "Streamline your workflow and boost productivity with our AI-powered solution that saves time and drives results.",
+        valueProposition:
+          "Streamline your workflow and boost productivity with our AI-powered solution that saves time and drives results.",
         contentPillars: [
           {
             pillar: "Education",
-            description: "Share tutorials, best practices, and industry insights to help users maximize their potential and stay informed about latest trends."
+            description:
+              "Share tutorials, best practices, and industry insights to help users maximize their potential and stay informed about latest trends.",
           },
           {
             pillar: "Social Proof",
-            description: "Showcase customer success stories, testimonials, and case studies that demonstrate real-world results and build trust."
+            description:
+              "Showcase customer success stories, testimonials, and case studies that demonstrate real-world results and build trust.",
           },
           {
             pillar: "Behind the Scenes",
-            description: "Give followers a peek into company culture, product development, and the team behind the solution to humanize the brand."
+            description:
+              "Give followers a peek into company culture, product development, and the team behind the solution to humanize the brand.",
           },
           {
             pillar: "Relatable/Motivational",
-            description: "Share inspirational content, entrepreneurial journeys, and relatable challenges that resonate with the target audience."
-          }
+            description:
+              "Share inspirational content, entrepreneurial journeys, and relatable challenges that resonate with the target audience.",
+          },
         ],
         postTypes: [
           "LinkedIn carousel posts with actionable tips",
@@ -71,33 +85,47 @@ export async function POST(request: NextRequest) {
           "YouTube explainer videos and demos",
           "Blog posts with in-depth case studies",
           "Podcast appearances and interviews",
-          "Webinar presentations and live Q&As"
+          "Webinar presentations and live Q&As",
         ],
         weeklyCalendar: {
-          monday: "Educational content: Share a helpful tip or tutorial to start the week strong",
-          wednesday: "Social proof: Feature a customer success story or testimonial to build credibility",
-          friday: "Behind the scenes: Show company culture or product development updates",
-          sunday: "Motivational content: Share inspirational quotes or entrepreneurial insights"
+          monday:
+            "Educational content: Share a helpful tip or tutorial to start the week strong",
+          wednesday:
+            "Social proof: Feature a customer success story or testimonial to build credibility",
+          friday:
+            "Behind the scenes: Show company culture or product development updates",
+          sunday:
+            "Motivational content: Share inspirational quotes or entrepreneurial insights",
         },
         hashtagStyle: {
           tone: "Professional yet approachable, mixing industry-specific and trending hashtags to maximize reach and engagement",
-          exampleHashtags: ["#productivity", "#AI", "#business", "#marketing", "#entrepreneur", "#innovation", "#growth", "#efficiency"]
+          exampleHashtags: [
+            "#productivity",
+            "#AI",
+            "#business",
+            "#marketing",
+            "#entrepreneur",
+            "#innovation",
+            "#growth",
+            "#efficiency",
+          ],
         },
         engagementStrategy: [
           "Respond to comments and messages within 2-4 hours during business hours",
           "Create interactive polls and questions to encourage audience participation",
           "Collaborate with industry influencers and thought leaders for cross-promotion",
           "Host regular live sessions and AMAs to build community",
-          "Share user-generated content and celebrate customer wins"
+          "Share user-generated content and celebrate customer wins",
         ],
         metricsToTrack: [
           "Engagement rate (likes, comments, shares, saves)",
           "Website traffic and conversion rates from social media",
           "Lead generation and sign-up rates",
           "Brand mention sentiment and reach",
-          "Customer acquisition cost from social channels"
+          "Customer acquisition cost from social channels",
         ],
-        keyTakeaway: "Focus on providing consistent value through educational content while building authentic relationships with your audience to drive sustainable growth."
+        keyTakeaway:
+          "Focus on providing consistent value through educational content while building authentic relationships with your audience to drive sustainable growth.",
       };
 
       return NextResponse.json({
@@ -105,15 +133,18 @@ export async function POST(request: NextRequest) {
         report: dummyReport,
         sourceData: {
           url: data.url,
-          title: data.title
+          title: data.title,
         },
-        testMode: true
+        testMode: true,
       });
     }
 
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
-      return NextResponse.json({ error: 'Gemini API key not configured' }, { status: 500 });
+      return NextResponse.json(
+        { error: "Gemini API key not configured" },
+        { status: 500 },
+      );
     }
 
     const ai = new GoogleGenAI({
@@ -121,10 +152,10 @@ export async function POST(request: NextRequest) {
     });
 
     const config = {
-      responseMimeType: 'application/json',
+      responseMimeType: "application/json",
     };
 
-    const model = 'gemini-2.0-flash-lite';
+    const model = "gemini-2.0-flash-lite";
 
     const prompt = `
 Analyze this website/product and create a comprehensive social media marketing strategy report in JSON format.
@@ -198,7 +229,7 @@ Make this highly specific and actionable for this particular business. Focus on 
 
     const contents = [
       {
-        role: 'user',
+        role: "user",
         parts: [
           {
             text: prompt,
@@ -207,18 +238,18 @@ Make this highly specific and actionable for this particular business. Focus on 
       },
     ];
 
-    console.log('Generating marketing report with Gemini...');
+    console.log("Generating marketing report with Gemini...");
     const response = await ai.models.generateContent({
       model,
       config,
       contents,
     });
 
-    const responseText = response.text || '';
-    console.log('Gemini response received');
-    console.log('=== GEMINI RESPONSE ===');
+    const responseText = response.text || "";
+    console.log("Gemini response received");
+    console.log("=== GEMINI RESPONSE ===");
     console.log(responseText);
-    console.log('=== END GEMINI RESPONSE ===');
+    console.log("=== END GEMINI RESPONSE ===");
 
     // Parse the JSON response
     let marketingReport;
@@ -226,12 +257,15 @@ Make this highly specific and actionable for this particular business. Focus on 
       marketingReport = JSON.parse(responseText);
       console.log(marketingReport);
     } catch (parseError) {
-      console.error('Failed to parse Gemini response as JSON:', parseError);
-      console.log('Raw response:', responseText);
-      return NextResponse.json({
-        error: 'Failed to generate structured marketing report',
-        details: 'AI response was not in valid JSON format'
-      }, { status: 500 });
+      console.error("Failed to parse Gemini response as JSON:", parseError);
+      console.log("Raw response:", responseText);
+      return NextResponse.json(
+        {
+          error: "Failed to generate structured marketing report",
+          details: "AI response was not in valid JSON format",
+        },
+        { status: 500 },
+      );
     }
 
     return NextResponse.json({
@@ -239,15 +273,17 @@ Make this highly specific and actionable for this particular business. Focus on 
       report: marketingReport,
       sourceData: {
         url: data.url,
-        title: data.title
-      }
+        title: data.title,
+      },
     });
-
   } catch (error) {
-    console.error('Marketing report generation error:', error);
-    return NextResponse.json({
-      error: 'Failed to generate marketing report',
-      details: error instanceof Error ? error.message : 'Unknown error'
-    }, { status: 500 });
+    console.error("Marketing report generation error:", error);
+    return NextResponse.json(
+      {
+        error: "Failed to generate marketing report",
+        details: error instanceof Error ? error.message : "Unknown error",
+      },
+      { status: 500 },
+    );
   }
 }

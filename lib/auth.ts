@@ -19,7 +19,7 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.LINKEDIN_CLIENT_SECRET!,
       authorization: {
         params: {
-          scope: "openid profile email w_member_social"
+          scope: "profile email w_member_social"
         }
       }
     })
@@ -47,5 +47,6 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/twitter',
     error: '/twitter'
-  }
+  },
+  debug: process.env.NODE_ENV === 'development'
 }

@@ -26,12 +26,13 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // Initialize Reddit API client
+    // Initialize Reddit API client for read-only access
     const reddit = new snoowrap({
       userAgent: 'SocialMediaApp/1.0.0 by YourUsername',
       clientId: process.env.REDDIT_CLIENT_ID!,
       clientSecret: process.env.REDDIT_CLIENT_SECRET!,
-      refreshToken: process.env.REDDIT_REFRESH_TOKEN || '',
+      // For search, we can use client credentials (no user token needed for public content)
+      refreshToken: '',
     })
 
     let searchResults

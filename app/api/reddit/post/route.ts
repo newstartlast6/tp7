@@ -14,8 +14,15 @@ export async function POST(request: NextRequest) {
       userId: session?.userId || 'none'
     })
 
-    // For Reddit, we'll use a different authentication approach since Reddit uses client credentials
-    // We'll check if the user has a Reddit session or use app-only authentication
+    // Check if user is authenticated with Reddit
+    if (!session?.accessToken && !session?.refreshToken) {
+      console.log('[Reddit Post] No Reddit authentication found')
+      return NextResponse.json(
+        { error: "Not authenticated with Reddit" },
+        { status: 401 }
+      )
+    }
+
     const body = await request.json()
     const { content, subreddit, title, type, url, scheduledTime } = body
     
@@ -99,12 +106,12 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Initialize Reddit API client
+    // Initialize Reddit API client with user's tokens
     const reddit = new snoowrap({
       userAgent: 'SocialMediaApp/1.0.0 by YourUsername',
       clientId: process.env.REDDIT_CLIENT_ID!,
       clientSecret: process.env.REDDIT_CLIENT_SECRET!,
-      refreshToken: process.env.REDDIT_REFRESH_TOKEN || '',
+      refreshToken: session.refreshToken || session.accessToken || '',
     })
 
     let postResult: any

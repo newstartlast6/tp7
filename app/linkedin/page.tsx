@@ -43,6 +43,8 @@ export default function LinkedInPage() {
       const data = await response.json()
       
       if (data.success) {
+        console.log('LinkedIn profile data received:', data.profile)
+        console.log('Profile picture URL:', data.profile.profilePicture)
         setLinkedinProfile(data.profile)
       }
     } catch (error) {
@@ -319,7 +321,22 @@ export default function LinkedInPage() {
 
                   <div className="flex items-center space-x-3">
                     <Avatar className="h-12 w-12">
-                      <AvatarImage src={linkedinProfile.profilePicture} alt={linkedinProfile.name} />
+                      {linkedinProfile.profilePicture ? (
+                        <img 
+                          src={linkedinProfile.profilePicture} 
+                          alt={linkedinProfile.name}
+                          className="w-full h-full object-cover rounded-full"
+                          onError={(e) => {
+                            console.log('Profile image failed to load:', linkedinProfile.profilePicture)
+                            console.log('Error:', e)
+                            // Hide the image and show fallback
+                            e.currentTarget.style.display = 'none'
+                          }}
+                          onLoad={() => {
+                            console.log('Profile image loaded successfully:', linkedinProfile.profilePicture)
+                          }}
+                        />
+                      ) : null}
                       <AvatarFallback className="bg-blue-100 text-blue-600">
                         {linkedinProfile.firstName?.charAt(0) || linkedinProfile.name?.charAt(0)}
                       </AvatarFallback>

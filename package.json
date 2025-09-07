@@ -48,6 +48,7 @@
     "embla-carousel-react": "^8.6.0",
     "input-otp": "^1.4.2",
     "jsdom": "^26.1.0",
+    "linkedin-api-client": "^0.3.0",
     "lucide-react": "^0.542.0",
     "mime": "^4.0.7",
     "next": "15.5.2",

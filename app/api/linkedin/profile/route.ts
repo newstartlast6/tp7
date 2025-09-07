@@ -23,8 +23,9 @@ export async function GET(request: NextRequest) {
     }
 
     // Get user profile information using lite profile scope
+    // Use the correct endpoint that works with r_liteprofile scope
     console.log('[LinkedIn Profile] Making API request to LinkedIn...')
-    const response = await fetch('https://api.linkedin.com/v2/people/~', {
+    const response = await fetch('https://api.linkedin.com/v2/people/~:(id,localizedFirstName,localizedLastName)', {
       headers: {
         'Authorization': `Bearer ${session.accessToken}`,
         'X-Restli-Protocol-Version': '2.0.0'
@@ -59,7 +60,7 @@ export async function GET(request: NextRequest) {
       firstName: profile.localizedFirstName || "",
       lastName: profile.localizedLastName || "",
       name: `${profile.localizedFirstName || ""} ${profile.localizedLastName || ""}`.trim(),
-      profilePicture: profile.profilePicture?.["displayImage~"]?.elements?.[0]?.identifiers?.[0]?.identifier || null
+      profilePicture: null // Profile pictures require additional permissions
     }
 
     console.log('[LinkedIn Profile] Formatted profile:', JSON.stringify(formattedProfile, null, 2))

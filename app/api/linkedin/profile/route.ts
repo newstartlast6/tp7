@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
     const response = await client.get({
       resourcePath: '/me',
       queryParams: {
-        projection: '(id,localizedFirstName,localizedLastName)'
+        projection: '(id,localizedFirstName,localizedLastName,profilePicture(displayImage~:playableStreams))'
       },
       accessToken: session.accessToken
     })
@@ -55,12 +55,29 @@ export async function GET(request: NextRequest) {
     console.log('[LinkedIn Profile] Raw profile data:', JSON.stringify(profile, null, 2))
 
     // Format the profile data
+    let profilePictureUrl = null
+    
+    // Extract profile picture if available
+    if (profile.profilePicture && profile.profilePicture['displayImage~']) {
+      const elements = profile.profilePicture['displayImage~'].elements
+      if (elements && elements.length > 0) {
+        // Look for the 400x400 image for good quality, or fall back to largest available
+        let selectedImage = elements.find((element: any) => 
+          element.artifact && element.artifact.includes('shrink_400_400')
+        ) || elements[elements.length - 1] // fallback to largest
+        
+        if (selectedImage && selectedImage.identifiers && selectedImage.identifiers.length > 0) {
+          profilePictureUrl = selectedImage.identifiers[0].identifier
+        }
+      }
+    }
+    
     const formattedProfile = {
       id: profile.id,
       firstName: profile.localizedFirstName || "",
       lastName: profile.localizedLastName || "",
       name: `${profile.localizedFirstName || ""} ${profile.localizedLastName || ""}`.trim(),
-      profilePicture: null // Profile pictures require additional permissions
+      profilePicture: profilePictureUrl
     }
 
     console.log('[LinkedIn Profile] Formatted profile:', JSON.stringify(formattedProfile, null, 2))

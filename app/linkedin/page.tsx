@@ -45,6 +45,15 @@ export default function LinkedInPage() {
       if (data.success) {
         console.log('LinkedIn profile data received:', data.profile)
         console.log('Profile picture URL:', data.profile.profilePicture)
+        
+        // Test if the image URL is accessible
+        if (data.profile.profilePicture) {
+          const testImg = new Image()
+          testImg.onload = () => console.log('✅ Profile image URL is accessible')
+          testImg.onerror = (e) => console.log('❌ Profile image URL failed to load:', e)
+          testImg.src = data.profile.profilePicture
+        }
+        
         setLinkedinProfile(data.profile)
       }
     } catch (error) {

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth"
+import { RestliClient } from "linkedin-api-client"
 
 export async function POST(request: NextRequest) {
   try {
@@ -66,38 +67,38 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Get user ID first using lite profile
+    // Get user ID first using the official LinkedIn client
     console.log('[LinkedIn Post] Fetching user profile for person ID...')
-    const profileResponse = await fetch('https://api.linkedin.com/v2/people/~:(id)', {
-      headers: {
-        'Authorization': `Bearer ${session.accessToken}`,
-        'X-Restli-Protocol-Version': '2.0.0'
-      }
+    const client = new RestliClient()
+    
+    const profileResponse = await client.get({
+      resourcePath: '/me',
+      queryParams: {
+        projection: '(id)'
+      },
+      accessToken: session.accessToken
     })
 
     console.log('[LinkedIn Post] Profile response:', {
       status: profileResponse.status,
-      statusText: profileResponse.statusText
+      data: profileResponse.data
     })
 
-    if (!profileResponse.ok) {
-      const profileError = await profileResponse.text()
-      console.error('[LinkedIn Post] Profile fetch error:', profileError)
+    if (!profileResponse.data || !profileResponse.data.id) {
+      console.error('[LinkedIn Post] Profile fetch error: No profile data')
       return NextResponse.json(
         { error: "Failed to get LinkedIn profile" },
         { status: 500 }
       )
     }
 
-    const profile = await profileResponse.json()
-    const personId = profile.id
+    const personId = profileResponse.data.id
     
     console.log('[LinkedIn Post] Profile data:', {
-      personId: personId,
-      profile: JSON.stringify(profile, null, 2)
+      personId: personId
     })
 
-    // Post to LinkedIn using the Posts API (newer approach)
+    // Post to LinkedIn using the official client and Posts API (newer approach)
     const postData = {
       author: `urn:li:person:${personId}`,
       lifecycleState: "PUBLISHED",
@@ -115,47 +116,28 @@ export async function POST(request: NextRequest) {
     }
 
     console.log('[LinkedIn Post] Post data:', JSON.stringify(postData, null, 2))
-    console.log('[LinkedIn Post] Making post request to LinkedIn...')
+    console.log('[LinkedIn Post] Making post request to LinkedIn using official client...')
 
-    const postResponse = await fetch('https://api.linkedin.com/v2/ugcPosts', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${session.accessToken}`,
-        'Content-Type': 'application/json',
-        'X-Restli-Protocol-Version': '2.0.0'
-      },
-      body: JSON.stringify(postData)
+    const postResponse = await client.create({
+      resourcePath: '/ugcPosts',
+      entity: postData,
+      accessToken: session.accessToken
     })
 
     console.log('[LinkedIn Post] Post response:', {
       status: postResponse.status,
-      statusText: postResponse.statusText,
-      headers: Object.fromEntries(postResponse.headers.entries())
+      data: postResponse.data
     })
 
-    if (!postResponse.ok) {
-      const error = await postResponse.text()
-      console.error("[LinkedIn Post] Post error:", {
-        status: postResponse.status,
-        statusText: postResponse.statusText,
-        error: error
-      })
-      
-      if (postResponse.status === 403) {
-        console.log('[LinkedIn Post] Permission denied - insufficient scopes')
-        return NextResponse.json(
-          { error: "Insufficient permissions to post on LinkedIn. Make sure 'Share on LinkedIn' product is enabled." },
-          { status: 403 }
-        )
-      }
-
+    if (!postResponse.data) {
+      console.error("[LinkedIn Post] Post error: No data returned")
       return NextResponse.json(
         { error: "Failed to post to LinkedIn. Please try again." },
         { status: 500 }
       )
     }
 
-    const result = await postResponse.json()
+    const result = postResponse.data
     console.log('[LinkedIn Post] Post result:', JSON.stringify(result, null, 2))
 
     return NextResponse.json({

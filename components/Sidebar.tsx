@@ -13,7 +13,8 @@ import {
   X,
   Rocket,
   Users,
-  TrendingUp
+  TrendingUp,
+  Linkedin
 } from "lucide-react";
 
 const navigationItems = [
@@ -34,6 +35,12 @@ const navigationItems = [
     href: "/twitter",
     icon: Twitter,
     description: "Automated tweets"
+  },
+  {
+    name: "LinkedIn Publisher",
+    href: "/linkedin",
+    icon: Linkedin,
+    description: "Professional network"
   },
   {
     name: "Analytics",

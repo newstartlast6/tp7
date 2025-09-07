@@ -29,8 +29,9 @@ export async function GET(request: NextRequest) {
     console.log('[LinkedIn Profile] Making API request to LinkedIn using official client...')
     
     // Use the official LinkedIn API client to get profile data
+    // Using the modern /me endpoint as per LinkedIn documentation
     const response = await client.get({
-      resourcePath: '/people/~',
+      resourcePath: '/me',
       queryParams: {
         projection: '(id,localizedFirstName,localizedLastName)'
       },

@@ -49,8 +49,8 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Get user ID first
-    const profileResponse = await fetch('https://api.linkedin.com/v2/people/~', {
+    // Get user ID first using lite profile
+    const profileResponse = await fetch('https://api.linkedin.com/v2/people/~:(id)', {
       headers: {
         'Authorization': `Bearer ${session.accessToken}`,
         'X-Restli-Protocol-Version': '2.0.0'

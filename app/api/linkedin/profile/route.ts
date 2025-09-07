@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // Get user profile information
+    // Get user profile information using lite profile scope
     const response = await fetch('https://api.linkedin.com/v2/people/~:(id,firstName,lastName,profilePicture(displayImage~:playableStreams))', {
       headers: {
         'Authorization': `Bearer ${session.accessToken}`,

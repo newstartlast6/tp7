@@ -45,15 +45,6 @@ export default function LinkedInPage() {
       if (data.success) {
         console.log('LinkedIn profile data received:', data.profile)
         console.log('Profile picture URL:', data.profile.profilePicture)
-        
-        // Test if the image URL is accessible
-        if (data.profile.profilePicture) {
-          const testImg = new Image()
-          testImg.onload = () => console.log('✅ Profile image URL is accessible')
-          testImg.onerror = (e) => console.log('❌ Profile image URL failed to load:', e)
-          testImg.src = data.profile.profilePicture
-        }
-        
         setLinkedinProfile(data.profile)
       }
     } catch (error) {
@@ -332,16 +323,17 @@ export default function LinkedInPage() {
                     <Avatar className="h-12 w-12">
                       {linkedinProfile.profilePicture ? (
                         <img 
-                          src={`/api/linkedin/profile-image?url=${encodeURIComponent(linkedinProfile.profilePicture)}`}
+                          src={linkedinProfile.profilePicture} 
                           alt={linkedinProfile.name}
                           className="w-full h-full object-cover rounded-full"
                           onError={(e) => {
-                            console.log('Profile image proxy failed, using fallback')
+                            console.log('Profile image failed to load:', linkedinProfile.profilePicture)
+                            console.log('Error:', e)
                             // Hide the image and show fallback
                             e.currentTarget.style.display = 'none'
                           }}
                           onLoad={() => {
-                            console.log('Profile image loaded successfully via proxy')
+                            console.log('Profile image loaded successfully:', linkedinProfile.profilePicture)
                           }}
                         />
                       ) : null}

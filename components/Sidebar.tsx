@@ -14,7 +14,8 @@ import {
   Rocket,
   Users,
   TrendingUp,
-  Linkedin
+  Linkedin,
+  MessageSquare
 } from "lucide-react";
 
 const navigationItems = [
@@ -41,6 +42,12 @@ const navigationItems = [
     href: "/linkedin",
     icon: Linkedin,
     description: "Professional network"
+  },
+  {
+    name: "Reddit Publisher",
+    href: "/reddit",
+    icon: MessageSquare,
+    description: "Community engagement"
   },
   {
     name: "Analytics",

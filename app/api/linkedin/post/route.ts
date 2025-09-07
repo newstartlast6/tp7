@@ -4,9 +4,18 @@ import { authOptions } from "@/lib/auth"
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('[LinkedIn Post] Starting post creation...')
     const session = await getServerSession(authOptions) as any
+    
+    console.log('[LinkedIn Post] Session check:', {
+      hasSession: !!session,
+      hasAccessToken: !!session?.accessToken,
+      accessTokenLength: session?.accessToken?.length || 0,
+      userId: session?.userId || 'none'
+    })
 
     if (!session?.accessToken) {
+      console.log('[LinkedIn Post] No access token found')
       return NextResponse.json(
         { error: "Not authenticated with LinkedIn" },
         { status: 401 }
@@ -15,8 +24,15 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json()
     const { content, scheduledTime } = body
+    
+    console.log('[LinkedIn Post] Request body:', {
+      hasContent: !!content,
+      contentLength: content?.length || 0,
+      hasScheduledTime: !!scheduledTime
+    })
 
     if (!content || content.trim().length === 0) {
+      console.log('[LinkedIn Post] No content provided')
       return NextResponse.json(
         { error: "Post content is required" },
         { status: 400 }
@@ -24,6 +40,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (content.length > 3000) {
+      console.log('[LinkedIn Post] Content too long:', content.length)
       return NextResponse.json(
         { error: "Post content exceeds 3000 characters" },
         { status: 400 }
@@ -50,6 +67,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Get user ID first using lite profile
+    console.log('[LinkedIn Post] Fetching user profile for person ID...')
     const profileResponse = await fetch('https://api.linkedin.com/v2/people/~', {
       headers: {
         'Authorization': `Bearer ${session.accessToken}`,
@@ -57,7 +75,14 @@ export async function POST(request: NextRequest) {
       }
     })
 
+    console.log('[LinkedIn Post] Profile response:', {
+      status: profileResponse.status,
+      statusText: profileResponse.statusText
+    })
+
     if (!profileResponse.ok) {
+      const profileError = await profileResponse.text()
+      console.error('[LinkedIn Post] Profile fetch error:', profileError)
       return NextResponse.json(
         { error: "Failed to get LinkedIn profile" },
         { status: 500 }
@@ -66,6 +91,11 @@ export async function POST(request: NextRequest) {
 
     const profile = await profileResponse.json()
     const personId = profile.id
+    
+    console.log('[LinkedIn Post] Profile data:', {
+      personId: personId,
+      profile: JSON.stringify(profile, null, 2)
+    })
 
     // Post to LinkedIn using the Posts API (newer approach)
     const postData = {
@@ -84,6 +114,9 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    console.log('[LinkedIn Post] Post data:', JSON.stringify(postData, null, 2))
+    console.log('[LinkedIn Post] Making post request to LinkedIn...')
+
     const postResponse = await fetch('https://api.linkedin.com/v2/ugcPosts', {
       method: 'POST',
       headers: {
@@ -94,11 +127,22 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify(postData)
     })
 
+    console.log('[LinkedIn Post] Post response:', {
+      status: postResponse.status,
+      statusText: postResponse.statusText,
+      headers: Object.fromEntries(postResponse.headers.entries())
+    })
+
     if (!postResponse.ok) {
       const error = await postResponse.text()
-      console.error("LinkedIn post error:", error)
+      console.error("[LinkedIn Post] Post error:", {
+        status: postResponse.status,
+        statusText: postResponse.statusText,
+        error: error
+      })
       
       if (postResponse.status === 403) {
+        console.log('[LinkedIn Post] Permission denied - insufficient scopes')
         return NextResponse.json(
           { error: "Insufficient permissions to post on LinkedIn. Make sure 'Share on LinkedIn' product is enabled." },
           { status: 403 }
@@ -112,6 +156,7 @@ export async function POST(request: NextRequest) {
     }
 
     const result = await postResponse.json()
+    console.log('[LinkedIn Post] Post result:', JSON.stringify(result, null, 2))
 
     return NextResponse.json({
       success: true,
@@ -123,7 +168,11 @@ export async function POST(request: NextRequest) {
     })
 
   } catch (error: any) {
-    console.error("Error posting to LinkedIn:", error)
+    console.error("[LinkedIn Post] Unexpected error:", {
+      message: error.message,
+      stack: error.stack,
+      name: error.name
+    })
     
     return NextResponse.json(
       { error: "Failed to post to LinkedIn. Please try again." },

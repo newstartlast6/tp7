@@ -1,0 +1,111 @@
+-auth][debug][CREATE_STATE] { value: 'e41y0PqzsYLfDCPQLhRezqn4DBHY6HxN8UfZAVOBhDY', maxAge: 900 }
+[next-auth][debug][GET_AUTHORIZATION_URL] {
+  url: 'https://www.linkedin.com/oauth/v2/authorization?client_id=86zov7ecuf0puq&scope=r_liteprofile%20r_emailaddress%20w_member_social&response_type=code&redirect_uri=https%3A%2F%2F78c3abf9-3058-4da1-94bc-d55e06b1ebb6-00-o214lc49x14a.janeway.replit.dev%2Fapi%2Fauth%2Fcallback%2Flinkedin&state=e41y0PqzsYLfDCPQLhRezqn4DBHY6HxN8UfZAVOBhDY',
+  cookies: [
+    {
+      name: '__Secure-next-auth.state',
+      value: 'eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..xnXC4llTeo0m3O5c.LSSe4aRypuMKtY3ZmtB8IGDdXCO7sU828DffzkHJMGcuerifjIL6PGR-b9TP0454lIv_HUduRb8vw9PGkN-p2GqqitaaXIfN_l2FFlUWszv2qL7aF9KHmsXi2TvXuE-Nja7W2edIoDWJYFSyTWWK1tigUnb75WRHhXk0H_tYAXsj7xCOA3Y.NOBYBonLNijPrwb9P0NiBA',
+      options: [Object]
+    }
+  ],
+  provider: {
+    id: 'linkedin',
+    name: 'LinkedIn',
+    type: 'oauth',
+    authorization: {
+      url: 'https://www.linkedin.com/oauth/v2/authorization',
+      params: [Object]
+    },
+    token: {
+      url: 'https://www.linkedin.com/oauth/v2/accessToken',
+      params: {}
+    },
+    client: { token_endpoint_auth_method: 'client_secret_post' },
+    userinfo: { url: 'https://api.linkedin.com/v2/me', params: [Object] },
+    profile: [AsyncFunction: profile],
+    style: { logo: '/linkedin.svg', bg: '#069', text: '#fff' },
+    idToken: false,
+    checks: [ 'state' ],
+    clientId: '86zov7ecuf0puq',
+    clientSecret: '3Q7lNZuFRelhDGOp',
+    signinUrl: 'https://78c3abf9-3058-4da1-94bc-d55e06b1ebb6-00-o214lc49x14a.janeway.replit.dev/api/auth/signin/linkedin',
+    callbackUrl: 'https://78c3abf9-3058-4da1-94bc-d55e06b1ebb6-00-o214lc49x14a.janeway.replit.dev/api/auth/callback/linkedin'
+  }
+}
+ POST /api/auth/signin/linkedin 200 in 73ms
+[next-auth][debug][PROFILE_DATA] {
+  OAuthProfile: {
+    localizedLastName: 'Jasco',
+    profilePicture: {
+      displayImage: 'urn:li:digitalmediaAsset:C4E03AQE2hDJjbO25xg',
+      'displayImage~': [Object]
+    },
+    id: '7tTRIdHbD3',
+    localizedFirstName: 'Adeo'
+  }
+}
+[next-auth][debug][OAUTH_CALLBACK_RESPONSE] {
+  profile: {
+    id: '7tTRIdHbD3',
+    name: 'Adeo Jasco',
+    email: 'tmanager2021@gmail.com',
+    image: 'https://media.licdn.com/dms/image/v2/C4E03AQE2hDJjbO25xg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1660417559994?e=1759968000&v=beta&t=Epq1ig1qMKMHVU13DRRCllzK9yaGL1_Oxh_rDVUpwjE'
+  },
+  account: {
+    provider: 'linkedin',
+    type: 'oauth',
+    providerAccountId: '7tTRIdHbD3',
+    access_token: 'AQWewut9Nh8Wb4MUD1xDY2Jim0UYXeyQSRA9i5VDInUptz9mr5KcomP75Wab88pjo-B9eI0bmH_wUddNleRdpFaLR_ELEncbnQSpwYTJ7JxoEV3VlYuFNp4c-Snc7QCt34KDL29GctUeGMBg9dbGIetFpG8v8Egdhm76gN7iNYacp-gtIBefLEMDNmHVIeZBVp3E1wlWQBkacZ-KUon2dhsW5NL3lAkadb64sS4MJE07xrumX2g6E1LjoZRlUzEnG40P5-Jch4REP6YSHLJv9dPNrHk7582F6tYPRj5hkW4SxT40IFWO4guuSM4f8PO46N_Kt5cW-CZD1dJa_CARxj8iDhAn9w',
+    expires_at: 1762430640,
+    refresh_token: 'AQUGUe5ywcky7ETqMn7Uy0J4bVoFtUPgZfi1yFX4dfBTpWom-lm0FCTNuL1aINOHp6bek6MMsS4FHbL4I6XTZz0sVe1H9c4tjckna5ReQ1Xu7M9xqflurAss06cTtR1QmN-eyjt-CMkUtb_hDAhpw_Vko4cA78EpkyhZwe2FKDXZopA2eP6R6nLlVFQjf3BPlFQpmyy5DdfDFj0iH08Sw_XJ5a9YvGSPorqYYEvSYZfRiLfvbiq2bKzOQ-nPGK6g9drUxWHp2Jvi7Q2KD6eKB1llB8NxPOIqZbRQRcu2oAQIBD4sprAAxWk7iBx1Wsk8fQtnINadjzhwxn7h-DFDq4t9LIxcrw',
+    refresh_token_expires_in: 31535999,
+    scope: 'r_emailaddress,r_liteprofile,w_member_social'
+  },
+  OAuthProfile: {
+    localizedLastName: 'Jasco',
+    profilePicture: {
+      displayImage: 'urn:li:digitalmediaAsset:C4E03AQE2hDJjbO25xg',
+      'displayImage~': [Object]
+    },
+    id: '7tTRIdHbD3',
+    localizedFirstName: 'Adeo'
+  }
+}
+ GET /api/auth/callback/linkedin?code=AQQG0BRYJr1ceV7pCPm0O5949PRlFyCCGJMhTKCqtsuyaToG4ufFcp5Kn80o-P4dY7jdKRypdKDiG8CbnggYoHC7SS7ljCfGXulrtTc-Cn0On55XWi5-uj5PeprxF0LwI28SEYhPBYw7y-Y4ZDTFFEQcc7Trf5x5h5UoFnXTAB8pSJRmR1h6-RZmvVxiJKPu3lcUw43czeCJJw53WWw&state=e41y0PqzsYLfDCPQLhRezqn4DBHY6HxN8UfZAVOBhDY 302 in 901ms
+ GET /linkedin 200 in 103ms
+ GET /api/auth/session 200 in 33ms
+ ✓ Compiled /api/linkedin/profile in 442ms (1058 modules)
+[LinkedIn Profile] Starting profile fetch...
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+[LinkedIn Profile] Session check: {
+  hasSession: true,
+  hasAccessToken: true,
+  accessTokenLength: 350,
+  userId: '7tTRIdHbD3'
+}
+[LinkedIn Profile] Making API request to LinkedIn...
+[LinkedIn Profile] LinkedIn API response: {
+  status: 400,
+  statusText: 'Bad Request',
+  headers: {
+    connection: 'keep-alive',
+    'content-type': 'application/json',
+    date: 'Sun, 07 Sep 2025 12:04:07 GMT',
+    'set-cookie': 'lidc="b=OB92:s=O:r=O:a=O:p=O:g=4692:u=12:x=1:i=1757246647:t=1757330922:v=2:sig=AQFQREaFehpmYhs5SIA5OnATY5nZpTun"',
+    'transfer-encoding': 'chunked',
+    'x-li-fabric': 'prod-lor1',
+    'x-li-pop': 'prod-lva1-x',
+    'x-li-proto': 'http/1.1',
+    'x-li-route-key': '"b=OB92:s=O:r=O:a=O:p=O:g=4692:u=12:x=1:i=1757246647:t=1757330922:v=2:sig=AQFQREaFehpmYhs5SIA5OnATY5nZpTun"',
+    'x-li-source-fabric': 'prod-lva1',
+    'x-li-uuid': 'AAY+NN45w2q4ROkTBTmEiw==',
+    'x-restli-gateway-error': 'true'
+  }
+}
+[LinkedIn Profile] API error: {
+  status: 400,
+  statusText: 'Bad Request',
+  error: '{"status":400,"code":"ILLEGAL_ARGUMENT","message":"Syntax exception in path variables"}'
+}
+ GET /api/linkedin/profile 500 in 743ms

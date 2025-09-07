@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getServerSession } from "next-auth/next"
 import { TwitterApi } from "twitter-api-v2"
+import { authOptions } from "@/lib/auth"
 
 export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession()
+    const session = await getServerSession(authOptions) as any
 
     if (!session?.accessToken) {
       return NextResponse.json(

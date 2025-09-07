@@ -1,4 +1,5 @@
 import TwitterProvider from "next-auth/providers/twitter"
+import LinkedInProvider from "next-auth/providers/linkedin"
 import type { NextAuthOptions } from "next-auth"
 
 export const authOptions: NextAuthOptions = {
@@ -10,6 +11,15 @@ export const authOptions: NextAuthOptions = {
       authorization: {
         params: {
           scope: "tweet.read users.read tweet.write offline.access"
+        }
+      }
+    }),
+    LinkedInProvider({
+      clientId: process.env.LINKEDIN_CLIENT_ID!,
+      clientSecret: process.env.LINKEDIN_CLIENT_SECRET!,
+      authorization: {
+        params: {
+          scope: "openid profile email w_member_social"
         }
       }
     })

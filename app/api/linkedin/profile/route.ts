@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth"
+import { RestliClient } from "linkedin-api-client"
 
 export async function GET(request: NextRequest) {
   try {
@@ -22,36 +23,34 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // Get user profile information using lite profile scope
-    // Use the correct endpoint that works with r_liteprofile scope
-    console.log('[LinkedIn Profile] Making API request to LinkedIn...')
-    const response = await fetch('https://api.linkedin.com/v2/people/~:(id,localizedFirstName,localizedLastName)', {
-      headers: {
-        'Authorization': `Bearer ${session.accessToken}`,
-        'X-Restli-Protocol-Version': '2.0.0'
-      }
+    // Initialize the LinkedIn API client
+    const client = new RestliClient()
+    
+    console.log('[LinkedIn Profile] Making API request to LinkedIn using official client...')
+    
+    // Use the official LinkedIn API client to get profile data
+    const response = await client.get({
+      resourcePath: '/people/~',
+      queryParams: {
+        projection: '(id,localizedFirstName,localizedLastName)'
+      },
+      accessToken: session.accessToken
     })
 
     console.log('[LinkedIn Profile] LinkedIn API response:', {
       status: response.status,
-      statusText: response.statusText,
-      headers: Object.fromEntries(response.headers.entries())
+      data: response.data
     })
 
-    if (!response.ok) {
-      const error = await response.text()
-      console.error("[LinkedIn Profile] API error:", {
-        status: response.status,
-        statusText: response.statusText,
-        error: error
-      })
+    if (!response.data) {
+      console.error("[LinkedIn Profile] No data returned from API")
       return NextResponse.json(
         { error: "Failed to fetch LinkedIn profile" },
         { status: 500 }
       )
     }
 
-    const profile = await response.json()
+    const profile = response.data
     console.log('[LinkedIn Profile] Raw profile data:', JSON.stringify(profile, null, 2))
 
     // Format the profile data

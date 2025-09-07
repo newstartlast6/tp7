@@ -332,17 +332,16 @@ export default function LinkedInPage() {
                     <Avatar className="h-12 w-12">
                       {linkedinProfile.profilePicture ? (
                         <img 
-                          src={linkedinProfile.profilePicture} 
+                          src={`/api/linkedin/profile-image?url=${encodeURIComponent(linkedinProfile.profilePicture)}`}
                           alt={linkedinProfile.name}
                           className="w-full h-full object-cover rounded-full"
                           onError={(e) => {
-                            console.log('Profile image failed to load:', linkedinProfile.profilePicture)
-                            console.log('Error:', e)
+                            console.log('Profile image proxy failed, using fallback')
                             // Hide the image and show fallback
                             e.currentTarget.style.display = 'none'
                           }}
                           onLoad={() => {
-                            console.log('Profile image loaded successfully:', linkedinProfile.profilePicture)
+                            console.log('Profile image loaded successfully via proxy')
                           }}
                         />
                       ) : null}

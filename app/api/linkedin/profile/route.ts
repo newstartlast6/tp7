@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Get user profile information using lite profile scope
-    const response = await fetch('https://api.linkedin.com/v2/people/~:(id,firstName,lastName,profilePicture(displayImage~:playableStreams))', {
+    const response = await fetch('https://api.linkedin.com/v2/people/~:(id,localizedFirstName,localizedLastName,profilePicture(displayImage~:playableStreams))', {
       headers: {
         'Authorization': `Bearer ${session.accessToken}`,
         'X-Restli-Protocol-Version': '2.0.0'
@@ -35,10 +35,10 @@ export async function GET(request: NextRequest) {
     // Format the profile data
     const formattedProfile = {
       id: profile.id,
-      firstName: profile.firstName?.localized?.en_US || "",
-      lastName: profile.lastName?.localized?.en_US || "",
-      name: `${profile.firstName?.localized?.en_US || ""} ${profile.lastName?.localized?.en_US || ""}`.trim(),
-      profilePicture: profile.profilePicture?.displayImage?.elements?.[0]?.identifiers?.[0]?.identifier || null
+      firstName: profile.localizedFirstName || "",
+      lastName: profile.localizedLastName || "",
+      name: `${profile.localizedFirstName || ""} ${profile.localizedLastName || ""}`.trim(),
+      profilePicture: profile.profilePicture?.["displayImage~"]?.elements?.[0]?.identifiers?.[0]?.identifier || null
     }
 
     return NextResponse.json({

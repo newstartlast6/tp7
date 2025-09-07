@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Get user profile information using lite profile scope
-    const response = await fetch('https://api.linkedin.com/v2/people/~:(id,localizedFirstName,localizedLastName,profilePicture(displayImage~:playableStreams))', {
+    const response = await fetch('https://api.linkedin.com/v2/people/~', {
       headers: {
         'Authorization': `Bearer ${session.accessToken}`,
         'X-Restli-Protocol-Version': '2.0.0'

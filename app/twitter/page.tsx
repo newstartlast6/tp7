@@ -2,16 +2,11 @@
 
 import { useState, useEffect } from "react"
 import { useSession, signIn, signOut } from "next-auth/react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Twitter, Send, User, Calendar, Hash, Linkedin } from "lucide-react"
+import { Twitter, Send, User, Sparkles, Hash } from "lucide-react"
 import { toast } from "sonner"
+import Layout from '../../components/Layout'
 
 interface TwitterProfile {
   id: string
@@ -27,82 +22,56 @@ interface TwitterProfile {
   verified?: boolean
 }
 
-interface LinkedInProfile {
-  id: string
-  firstName: string
-  lastName: string
-  name: string
-  profilePicture?: string
-}
-
 interface Post {
   id: string
   text: string
   url: string
-  platform: 'twitter' | 'linkedin'
 }
 
-export default function SocialMediaScheduler() {
+export default function TwitterPage() {
   const { data: session, status } = useSession()
   const [twitterProfile, setTwitterProfile] = useState<TwitterProfile | null>(null)
-  const [linkedinProfile, setLinkedinProfile] = useState<LinkedInProfile | null>(null)
   const [postContent, setPostContent] = useState("")
-  const [selectedPlatform, setSelectedPlatform] = useState<'twitter' | 'linkedin'>('twitter')
   const [isPosting, setIsPosting] = useState(false)
-  const [recentPosts, setRecentPosts] = useState<Post[]>([])
+  const [recentTweets, setRecentTweets] = useState<Post[]>([])
 
-  const maxChars = selectedPlatform === 'twitter' ? 280 : 3000
+  const maxChars = 280
   const remainingChars = maxChars - postContent.length
 
   useEffect(() => {
     if (session?.accessToken) {
-      fetchProfiles()
+      fetchTwitterProfile()
     }
   }, [session])
 
-  const fetchProfiles = async () => {
-    // Fetch Twitter profile
+  const fetchTwitterProfile = async () => {
     try {
-      const twitterResponse = await fetch('/api/twitter/profile')
-      const twitterData = await twitterResponse.json()
+      const response = await fetch('/api/twitter/profile')
+      const data = await response.json()
       
-      if (twitterData.success) {
-        setTwitterProfile(twitterData.profile)
+      if (data.success) {
+        setTwitterProfile(data.profile)
       }
     } catch (error) {
       console.error('Error fetching Twitter profile:', error)
     }
-
-    // Fetch LinkedIn profile
-    try {
-      const linkedinResponse = await fetch('/api/linkedin/profile')
-      const linkedinData = await linkedinResponse.json()
-      
-      if (linkedinData.success) {
-        setLinkedinProfile(linkedinData.profile)
-      }
-    } catch (error) {
-      console.error('Error fetching LinkedIn profile:', error)
-    }
   }
 
-  const handlePost = async () => {
+  const handleTweet = async () => {
     if (!postContent.trim()) {
-      toast.error(`Please enter some content for your ${selectedPlatform} post`)
+      toast.error('Please enter some content for your tweet')
       return
     }
 
     if (postContent.length > maxChars) {
-      toast.error(`Post content exceeds ${maxChars} characters`)
+      toast.error(`Tweet exceeds ${maxChars} characters`)
       return
     }
 
     setIsPosting(true)
 
     try {
-      const endpoint = selectedPlatform === 'twitter' ? '/api/twitter/tweet' : '/api/linkedin/post'
-      
-      const response = await fetch(endpoint, {
+      const response = await fetch('/api/twitter/tweet', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -115,16 +84,16 @@ export default function SocialMediaScheduler() {
       const data = await response.json()
 
       if (data.success) {
-        toast.success(`${selectedPlatform === 'twitter' ? 'Tweet' : 'LinkedIn post'} posted successfully!`)
+        toast.success('Tweet posted successfully!')
         setPostContent("")
-        const newPost = { ...data.tweet || data.post, platform: selectedPlatform }
-        setRecentPosts(prev => [newPost, ...prev.slice(0, 4)])
+        const newTweet = { ...data.tweet }
+        setRecentTweets(prev => [newTweet, ...prev.slice(0, 4)])
       } else {
-        toast.error(data.error || `Failed to post to ${selectedPlatform}`)
+        toast.error(data.error || 'Failed to post tweet')
       }
     } catch (error) {
-      toast.error(`An error occurred while posting to ${selectedPlatform}`)
-      console.error(`Error posting to ${selectedPlatform}:`, error)
+      toast.error('An error occurred while posting your tweet')
+      console.error('Error posting tweet:', error)
     } finally {
       setIsPosting(false)
     }
@@ -132,329 +101,307 @@ export default function SocialMediaScheduler() {
 
   if (status === "loading") {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-center h-64">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-            <p className="text-muted-foreground">Loading...</p>
+      <Layout>
+        <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-gray-50">
+          {/* Background Effects */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-300/40 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-200/60 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-blue-400/30 rounded-full blur-2xl animate-pulse delay-500"></div>
+          </div>
+
+          <div className="w-full max-w-md mx-auto relative z-10">
+            <div className="bg-white rounded-3xl border border-blue-100 shadow-lg shadow-blue-500/10 p-8 text-center space-y-6">
+              <div className="flex items-center justify-center gap-3 mb-8">
+                <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center animate-bounce shadow-lg">
+                  <Twitter className="w-5 h-5 text-white" />
+                </div>
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
+                  Loading...
+                </h1>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </Layout>
     )
   }
 
   if (!session) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-4">Social Media Scheduler</h1>
-            <p className="text-muted-foreground">
-              Connect your social media accounts to start posting
-            </p>
+      <Layout>
+        <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-gray-50">
+          {/* Background Effects */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-300/40 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-200/60 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-blue-400/30 rounded-full blur-2xl animate-pulse delay-500"></div>
           </div>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card className="text-center">
-              <CardHeader>
-                <div className="mx-auto mb-4">
-                  <Twitter className="h-12 w-12 text-blue-500" />
-                </div>
-                <CardTitle className="text-xl">Twitter / X</CardTitle>
-                <CardDescription>
-                  Connect your Twitter account to post tweets
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button 
-                  onClick={() => signIn("twitter")} 
-                  className="w-full"
-                  size="lg"
-                >
-                  <Twitter className="h-5 w-5 mr-2" />
-                  Connect Twitter
-                </Button>
-              </CardContent>
-            </Card>
 
-            <Card className="text-center">
-              <CardHeader>
-                <div className="mx-auto mb-4">
-                  <Linkedin className="h-12 w-12 text-blue-600" />
+          <div className="w-full max-w-md mx-auto relative z-10">
+            <div className="bg-white rounded-3xl border border-blue-100 shadow-lg shadow-blue-500/10 p-8 text-center space-y-8">
+              <div className="flex items-center justify-center gap-3 mb-8">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+                  <Twitter className="w-6 h-6 text-white" />
                 </div>
-                <CardTitle className="text-xl">LinkedIn</CardTitle>
-                <CardDescription>
-                  Connect your LinkedIn account to share posts
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button 
-                  onClick={() => signIn("linkedin")} 
-                  className="w-full"
-                  size="lg"
-                  variant="outline"
+                <div className="text-left">
+                  <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
+                    Twitter
+                  </h1>
+                  <p className="text-gray-500 text-sm">Social Networking</p>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div className="text-left">
+                  <h2 className="text-2xl font-semibold text-gray-900 mb-2">
+                    Connect Your Twitter
+                  </h2>
+                  <p className="text-gray-600">
+                    Share your insights and connect with your audience on Twitter.
+                  </p>
+                </div>
+
+                <button
+                  onClick={() => signIn("twitter")}
+                  className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium transition-all duration-200 hover:-translate-y-[1px] hover:shadow-lg hover:shadow-blue-500/25 active:translate-y-0 flex items-center justify-center gap-3"
                 >
-                  <Linkedin className="h-5 w-5 mr-2" />
-                  Connect LinkedIn
-                </Button>
-              </CardContent>
-            </Card>
+                  <Twitter className="w-5 h-5" />
+                  Connect Twitter Account
+                </button>
+
+                <p className="text-sm text-gray-500 text-center">
+                  We'll only access what you authorize and never post without your permission
+                </p>
+              </div>
+            </div>
           </div>
-          
-          <p className="text-sm text-muted-foreground mt-8 text-center">
-            We'll only access what you authorize and never post without your permission
-          </p>
         </div>
-      </div>
+      </Layout>
     )
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="max-w-4xl mx-auto space-y-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold">Social Media Scheduler</h1>
-            <p className="text-muted-foreground">
-              Post and schedule content across your connected social media accounts
-            </p>
-          </div>
-          <Button 
-            variant="outline" 
-            onClick={() => signOut()}
-            className="text-red-600 hover:text-red-700"
-          >
-            Disconnect All
-          </Button>
+    <Layout>
+      <div className="min-h-screen p-4 relative overflow-hidden bg-gray-50">
+        {/* Background Effects */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-300/40 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-200/60 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-blue-400/30 rounded-full blur-2xl animate-pulse delay-500"></div>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          <div className="md:col-span-2 space-y-6">
-            {/* Post Composer */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Send className="h-5 w-5" />
-                  Compose Post
-                </CardTitle>
-                <CardDescription>
-                  Create content for your social media platforms
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <Label htmlFor="platform-select">Choose Platform</Label>
-                  <Select value={selectedPlatform} onValueChange={(value: 'twitter' | 'linkedin') => setSelectedPlatform(value)}>
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="twitter">
-                        <div className="flex items-center gap-2">
-                          <Twitter className="h-4 w-4 text-blue-500" />
-                          Twitter / X
-                        </div>
-                      </SelectItem>
-                      <SelectItem value="linkedin">
-                        <div className="flex items-center gap-2">
-                          <Linkedin className="h-4 w-4 text-blue-600" />
-                          LinkedIn
-                        </div>
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
+        <div className="w-full max-w-4xl mx-auto relative z-10 space-y-6">
+          {/* Header */}
+          <div className="bg-white rounded-3xl border border-blue-100 shadow-lg shadow-blue-500/10 p-8">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+                  <Twitter className="w-6 h-6 text-white" />
                 </div>
-                
                 <div>
-                  <Label htmlFor="post-content">
-                    {selectedPlatform === 'twitter' ? "What's happening?" : "What would you like to share?"}
-                  </Label>
-                  <Textarea
-                    id="post-content"
-                    placeholder={selectedPlatform === 'twitter' ? "What's on your mind?" : "Share your thoughts, insights, or updates with your professional network..."}
-                    value={postContent}
-                    onChange={(e) => setPostContent(e.target.value)}
-                    className="min-h-32 resize-none"
-                    maxLength={maxChars + 50}
-                  />
-                  <div className="flex justify-between items-center mt-2">
-                    <span className="text-xs text-muted-foreground">
-                      {selectedPlatform === 'twitter' ? 'Twitter' : 'LinkedIn'} • Max {maxChars} characters
-                    </span>
-                    <span 
-                      className={`text-sm ${
-                        remainingChars < 50 
-                          ? remainingChars < 0 ? 'text-red-500' : 'text-yellow-500'
-                          : 'text-muted-foreground'
-                      }`}
-                    >
-                      {remainingChars} remaining
-                    </span>
-                  </div>
+                  <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
+                    Twitter Publisher
+                  </h1>
+                  <p className="text-gray-500 text-sm">Share with your audience</p>
                 </div>
-                
-                <Button 
-                  onClick={handlePost}
-                  disabled={!postContent.trim() || remainingChars < 0 || isPosting}
-                  className="w-full"
-                >
-                  {isPosting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      Posting...
-                    </>
-                  ) : (
-                    <>
-                      {selectedPlatform === 'twitter' ? (
-                        <Twitter className="h-4 w-4 mr-2" />
-                      ) : (
-                        <Linkedin className="h-4 w-4 mr-2" />
-                      )}
-                      Post to {selectedPlatform === 'twitter' ? 'Twitter' : 'LinkedIn'}
-                    </>
-                  )}
-                </Button>
-              </CardContent>
-            </Card>
+              </div>
+              <button 
+                onClick={() => signOut()}
+                className="px-4 py-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-xl transition-colors border border-red-200 hover:border-red-300"
+              >
+                Disconnect
+              </button>
+            </div>
+          </div>
 
-            {/* Recent Posts */}
-            {recentPosts.length > 0 && (
-              <Card>
-                <CardHeader>
-                  <CardTitle>Recent Posts</CardTitle>
-                </CardHeader>
-                <CardContent>
+          <div className="grid gap-6 lg:grid-cols-3">
+            {/* Tweet Composer */}
+            <div className="lg:col-span-2">
+              <div className="bg-white rounded-3xl border border-blue-100 shadow-lg shadow-blue-500/10 p-8 space-y-6">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-sm">
+                    <Send className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">What's happening?</h3>
+                    <p className="text-gray-500 text-sm">Share your thoughts with the world</p>
+                  </div>
+                  <Sparkles className="w-4 h-4 text-blue-500 ml-auto" />
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="tweet-content" className="block text-sm font-medium text-gray-700 mb-2">
+                      What's on your mind?
+                    </label>
+                    <textarea
+                      id="tweet-content"
+                      placeholder="What's happening?"
+                      value={postContent}
+                      onChange={(e) => setPostContent(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none"
+                      rows={4}
+                      maxLength={maxChars + 20}
+                    />
+                    <div className="flex justify-between items-center mt-2">
+                      <span className="text-xs text-gray-500">
+                        Twitter • Max {maxChars} characters
+                      </span>
+                      <span 
+                        className={`text-sm ${
+                          remainingChars < 50 
+                            ? remainingChars < 0 ? 'text-red-500' : 'text-yellow-500'
+                            : 'text-gray-500'
+                        }`}
+                      >
+                        {remainingChars} remaining
+                      </span>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={handleTweet}
+                    disabled={!postContent.trim() || remainingChars < 0 || isPosting}
+                    className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium transition-all duration-200 hover:-translate-y-[1px] hover:shadow-lg hover:shadow-blue-500/25 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none flex items-center justify-center gap-3"
+                  >
+                    {isPosting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                        Posting...
+                      </>
+                    ) : (
+                      <>
+                        <Twitter className="w-4 h-4" />
+                        Post Tweet
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              {/* Recent Tweets */}
+              {recentTweets.length > 0 && (
+                <div className="bg-white rounded-3xl border border-blue-100 shadow-lg shadow-blue-500/10 p-8 mt-6">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="p-3 rounded-xl bg-blue-100 text-blue-600">
+                      <Twitter className="w-4 h-4" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900">Recent Tweets</h3>
+                  </div>
                   <div className="space-y-4">
-                    {recentPosts.map((post) => (
-                      <div key={post.id} className="p-3 border rounded-lg">
-                        <div className="flex items-center gap-2 mb-2">
-                          {post.platform === 'twitter' ? (
-                            <Twitter className="h-4 w-4 text-blue-500" />
-                          ) : (
-                            <Linkedin className="h-4 w-4 text-blue-600" />
-                          )}
-                          <span className="text-xs text-muted-foreground capitalize">
-                            {post.platform}
-                          </span>
+                    {recentTweets.map((tweet) => (
+                      <div key={tweet.id} className="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                        <div className="flex items-center gap-2 mb-3">
+                          <Twitter className="w-4 h-4 text-blue-500" />
+                          <span className="text-xs text-gray-500">Twitter</span>
                         </div>
-                        <p className="text-sm mb-2">{post.text}</p>
+                        <p className="text-gray-700 mb-3 leading-relaxed">{tweet.text}</p>
                         <a 
-                          href={post.url} 
+                          href={tweet.url} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="text-xs text-blue-500 hover:underline"
+                          className="text-sm text-blue-500 hover:text-blue-600 hover:underline transition-colors"
                         >
-                          View on {post.platform === 'twitter' ? 'Twitter' : 'LinkedIn'} →
+                          View on Twitter →
                         </a>
                       </div>
                     ))}
                   </div>
-                </CardContent>
-              </Card>
-            )}
-          </div>
+                </div>
+              )}
+            </div>
 
-          <div className="space-y-6">
-            {/* Twitter Profile Card */}
-            {twitterProfile && (
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Twitter className="h-5 w-5 text-blue-500" />
-                    Twitter Account
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center space-x-3">
+            {/* Sidebar */}
+            <div className="space-y-6">
+              {/* Twitter Profile Card */}
+              {twitterProfile && (
+                <div className="bg-white rounded-3xl border border-blue-100 shadow-lg shadow-blue-500/10 p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 rounded-xl bg-blue-100 text-blue-600">
+                      <User className="w-4 h-4" />
+                    </div>
+                    <h4 className="text-lg font-semibold text-gray-900">Your Profile</h4>
+                  </div>
+
+                  <div className="flex items-center space-x-3 mb-4">
                     <Avatar className="h-12 w-12">
                       <AvatarImage src={twitterProfile.profile_image_url} alt={twitterProfile.name} />
-                      <AvatarFallback>{twitterProfile.name?.charAt(0) || twitterProfile.username?.charAt(0)}</AvatarFallback>
+                      <AvatarFallback className="bg-blue-100 text-blue-600">
+                        {twitterProfile.name?.charAt(0) || twitterProfile.username?.charAt(0)}
+                      </AvatarFallback>
                     </Avatar>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-1">
-                        <p className="font-medium truncate">{twitterProfile.name}</p>
+                        <p className="font-medium text-gray-900 truncate">{twitterProfile.name}</p>
                         {twitterProfile.verified && (
-                          <Badge variant="secondary" className="text-xs">
+                          <Badge variant="secondary" className="text-xs bg-blue-100 text-blue-600">
                             ✓
                           </Badge>
                         )}
                       </div>
-                      <p className="text-sm text-muted-foreground">@{twitterProfile.username}</p>
+                      <p className="text-sm text-gray-500">@{twitterProfile.username}</p>
                     </div>
                   </div>
 
                   {twitterProfile.description && (
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-gray-600 mb-4 leading-relaxed">
                       {twitterProfile.description}
                     </p>
                   )}
 
-                  <Separator />
-
                   {twitterProfile.public_metrics && (
-                    <div className="grid grid-cols-3 gap-2 text-center">
-                      <div>
-                        <p className="text-lg font-semibold">{twitterProfile.public_metrics.tweet_count.toLocaleString()}</p>
-                        <p className="text-xs text-muted-foreground">Tweets</p>
-                      </div>
-                      <div>
-                        <p className="text-lg font-semibold">{twitterProfile.public_metrics.following_count.toLocaleString()}</p>
-                        <p className="text-xs text-muted-foreground">Following</p>
-                      </div>
-                      <div>
-                        <p className="text-lg font-semibold">{twitterProfile.public_metrics.followers_count.toLocaleString()}</p>
-                        <p className="text-xs text-muted-foreground">Followers</p>
+                    <div className="bg-gray-50 rounded-xl p-4">
+                      <div className="grid grid-cols-3 gap-2 text-center">
+                        <div>
+                          <p className="text-lg font-semibold text-gray-900">{twitterProfile.public_metrics.tweet_count.toLocaleString()}</p>
+                          <p className="text-xs text-gray-500">Tweets</p>
+                        </div>
+                        <div>
+                          <p className="text-lg font-semibold text-gray-900">{twitterProfile.public_metrics.following_count.toLocaleString()}</p>
+                          <p className="text-xs text-gray-500">Following</p>
+                        </div>
+                        <div>
+                          <p className="text-lg font-semibold text-gray-900">{twitterProfile.public_metrics.followers_count.toLocaleString()}</p>
+                          <p className="text-xs text-gray-500">Followers</p>
+                        </div>
                       </div>
                     </div>
                   )}
-                </CardContent>
-              </Card>
-            )}
-
-            {/* LinkedIn Profile Card */}
-            {linkedinProfile && (
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Linkedin className="h-5 w-5 text-blue-600" />
-                    LinkedIn Account
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <Avatar className="h-12 w-12">
-                      <AvatarImage src={linkedinProfile.profilePicture} alt={linkedinProfile.name} />
-                      <AvatarFallback>{linkedinProfile.firstName?.charAt(0) || linkedinProfile.name?.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-medium truncate">{linkedinProfile.name}</p>
-                      <p className="text-sm text-muted-foreground">LinkedIn Profile</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Quick Tips */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Hash className="h-5 w-5" />
-                  Quick Tips
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2 text-sm text-muted-foreground">
-                  <p>• Keep tweets under 280 characters</p>
-                  <p>• Use hashtags to increase reach</p>
-                  <p>• Engage with your audience</p>
-                  <p>• Post consistently for better engagement</p>
                 </div>
-              </CardContent>
-            </Card>
+              )}
+
+              {/* Twitter Tips */}
+              <div className="bg-white rounded-3xl border border-blue-100 shadow-lg shadow-blue-500/10 p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-xl bg-blue-100 text-blue-600">
+                    <Hash className="w-4 h-4" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900">Twitter Tips</h4>
+                </div>
+                <div className="space-y-3 text-sm text-gray-600">
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Keep tweets under 280 characters for maximum impact</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Use relevant hashtags to increase discoverability</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Engage with your audience through replies and retweets</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Post consistently to build your following</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   )
 }

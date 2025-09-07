@@ -67,36 +67,23 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Get user ID first using the official LinkedIn client
-    console.log('[LinkedIn Post] Fetching user profile for person ID...')
-    const client = new RestliClient()
+    // Use the person ID from the session (already available from authentication)
+    const personId = session.userId
     
-    const profileResponse = await client.get({
-      resourcePath: '/me',
-      queryParams: {
-        projection: '(id)'
-      },
-      accessToken: session.accessToken
+    console.log('[LinkedIn Post] Using person ID from session:', {
+      personId: personId
     })
 
-    console.log('[LinkedIn Post] Profile response:', {
-      status: profileResponse.status,
-      data: profileResponse.data
-    })
-
-    if (!profileResponse.data || !profileResponse.data.id) {
-      console.error('[LinkedIn Post] Profile fetch error: No profile data')
+    if (!personId) {
+      console.error('[LinkedIn Post] No person ID found in session')
       return NextResponse.json(
-        { error: "Failed to get LinkedIn profile" },
+        { error: "No LinkedIn user ID found in session" },
         { status: 500 }
       )
     }
 
-    const personId = profileResponse.data.id
-    
-    console.log('[LinkedIn Post] Profile data:', {
-      personId: personId
-    })
+    // Initialize the LinkedIn API client for posting
+    const client = new RestliClient()
 
     // Post to LinkedIn using the official client and Posts API (newer approach)
     const postData = {

@@ -107,21 +107,24 @@ export async function POST(request: NextRequest) {
       refreshToken: process.env.REDDIT_REFRESH_TOKEN || '',
     })
 
-    let postResult
-    const targetSubreddit = reddit.getSubreddit(subreddit)
+    let postResult: any
 
     if (type === 'link') {
       // Submit link post
-      postResult = await targetSubreddit.submitLink({
+      const linkPost = await reddit.submitLink({
+        subredditName: subreddit,
         title: title,
         url: url
       })
+      postResult = linkPost
     } else {
       // Submit text post (default)
-      postResult = await targetSubreddit.submitSelfpost({
+      const textPost = await reddit.submitSelfpost({
+        subredditName: subreddit,
         title: title,
         text: content || ''
       })
+      postResult = textPost
     }
 
     console.log('[Reddit Post] Post created successfully:', {

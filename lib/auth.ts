@@ -1,5 +1,6 @@
 import TwitterProvider from "next-auth/providers/twitter"
 import LinkedInProvider from "next-auth/providers/linkedin"
+import RedditProvider from "next-auth/providers/reddit"
 import type { NextAuthOptions } from "next-auth"
 
 export const authOptions: NextAuthOptions = {
@@ -20,6 +21,15 @@ export const authOptions: NextAuthOptions = {
       authorization: {
         params: {
           scope: "r_liteprofile r_emailaddress w_member_social"
+        }
+      }
+    }),
+    RedditProvider({
+      clientId: process.env.REDDIT_CLIENT_ID!,
+      clientSecret: process.env.REDDIT_CLIENT_SECRET!,
+      authorization: {
+        params: {
+          scope: "identity submit read"
         }
       }
     })

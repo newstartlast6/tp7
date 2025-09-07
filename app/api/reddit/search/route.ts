@@ -39,20 +39,20 @@ export async function GET(request: NextRequest) {
     if (subreddit) {
       // Search within specific subreddit
       const targetSubreddit = reddit.getSubreddit(subreddit)
-      searchResults = await targetSubreddit.search({
+      const results = await targetSubreddit.search({
         query: query,
         sort: sort as any,
-        time: time as any,
-        limit: limit
+        time: time as any
       })
+      searchResults = results.slice(0, limit)
     } else {
       // Search across all of Reddit
-      searchResults = await reddit.search({
+      const results = await reddit.search({
         query: query,
         sort: sort as any,
-        time: time as any,
-        limit: limit
+        time: time as any
       })
+      searchResults = results.slice(0, limit)
     }
 
     // Format the results
